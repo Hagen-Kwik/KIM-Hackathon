@@ -22,6 +22,10 @@ Route::get('/berita', function () {
     return view('berita');
 });
 
+Route::get('/learning', function () {
+    return view('learning');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
