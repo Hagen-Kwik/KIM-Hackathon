@@ -21,6 +21,23 @@ Route::get('/', function () {
 Route::get('/admin-panel', function () {
     return view('admin-profile');
 });
+Route::get('/admin-profile', function () {
+    return view('admin-profile');
+});
+Route::get('/admin-berita', function () {
+    return view('admin-berita');
+});
+Route::get('/admin-beranda', function () {
+    return view('admin-beranda');
+});
+Route::get('/admin-tentang_kami', function () {
+    return view('admin-tentang_kami');
+});
+Route::get('/admin-silabus', function () {
+    return view('admin-silabus');
+});
+
+
 
 Route::get('/berita', function () {
     return view('berita');
