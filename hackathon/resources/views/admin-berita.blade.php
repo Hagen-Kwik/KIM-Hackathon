@@ -16,7 +16,7 @@
             </div>
 
             <div class="col text-end">
-                <button type="button" class="btn btn-light rounded-pill" data-bs-toggle="modal" data-bs-target="#addNewAdmin">+ Add berita</button>
+                <button type="button" class="btn btn-light rounded-pill" data-bs-toggle="modal" data-bs-target="#addNewBerita">+ Add berita</button>
             </div>
         </div>
     </div><!-- End Page Title -->
@@ -29,10 +29,11 @@
     </section>
 
 
-    <div class="modal fade" id="addNewAdmin" tabindex="-1">
+    <div class="modal fade" id="addNewBerita" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form method="POST" action="/admin-manage_accountAdd">
+                <!-- CEHCK ACTION  -->
+                <form method="POST" action="/admin">
                     @csrf
                     <div class="modal-header">
                         <h5 class="modal-title">Berita baru</h5>
@@ -70,12 +71,12 @@
 
     <script>
     $(document).ready(function () {
-        $('#addNewAdmin').modal({
+        $('#addNewBerita').modal({
             backdrop: 'static',
             keyboard: false
         });
 
-        $('#addNewAdmin .btn-close').click(function () {
+        $('#addNewBerita .btn-close').click(function () {
             // Optionally, you can add a custom close behavior here
         });
     });
