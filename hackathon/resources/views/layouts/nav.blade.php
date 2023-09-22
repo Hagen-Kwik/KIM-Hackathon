@@ -12,7 +12,7 @@
                     <a class="nav-link py-2 px-4" href="/">Beranda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link py-2 px-4" href="/silabus">Silabus</a>
+                    <a class="nav-link py-2 px-4" href="/learning">Silabus</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link py-2 px-4" href="/berita">Berita</a>
