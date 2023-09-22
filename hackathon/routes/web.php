@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('layouts.mainheader');
 });
 
+Route::get('/admin', function () {
+    return view('admin-profile');
+});
+
 Route::get('/berita', function () {
     return view('berita');
 });
