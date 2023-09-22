@@ -12,29 +12,29 @@
                     <a class="nav-link py-2 px-4" href="/">Beranda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link py-2 px-4" href="/">Silabus</a>
+                    <a class="nav-link py-2 px-4" href="/silabus">Silabus</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link py-2 px-4" href="/">Berita</a>
+                    <a class="nav-link py-2 px-4" href="/berita">Berita</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link py-2 px-4" href="/">Tentang Kami</a>
+                    <a class="nav-link py-2 px-4" href="/tentang-kami">Tentang Kami</a>
                 </li>
 
                 @guest
                 <li class="nav-item">
-                    <a class="nav-link py-2 px-4" href="/">Masuk</a>
+                    <a class="nav-link py-2 px-4" href="/masuk">Masuk</a>
                 </li>
                 @endguest
 
                 @auth
                 @if (Auth::check() && Auth::user()->role == 'Admin')
                 <li class="nav-item">
-                    <a class="nav-link py-2 px-4" href="/">Admin</a>
+                    <a class="nav-link py-2 px-4" href="/admin">Admin</a>
                 </li>
                 @endif
                 <li class="nav-item">
-                    <a class="nav-link py-2 px-4" href="/">Profil</a>
+                    <a class="nav-link py-2 px-4" href="/profil">Profil</a>
                 </li>
                 @endauth
             </ul>
