@@ -1,6 +1,6 @@
 @extends('layouts.mainheader')
 @section('css')
-    <link rel="stylesheet" href="{{ asset('styles/learning.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/silabus.css') }}">
 @endsection
 @section('title', 'welcome to learning section')
 @section('content')
@@ -32,32 +32,25 @@
         <div class="mt-lg-3 mb-lg-5">
             <div class="d-flex mt-3">
                 <img src="{{ asset('images/assets/buarien.png') }}" alt="" style=""
-                    class="bg-gray-400 image-box">
+                    class="bg-gray-400 image-box" width="200px">
                 <p class="ml-3 mt-3 p-3">
-                    Dr. Jimmy Ellya Kurniawan, S.Psi., M.Si., Psikolog
-                    adalah Ketua Peneliti Hibah "Model Perilaku Inovatif Guru" & Dosen Fakultas Psikologi Universitas
-                    Ciputra Surabaya. Pengalamannya menjadi dosen sejak 1999 sampai dengan sekarang dengan jabatan
-                    fungsional akademik Lektor Kepala. Bidang utama pengajaran dan penelitiannya adalah Psikologi Kerja
-                    dan Entrepreneurship.
-                    Email: jimmy.ellya@ciputra.ac.id
+                    Arien Sulistyani
+                    adalah Ketua Citizen Journalisme Remaja. Arien Sulistyani lahir pada tanggal 18 Februari 1973 di Madiun. Dia tinggal di Jl. Semongko No. 4A, Madiun dan menganut agama Islam.
                 </p>
             </div>
 
             <div class="d-flex mt-3">
                 <img src="{{ asset('images/assets/pakkurniawan.jpg') }}" alt="" style=""
-                    class="bg-gray-400 image-box">
+                    class="bg-gray-400 image-box" width="200px">
                 <p class="ml-3 mt-3 p-3">
-                    Kuncoro Dewi Rahmawati, S.Psi., M.Psi., Psikolog
-                    adalah Anggota Peneliti Hibah "Model Perilaku Inovatif Guru" & Dosen Fakultas Psikologi Universitas
-                    Ciputra Surabaya. Selain menjadi dosen, ia merupakan praktisi psikolog yang banyak berkecimpung
-                    dalam dunia industri dan organisasi.
-                    Email: kuncoro.dewi@ciputra.ac.id
+                    Kurniawan Dwi Jatmoko adalah 
+                    Sekretaris Citizen Journalisme Remaja. Ia bertugas menyediakan dukungan administratif, seperti pengelolaan inventaris. Mengatur dan mengkoordinasikan pertemuan, termasuk persiapan agenda, pengiriman undangan, dan dokumentasi hasil pertemuan.
                 </p>
             </div>
 
             <div class="d-flex mt-3">
                 <img src="{{ asset('images/assets/pakaldi.jpeg') }}" alt="" style=""
-                    class="bg-gray-400 image-box">
+                    class="bg-gray-400 image-box" width="200px">
                 <p class="ml-3 mt-3 p-3">
                     Aldi Sunardi adalah anggota Citizen Journalisme Remaja 
                     jabatannya sebagai Bidang Pengelolaan Informasi Dan Komunikasi. 

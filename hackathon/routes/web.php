@@ -22,8 +22,8 @@ Route::get('/berita', function () {
     return view('berita');
 });
 
-Route::get('/learning', function () {
-    return view('learning');
+Route::get('/silabus', function () {
+    return view('silabus');
 });
 
 Route::get('/dashboard', function () {

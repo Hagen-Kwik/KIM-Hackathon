@@ -1,0 +1,21 @@
+.banner {
+    width: 100%;
+    height: 30vh !important;
+    background-size: cover;
+    background-position: center;
+}
+
+.image-box {
+    width: 200px !important;
+    object-fit: contain; /* keep aspect ratio */
+    object-position: center; /* Center the image within the element */
+    margin-bottom: 1rem;
+}
+
+.bg-info {
+    background-color: #E87E24 !important
+}
+
+.text-info {
+    color: #E87E24 !important
+}
