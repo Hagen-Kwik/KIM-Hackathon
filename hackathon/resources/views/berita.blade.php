@@ -9,7 +9,7 @@
     <h1 class="bold">Berita Terkini</h1>
 
 
-    <div class="row mt-5">
+    <div class="row mt-5 mb-5">
         <!-- for loop this code -->
         <div class="col EachGridBox">
             <!-- image asset -->
@@ -42,23 +42,23 @@
     <!-- Pakai ini buat langung iterasi for loop -->
 
     <!-- <div class="row mt-5">
-        @foreach($items as $item)
-        <div class="col EachGridBox">
+ kasih for loop sini
+    <div class="col EachGridBox">
             <img src="{{ asset('images/assets/berita_trial_pic.jpg') }}" height="10" class="HalfRoundedCorner img-fluid">
 
             <div class="InsideGridBox">
-                <h4 class="bold">{{ $item->title }}</h4>
-                <h6>{{ $item->upload_date }}</h6>
-                <p>{{ $item->description }}</p>
+                <h4 class="bold"></h4>
+                <h6></h6>
+                <p></p>
                 <button class="btn-primary">Selengkapnya</button>
             </div>
         </div>
 
-        @if ($loop->iteration % 3 == 0)
+        if ($loop->iteration % 3 == 0)
     </div>
-    <div class="row mt-5">
-        @endif
-        @endforeach
+    <div class="row mt-5 mb-5">
+        endif
+        endforeach
     </div> -->
  
 
