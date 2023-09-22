@@ -18,12 +18,24 @@ Route::get('/', function () {
     return view('layouts.mainheader');
 });
 
-Route::get('/admin', function () {
+Route::get('/admin-panel', function () {
     return view('admin-profile');
 });
 
 Route::get('/berita', function () {
     return view('berita');
+});
+
+Route::get('/masuk', function () {
+    return view('auth.login');
+});
+
+Route::get('/daftar', function () {
+    return view('auth.register');
+});
+
+Route::get('/tentang-kami', function () {
+    return view('tentang-kami');
 });
 
 Route::get('/silabus', function () {
