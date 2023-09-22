@@ -17,7 +17,7 @@
 
                 <div class="col text-end">
                     <button type="button" class="btn btn-light rounded-pill" data-bs-toggle="modal"
-                        data-bs-target="#addNewAdmin">+ Edit Beranda</button>
+                        data-bs-target="#addNewAdmin">+ Add Beranda</button>
                 </div>
             </div>
         </div><!-- End Page Title -->
