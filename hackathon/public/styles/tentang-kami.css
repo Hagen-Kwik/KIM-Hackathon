@@ -1,0 +1,24 @@
+.tentang-kami-picture-1 {
+    height: 400;
+    width: 500;
+    margin-top: -400px;
+    object-fit: cover;
+}
+
+.tentang-kami-picture-2 {
+    height: 500;
+    width: 500;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 992px) {
+    .tentang-kami-picture-2 {
+        height: 350;
+        width: 350;
+    }
+    .tentang-kami-picture-1 {
+        height: 350;
+        width: 350;
+        margin-top: -150px;
+    }
+}
