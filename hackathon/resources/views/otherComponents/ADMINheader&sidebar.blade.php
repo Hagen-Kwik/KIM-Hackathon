@@ -96,6 +96,13 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin-finance">
+                    <i class="bi bi-people"></i>
+                    <span>Keuangan</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="/admin-beranda">
                     <i class="bi bi-people"></i>
                     <span>Beranda</span>

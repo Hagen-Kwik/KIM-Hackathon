@@ -31,7 +31,10 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('admin/styleAdmin.css') }}" rel="stylesheet">
 
-
+    {{-- Table --}}
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
 
 </head>
 
@@ -40,8 +43,7 @@
     @include('otherComponents.ADMINheader&sidebar')
     @yield('content')
 
-
-
+    
 
     <!-- Vendor JS Files -->
     <script src="{{ asset('admin/vendor/apexcharts/apexcharts.min.js') }}" defer></script>

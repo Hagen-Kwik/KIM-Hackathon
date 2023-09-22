@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +38,8 @@ Route::get('/admin-tentang_kami', function () {
 Route::get('/admin-silabus', function () {
     return view('admin-silabus');
 });
+
+Route::get('/admin-finance', [Controller::class, 'finance']);
 
 
 
