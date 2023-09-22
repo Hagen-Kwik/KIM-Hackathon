@@ -40,6 +40,11 @@ Route::get('/admin-silabus', function () {
 });
 
 Route::get('/admin-finance', [Controller::class, 'finance']);
+Route::post('/admin-finance_add', [Controller::class, 'finance_add']);
+Route::post('/admin-finance_edit', [Controller::class, 'finance_edit']);
+Route::post('/admin-finance_delete', [Controller::class, 'finance_delete']);
+
+
 
 
 
