@@ -47,6 +47,10 @@ Route::get('/berita', function () {
     return view('berita');
 });
 
+Route::get('/berita-detail', function () {
+    return view('berita-detail');
+});
+
 Route::get('/masuk', function () {
     return view('auth.login');
 });
