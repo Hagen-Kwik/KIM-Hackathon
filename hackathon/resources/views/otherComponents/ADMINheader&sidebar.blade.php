@@ -75,44 +75,30 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/admin-manage_account">
+                <a class="nav-link collapsed" href="/admin-berita">
                     <i class="bi bi-people"></i>
-                    <span>Manage Accounts</span>
+                    <span>Berita</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/admin-orders">
-                    <i class="bi bi-cart2"></i>
-                    <span>Orders</span>
+                <a class="nav-link collapsed" href="/admin-tentang_kami">
+                    <i class="bi bi-people"></i>
+                    <span>Tentang Kami</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/admin-items">
-                    <i class="bi bi-box"></i>
-                    <span>Items</span>
+                <a class="nav-link collapsed" href="/admin-silabus">
+                    <i class="bi bi-people"></i>
+                    <span>Silabus</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/admin-billing_options">
-                    <i class="bi bi-credit-card"></i>
-                    <span>Billing Options</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="/admin-item_requests">
-                    <i class="bi bi-inboxes"></i>
-                    <span>Item Requests</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                {{-- <a class="nav-link collapsed" href="{{ route('admin-website_feedbacks.index') }}"> --}}
-                    <i class="bi bi-mailbox"></i>
-                    <span>Website Feedbacks</span>
+                <a class="nav-link collapsed" href="/admin-beranda">
+                    <i class="bi bi-people"></i>
+                    <span>Beranda</span>
                 </a>
             </li>
         </ul>
