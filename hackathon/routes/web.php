@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('layouts.mainheader');
 });
 
-Route::get('/admin', function () {
+Route::get('/admin-panel', function () {
     return view('admin-profile');
 });
 
