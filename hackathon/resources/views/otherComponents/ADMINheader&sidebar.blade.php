@@ -67,12 +67,6 @@
     <aside id="sidebar" class="sidebar">
 
         <ul class="sidebar-nav" id="sidebar-nav">
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="/admin-profile">
-                    <i class="bi bi-person"></i>
-                    <span>My Profile</span>
-                </a>
-            </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/admin-siswa">

@@ -129,15 +129,26 @@ class Controller extends BaseController
     {
         $guru = Teacher::findOrFail($_POST['id']);
 
-        $guru->update([
-            'teacherName' => $_POST['teacherName'],
-            'description' => $_POST['description'],
-            'job_title' => $_POST['job_title'],
-            'whatsapp' => $_POST['whatsapp'],
-            'email' => $_POST['email'],
-            'instagram' => $_POST['instagram'],
-            // 'picture' => $_POST['picture'],
-        ]);
+        if ($_POST['picture']) {
+            $guru->update([
+                'teacherName' => $_POST['teacherName'],
+                'description' => $_POST['description'],
+                'job_title' => $_POST['job_title'],
+                'whatsapp' => $_POST['whatsapp'],
+                'email' => $_POST['email'],
+                'instagram' => $_POST['instagram'],
+                'picture' => substr($_POST['picture']->store('/public/images/teacher'), 7, strlen($_POST['picture']->store('/public/images/teacher')) - 7),
+            ]);
+        } else {
+            $guru->update([
+                'teacherName' => $_POST['teacherName'],
+                'description' => $_POST['description'],
+                'job_title' => $_POST['job_title'],
+                'whatsapp' => $_POST['whatsapp'],
+                'email' => $_POST['email'],
+                'instagram' => $_POST['instagram'],
+            ]);
+        }
 
         return redirect("admin-guru");
     }
