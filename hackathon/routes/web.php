@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\Models\AboutUs;
 use App\Models\School;
 
 
@@ -73,7 +74,9 @@ Route::get('/daftar', function () {
 });
 
 Route::get('/tentang-kami', function () {
-    return view('tentang-kami');
+    return view('tentang-kami',[
+        'aboutus' => AboutUs::all()
+    ]);
 });
 
 Route::get('/silabus', function () {
