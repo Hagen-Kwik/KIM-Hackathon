@@ -18,19 +18,8 @@ class LearningSeeder extends Seeder
         Learning::create([
             'title' => "Pantun",
             'description' => "lorem ipsum 50",
-            'picture' => "tes",
             'starts_at' => Carbon::parse('2023-09-25 10:00:00'),
             'ends_at' => Carbon::parse('2023-09-25 12:00:00'),
-            'school_id' => 2,
-        ]);
-
-        Learning::create([
-            'title' => "Perfilman",
-            'description' => "lorem ipsum 50",
-            'picture' => "tes",
-            'starts_at' => "11:00",
-            'ends_at' => "13:00",
-            'school_id' => 2,
         ]);
     }
 }

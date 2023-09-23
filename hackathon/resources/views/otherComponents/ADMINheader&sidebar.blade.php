@@ -97,8 +97,15 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/admin-silabus">
-                    <i class="bi bi-journal-text"></i>
+                    <i class="bi bi-book"></i>
                     <span>Silabus</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin-modul">
+                    <i class="bi bi-journal-text"></i>
+                    <span>Modul</span>
                 </a>
             </li>
 

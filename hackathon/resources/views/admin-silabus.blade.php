@@ -14,16 +14,43 @@
                         </ol>
                     </nav>
                 </div>
-
-                <div class="col text-end">
-                    <button type="button" class="btn btn-light rounded-pill" data-bs-toggle="modal"
-                        data-bs-target="#addNewAdmin">+ Add Silabus</button>
-                </div>
             </div>
         </div><!-- End Page Title -->
 
         <section class="section">
             <div class="row">
+                <form action="/admin-silabus" method="POST">
+                    @csrf
+                    @method('patch')
+                    <div class="row mt-3">
+                        <label for="inputText" class="col-sm-2 col-form-label">Judul</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="judul" class="form-control" placeholder="Judul" value="{{$learning->title}}" required>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <label for="inputText" class="col-sm-2 col-form-label">Deskripsi</label>
+                        <div class="col-sm-10">
+                            <textarea type="text" name="deskripsi" class="form-control" placeholder="Deskripsi" required>{{$learning->description}}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row mt-3">
+                        <label class="col-sm-2 col-form-label">Starts At</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" name="mulai" placeholder="Select Time" type="time" value="{{$learning->starts_at}}"/>
+                        </div>
+                    </div>
+                    <div class="form-group row mt-3">
+                        <label class="col-sm-2 col-form-label">Ends At</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" name="berakhir" placeholder="Select Time" type="time" value="{{$learning->ends_at}}"/>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 d-flex flex-row justify-content-center">
+                        <button class="saveButton px-4" type="submit">Save</button>
+                    </div>
+                </form>
             </div>
         </section>
 

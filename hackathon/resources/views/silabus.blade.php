@@ -7,7 +7,7 @@
 
     <div class="bg-white">
         {{-- banner --}}
-        <div class="banner" style="background-image: url({{ asset('images/assets/bannerkegiatan2.jpeg') }});">
+        <div class="banner" style="background-image: url({{ asset('storage/' . Auth::user()->school->bannerPicture) }});">
             <div class="w-100 row align-items-center m-0 p-0"
                 style="height: 30vh; background: rgba(18, 14, 65, 0.509) !important;">
                 <div class="col justify-content-center text-center">

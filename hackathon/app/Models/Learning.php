@@ -13,14 +13,7 @@ class Learning extends Model
     protected $fillable = [
         'title',
         'description',
-        'picture',
         'starts_at',
         'ends_at',
-        'school_id',
     ];
-
-    public function school() : BelongsTo
-    {
-        return $this->belongsTo(School::class);
-    }
 }

@@ -13,6 +13,7 @@ use App\Http\Controllers\LearningController;
 use App\Http\Controllers\QuizController;
 use App\Models\AboutUs;
 use App\Models\karya_pilihan;
+use App\Models\Learning;
 use App\Models\Question;
 use App\Models\Quiz;
 use App\Models\School;
@@ -65,7 +66,9 @@ Route::get('/admin-tentang-kami', function () {
 })->middleware(['auth', 'admin']);
 
 Route::get('/admin-silabus', function () {
-    return view('admin-silabus');
+    return view('admin-silabus', [
+        'learning' => Learning::all()->first()
+    ]);
 })->middleware(['auth', 'admin']);
 
 Route::get('/admin-sekolah', [SchoolController::class, 'index'])->middleware(['auth', 'admin']);
