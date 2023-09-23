@@ -103,6 +103,13 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin-quiz">
+                    <i class="bi bi-clipboard-check"></i>
+                    <span>Quiz</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="/admin-sekolah">
                     <i class="bi bi-building"></i>
                     <span>Sekolah</span>
