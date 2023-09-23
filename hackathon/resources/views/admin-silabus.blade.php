@@ -19,31 +19,34 @@
 
         <section class="section">
             <div class="row">
-                <form action="/admin-silabus" method="POST">
+                <form action="/admin-silabus_edit" method="POST">
                     @csrf
-                    @method('patch')
+                    <input type="hidden" name="id" value="{{ $learning->id }}">
                     <div class="row mt-3">
                         <label for="inputText" class="col-sm-2 col-form-label">Judul</label>
                         <div class="col-sm-10">
-                            <input type="text" name="judul" class="form-control" placeholder="Judul" value="{{$learning->title}}" required>
+                            <input type="text" name="title" class="form-control" placeholder="Judul"
+                                value="{{ $learning->title }}" required>
                         </div>
                     </div>
                     <div class="row mt-3">
                         <label for="inputText" class="col-sm-2 col-form-label">Deskripsi</label>
                         <div class="col-sm-10">
-                            <textarea type="text" name="deskripsi" class="form-control" placeholder="Deskripsi" required>{{$learning->description}}</textarea>
+                            <textarea type="text" name="desc" class="form-control" placeholder="Deskripsi" required>{{ $learning->description }}</textarea>
                         </div>
                     </div>
                     <div class="form-group row mt-3">
                         <label class="col-sm-2 col-form-label">Starts At</label>
                         <div class="col-sm-10">
-                            <input class="form-control" name="mulai" placeholder="Select Time" type="time" value="{{$learning->starts_at}}"/>
+                            <input class="form-control" name="starts_at" placeholder="Select Time" type="time"
+                                value="{{ $learning->starts_at }}" />
                         </div>
                     </div>
                     <div class="form-group row mt-3">
                         <label class="col-sm-2 col-form-label">Ends At</label>
                         <div class="col-sm-10">
-                            <input class="form-control" name="berakhir" placeholder="Select Time" type="time" value="{{$learning->ends_at}}"/>
+                            <input class="form-control" name="ends_at" placeholder="Select Time" type="time"
+                                value="{{ $learning->ends_at }}" />
                         </div>
                     </div>
 
@@ -91,7 +94,7 @@
                                 <label for="datetime">ends_at</label>
                                 <input type="time" id="datetime" name="ends_at" class="form-control" required>
                             </div>
-                            <input type="hidden" name="school_id" value="{{Auth::user()->school_id}}">
+                            <input type="hidden" name="school_id" value="{{ Auth::user()->school_id }}">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

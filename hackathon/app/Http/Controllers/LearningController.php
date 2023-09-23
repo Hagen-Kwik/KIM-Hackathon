@@ -14,13 +14,15 @@ class LearningController extends Controller
      */
     public function index(Request $request)
     {
-        return view('silabus',[     
-            'title'=>'Learning',
-            'teacher' => Teacher::all(),
-            'modul' => Modul::all(),
-            'user'=>$request->user()
-           ]
-        ); 
+        return view(
+            'silabus',
+            [
+                'title' => 'Learning',
+                'teacher' => Teacher::all(),
+                'modul' => Modul::all(),
+                'user' => $request->user()
+            ]
+        );
         //
     }
 
@@ -54,16 +56,26 @@ class LearningController extends Controller
      */
     public function show(Learning $learning)
     {
-        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Learning $learning)
+    public function edit()
     {
-        //
+        $id = $_POST['id'];
+        $result = Learning::find($id);
+
+        $result->update([
+            'title' => $_POST["title"],
+            'description' => $_POST["desc"],
+            'starts_at' => $_POST["starts_at"],
+            'ends_at' => $_POST["ends_at"],
+        ]);
+
+        return redirect("admin-silabus");
     }
+
 
     /**
      * Update the specified resource in storage.
