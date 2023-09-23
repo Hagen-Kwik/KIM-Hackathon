@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('moduls', function (Blueprint $table) {
             $table->id();
+            $table->text('title');
+            $table->text('description');
+            $table->text('file');
+            $table->text('youtube_link');
+            $table->unsignedBigInteger('learning_type_id');
+            $table->unsignedBigInteger('learning_id');
             $table->timestamps();
         });
     }

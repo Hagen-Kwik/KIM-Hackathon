@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
+            $table->longText('description');
+            $table->longText('video_link');
             $table->timestamps();
         });
     }
