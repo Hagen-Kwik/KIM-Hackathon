@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AboutUs;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
@@ -56,5 +57,19 @@ class Controller extends BaseController
         }
         
         return redirect("admin-finance");  
+    }
+
+    public function aboutus_edit(){
+        $aboutus = AboutUs::findOrFail(1);
+        $anyelir = AboutUs::findOrFail(2);
+
+        $aboutus->update([
+            'description' => $_POST['latarbelakang'],
+        ]);
+        $anyelir->update([
+            'description' => $_POST['latarbelakang'],
+        ]);
+        
+        return redirect("admin-tentang_kami");  
     }
 }

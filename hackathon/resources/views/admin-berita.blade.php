@@ -16,7 +16,7 @@
             </div>
 
             <div class="col text-end">
-                <button type="button" class="btn btn-light rounded-pill"><a href="/admin-beritaEdit">+ Add berita</a></button>
+                <button type="button" class="btn btn-light rounded-pill" data-bs-toggle="modal" data-bs-target="#addNewBerita">+ Tambah Berita</button>
             </div>
         </div>
     </div><!-- End Page Title -->

@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="container mt-5">
-    <h1 class="bold">Berita Terkini</h1>
+    <h1 class="fw-bold">Berita Terkini</h1>
 
 
     <div class="row mt-5 mb-5">
@@ -17,13 +17,13 @@
 
             <div class="InsideGridBox">
                 <!-- title -->
-                <h4 class="bold">Title</h4>
+                <h4 class="fw-bold">Title</h4>
                 <!-- upload data -->
                 <h6>22 September 2023</h6>
                 <!-- description -->
                 <p>Decription is so long lorem ipsum..........</p>
                 <!-- button redirect -->
-                <button class="btn-primary">Selengkapnya</button>
+                <a href="/berita-detail"><button class="btn btn-primary">Selengkapnya</button></a>
             </div>
 
         </div>

@@ -3,12 +3,14 @@
     width: 500;
     margin-top: -400px;
     object-fit: cover;
+    border-radius: 15px;
 }
 
 .tentang-kami-picture-2 {
     height: 500;
     width: 500;
     object-fit: cover;
+    border-radius: 15px;
 }
 
 @media screen and (max-width: 992px) {

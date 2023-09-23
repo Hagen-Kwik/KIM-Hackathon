@@ -16,7 +16,7 @@
                 </div>
                 <div class="col text-end">
                     <button type="button" class="btn btn-light rounded-pill" data-bs-toggle="modal"
-                        data-bs-target="#addNewAdmin">+ Add keuangan</button>
+                        data-bs-target="#addNewAdmin">+ Tambah Keuangan</button>
                 </div>
             </div>
         </div><!-- End Page Title -->
@@ -54,7 +54,7 @@
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{$result->id}}">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">Edit keuangan</h5>
+                                                    <h5 class="modal-title">Ubah Keuangan</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
@@ -103,7 +103,7 @@
                                     </div>
                                 </div>
                                 <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                        data-bs-target="#editfinance{{$result->id}}">Edit</button>
+                        data-bs-target="#editfinance{{$result->id}}">Ubah</button>
                                 <form action="/admin-finance_delete" method="POST">
                                     @csrf
                                     <input type="hidden" name="delete" value="yes">
@@ -128,12 +128,12 @@
                     <form method="POST" action="/admin-finance_add">
                         @csrf
                         <div class="modal-header">
-                            <h5 class="modal-title">New Admin</h5>
+                            <h5 class="modal-title">Data Keuangan Baru</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <div class="row mb-3">
-                                <label for="inputText" class="col-sm-2 col-form-label">Name</label>
+                                <label for="inputText" class="col-sm-2 col-form-label">Nama</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="name" class="form-control" required>
                                 </div>

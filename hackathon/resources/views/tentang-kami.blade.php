@@ -20,7 +20,8 @@
     <div class="d-flex flex-lg-row flex-column-reverse justify-content-lg-between align-items-center">
         <div class="col-lg-6 px-5">
             <h2 class="fw-semibold">Latar Belakang</h2>
-            <p class="pb-5">Menghadapi era globalisasi serta kebebasan informasi, banyak media informasi baik cetak maupun elektronik, yang berbasis IT maupun yang konvensional yang dapat diakses oleh masyarakat.  Sementara kondisi sebagian masyarakat yang belum memiliki kemampuan untuk mengakses dan menelaah muatan informasi tersebut. Perlu adanya wadah bagi masyarakat untuk memperoleh informasi serta menyalurkan informasi yang ada di masyarakat.</br></br>Guna menyikapi hal tersebut di atas, Kelompok Informasi Masyarakat (KIM) Anyelir dibentuk pada tanggal 12 Agustus 2014 yang dikukuhkan dengan Surat Keputusan Lurah kejuron dengan nomor: 489/07/401.403.6/2014.</p>
+            <p class="pb-5" style="font-size: 14px;">Jurnalistik merupakan dunia yang mengasyikkan dan memberi banyak manfaat terutama untuk pengembangan skill. Pelajar dan mahasiswa pun perlu dikenalkan dan diakrabkan dengan dunia jurnalistik. Salah satunya adalah skills dalam mengelola dunia jurnalistik.  Dengan mendalami jurnalistik, khususnya jurnalistik media (koran, majalah, dan platform digital) akan membawa dampak positif. Salah satunya adalah keterampilan mereka di dalam mengelola media massa. Dengan memiliki ketrampilan di dalam mengelola media massa, maka peluang remaja untuk terjun di dalam dunia jurnalistik akan terbuka lebar.
+            </br></br>Adanya program pelatihan jurnalistik ”Citizen Journalism Remaja” atau yang lebih dikenal CJr merupakan salah satu ikhtiar dalam rangka mengembangkan skills remaja di Kota Madiun khususnya wilayah Kel. Kejuron dalam dunia jurnalistik/kepenulisan. Materi dalam kegiatan jurnalistik ini tidak membebani pelajar dengan tema-tema yang berat, namun diupayakan peserta merasa senang dan enjoy di dalam mengikuti pelatihan. Dengan Pelatihan ini diharapkan akan memunculkan remaja dan pelajar yang memiliki kemampuan di dalam mengelola media massa secara handal.</p>
         </div>
         <img src="{{ asset('images/assets/tentangkami1.jpg') }}" class="tentang-kami-picture-1 pb-5 pb-lg-0">
     </div>
@@ -30,8 +31,15 @@
     <div class="d-flex flex-lg-row flex-column justify-content-lg-between align-items-center pb-5">
         <img src="{{ asset('images/assets/tentangkami2.jpg') }}" class="tentang-kami-picture-2">
         <div class="col-lg-6 px-lg-3 px-5 pt-5 pt-lg-0">
-            <h2 class="fw-semibold">Apa Itu KIM Anyelir?</h2>
-            <p class="pb-lg-5 pe-lg-5">Kelompok Informasi Masyarakat (KIM) Anyelir Kelurahan Kejuron Kecamatan Taman Kota Madiun merupakan organisasi sosial kemasyarakatan yang tumbuh dari, oleh dan untuk masyarakat yang berorientasi pada layanan informasi dan pemberdayaan masyarakat sesuai dengan kebutuhan. </br></br>KIM Anyelir disini  merupakan bagian integral dari Public Relation yang salah satu tugasnya membentuk opini public yang favourable. Oleh karenanya di tengah perubahan transisi menuju masyarakat madani saat ini, yang menjunjung tinggi nilai-nilai demokrasi, transparasi dan nilai-nilai hukum, KIM Anyelir harus mampu menyikapi serta mengambil peluang secara cerdas dalam memanfaatkan dan mengolah informasi yang ada dengan tanpa meninggalkan tradisi dan budaya lokal yang ada.</p>
+            <h2 class="fw-semibold">Maksud</h2>
+            <p class="pe-lg-5" style="font-size: 14px;">Maksud dari kegiatan CJr ini adalah memfasilitasi siswa melakukan wawancara, mencatat, merekam (mendokumentasikan) kegiatan observasi (pengamatan) yang berkaitan dengan tema pembelajaran baik secara individu ataupun kelompok. Kemudian siswa menuliskan hasilnya ke dalam bentuk artikel laporan berita, mengupload dalam bentuk gambar ataupun video.</p>
+            <h2 class="fw-semibold">Tujuan</h2>
+            <ul>
+                <li style="font-size: 14px;">Meningkatkan skill/kemampuan remaja dalam dunia tulis menulis. Hal ini akan memberikan dampak positif bagi adik-adik remaja salah satunya dalam mengelola media massa. Dengan memiliki keterampilan di dalam mengelola media massa, maka peluang remaja untuk terjun di dalam dunia jurnalistik akan terbuka lebar.</li>
+                <li style="font-size: 14px;">Mengenalkan kepada pelajar tentang seluk-beluk dunia jurnalistik.</li>
+                <li style="font-size: 14px;">Menumbuhkan kecerdasan dan kreativitas pelajar melalui tradisi jurnalistik.</li>
+                <li style="font-size: 14px;">Mampu membuat media massa sendiri, majalah sekolah, baik offline maupun online.</li>
+            </ul>
         </div>
     
     </div>
