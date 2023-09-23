@@ -12,5 +12,6 @@ class News extends Model
     protected $fillable = [
         'description',
         'video_link',
+        'judul'
     ];
 }

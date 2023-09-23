@@ -21,6 +21,10 @@
                     <a class="nav-link py-2 px-4" href="/tentang-kami">Tentang Kami</a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link py-2 px-4" href="/">Podcast</a>
+                </li>
+
                 @guest
                 <li class="nav-item">
                     <a class="nav-link py-2 px-4" href="/masuk">Masuk</a>

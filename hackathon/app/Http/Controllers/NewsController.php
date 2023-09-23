@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class NewsController extends Controller
 {
@@ -36,7 +38,13 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        //
+        $results = DB::table('News')
+            ->select('id','description','video_link','judul', 'created_at', 'updated_at')
+            ->get();
+
+        return view('admin-berita', [
+            'results' => $results,
+        ]);
     }
 
     /**
@@ -61,5 +69,16 @@ class NewsController extends Controller
     public function destroy(News $news)
     {
         //
+    }
+
+    public function news_add()
+    {
+        News::create([
+            'judul' => $_POST["judul"],
+            'description' => $_POST["isiBerita"],
+            'video_link' => $_POST["VideoLink"],
+        ]);
+
+        return redirect("admin-berita");
     }
 }

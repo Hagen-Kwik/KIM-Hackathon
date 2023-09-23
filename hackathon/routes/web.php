@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 
@@ -20,15 +21,21 @@ Route::get('/', function () {
     return view('layouts.mainheader');
 });
 
-Route::get('/admin-panel', function () {
-    return view('admin-profile');
-});
 Route::get('/admin-profile', function () {
     return view('admin-profile');
 });
 Route::get('/admin-berita', function () {
     return view('admin-berita');
 });
+Route::get('/admin-beritaEdit', function () {
+    return view('admin-beritaUpdateAdd');
+});Route::get('/admin-finance', [Controller::class, 'finance']);
+
+
+Route::post('/admin-berita_edit', [NewsController::class, 'news_edit']);
+Route::post('/admin-berita_add', [NewsController::class, 'news_add']);
+
+
 Route::get('/admin-beranda', function () {
     return view('admin-beranda');
 });

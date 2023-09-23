@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->longText('description');
             $table->longText('video_link');
+            $table->longText('judul');
             $table->timestamps();
         });
     }
