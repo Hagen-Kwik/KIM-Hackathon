@@ -34,7 +34,7 @@ class RegisteredUserController extends Controller
             'sekolah' => ['required', 'numeric'],
             'nama' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'kata_sandi' => ['required', 'confirmed', Rules\Password::defaults()],
+            'kata_sandi' => ['required', Rules\Password::defaults()],
         ]);
 
         $user = User::create([

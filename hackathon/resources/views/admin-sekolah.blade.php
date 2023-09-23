@@ -20,32 +20,32 @@
                         data-bs-target="#addNewSekolah">+ Tambah Sekolah</button>
                 </div>
             </div>
+            <small class="text-danger pb-4">
+                @foreach ($errors->get('nama_sekolah') as $err)
+                    @if ($loop->iteration > 1)
+                        <br/>
+                    @endif
+                    {{ ucfirst($err) }}
+                @endforeach
+                @foreach ($errors->get('lokasi_sekolah') as $err)
+                    @if ($loop->iteration > 1)
+                        <br/>
+                    @endif
+                    {{ ucfirst($err) }}
+                @endforeach
+                @foreach ($errors->get('gambar') as $err)
+                    @if ($loop->iteration > 1)
+                        <br/>
+                    @endif
+                    {{ ucfirst($err) }}
+                @endforeach
+            </small>
         </div><!-- End Page Title -->
-        <small class="text-danger">
-            @foreach ($errors->get('nama_sekolah') as $err)
-                @if ($loop->iteration > 1)
-                    <br/>
-                @endif
-                {{ ucfirst($err) }}
-            @endforeach
-            @foreach ($errors->get('lokasi_sekolah') as $err)
-                @if ($loop->iteration > 1)
-                    <br/>
-                @endif
-                {{ ucfirst($err) }}
-            @endforeach
-            @foreach ($errors->get('gambar') as $err)
-                @if ($loop->iteration > 1)
-                    <br/>
-                @endif
-                {{ ucfirst($err) }}
-            @endforeach
-        </small>
 
         
-        <section class="section">
-            <div class="row ps-2">
-                <table id="schoolTable" class="display">
+        <section class="section pt-3">
+            <div class="row ps-2 table-responsive">
+                <table id="schoolTable table-responsive" class="display table">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -59,7 +59,7 @@
                         @foreach ($results as $result) 
                         <tr>   
                             <td>{{$result->id}}</td>
-                            <td><img src="{{ asset('storage/' . $result->bannerPicture) }}" height="50" style="border-radius: 100%"></td>
+                            <td><img src="{{ asset('storage/' . $result->bannerPicture) }}" height="40" width="40" style="border-radius: 100%; object-fit: cover;"></td>
                             <td>{{$result->schoolName}}</td>
                             <td>{{$result->location}}</td>
                             <td class="d-flex flex-row">
@@ -98,8 +98,8 @@
                                                     
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                    <button type="submit" class="btn btn-success">Edit</button>
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                    <button type="submit" class="btn btn-success">Ubah</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -107,11 +107,11 @@
                                 </div>
                                 <button type="button" class="btn btn-warning me-3" data-bs-toggle="modal"
                         data-bs-target="#editsekolah{{$result->id}}">Ubah</button>
-                                <form action="/admin-sekolah_delete" method="POST">
+                                <form action="/admin-sekolah" method="DELETE">
                                     @csrf
                                     <input type="hidden" name="delete" value="yes">
                                     <input type="hidden" name="id" value={{$result->id}}>
-                                    <button type="delete" class="btn btn-danger">Delete</button>
+                                    <button type="delete" class="btn btn-danger">Hapus</button>
                                 </form>
                             </td>
                         </tr>

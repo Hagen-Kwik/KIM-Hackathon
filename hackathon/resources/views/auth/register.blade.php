@@ -21,7 +21,7 @@
                         <select name="sekolah" class="form-select fw-medium" id="selectSchool">
                             <option value="" class="fw-medium">Pilih Sekolah Asal</option>
                             @foreach ($schools as $school)
-                                <option value="{{ $school->id }}" class="fw-medium">{{ $school->school_name }}</option>
+                                <option value="{{ $school->id }}" class="fw-medium">{{ $school->schoolName }}</option>
                             @endforeach
                         </select>
                         <small class="text-danger font-montserrat">

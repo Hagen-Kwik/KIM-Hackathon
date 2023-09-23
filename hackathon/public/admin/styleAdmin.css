@@ -2,6 +2,15 @@
     scroll-behavior: smooth;
 }
 
+.table-responsive {
+    width: 100%;
+    overflow: auto;
+}
+
+table {
+    border-collapse: collapse;
+}
+
 .specialAdditionalMargin {
     margin-top: 2%;
 }
@@ -25,7 +34,6 @@
     padding-left: 10px;
     padding-right: 10px;
 }
-
 
 .deleteButton {
     margin-top: 1%;
@@ -84,6 +92,7 @@ h6 {
     font-family: "Nunito", sans-serif;
 }
 
+
 /*--------------------------------------------------------------
 # Main
 --------------------------------------------------------------*/
@@ -100,6 +109,7 @@ h6 {
     }
 }
 
+
 /*--------------------------------------------------------------
 # Page Title
 --------------------------------------------------------------*/
@@ -114,6 +124,7 @@ h6 {
     font-weight: 600;
     color: #012970;
 }
+
 
 /*--------------------------------------------------------------
 # Back to top button
@@ -149,9 +160,11 @@ h6 {
     opacity: 1;
 }
 
+
 /*--------------------------------------------------------------
 # Override some default Bootstrap stylings
 --------------------------------------------------------------*/
+
 
 /* Dropdown menus */
 
@@ -244,6 +257,7 @@ h6 {
     }
 }
 
+
 /* Light Backgrounds */
 
 .bg-primary-light {
@@ -280,6 +294,7 @@ h6 {
     background-color: #d3d3d4;
     border-color: #d3d3d4;
 }
+
 
 /* Card */
 
@@ -320,6 +335,7 @@ h6 {
     background-color: rgba(255, 255, 255, 0.6);
 }
 
+
 /* Alerts */
 
 .alert-heading {
@@ -327,6 +343,7 @@ h6 {
     font-family: "Poppins", sans-serif;
     font-size: 20px;
 }
+
 
 /* Close Button */
 
@@ -338,6 +355,7 @@ h6 {
     outline: 0;
     box-shadow: none;
 }
+
 
 /* Accordion */
 
@@ -372,6 +390,7 @@ h6 {
     font-size: 15px;
 }
 
+
 /* Breadcrumbs */
 
 .breadcrumb {
@@ -399,6 +418,7 @@ h6 {
     font-weight: 600;
 }
 
+
 /* Bordered Tabs */
 
 .nav-tabs-bordered {
@@ -421,6 +441,7 @@ h6 {
     color: #4154f1;
     border-bottom: 2px solid #4154f1;
 }
+
 
 /*--------------------------------------------------------------
 # Header
@@ -525,6 +546,7 @@ h6 {
     color: #012970;
 }
 
+
 /*--------------------------------------------------------------
 # Header Nav
 --------------------------------------------------------------*/
@@ -533,7 +555,7 @@ h6 {
     list-style: none;
 }
 
-.header-nav > ul {
+.header-nav>ul {
     margin: 0;
     padding: 0;
 }
@@ -665,6 +687,7 @@ h6 {
 .header-nav .profile .dropdown-item:hover {
     background-color: #f6f9ff;
 }
+
 
 /*--------------------------------------------------------------
 # Sidebar
@@ -827,9 +850,11 @@ h6 {
     background-color: #4154f1;
 }
 
+
 /*--------------------------------------------------------------
 # Dashboard
 --------------------------------------------------------------*/
+
 
 /* Filter dropdown */
 
@@ -870,6 +895,7 @@ h6 {
     padding: 8px 15px;
 }
 
+
 /* Info Cards */
 
 .dashboard .info-card {
@@ -907,6 +933,7 @@ h6 {
     color: #ff771d;
     background: #ffecdf;
 }
+
 
 /* Activity */
 
@@ -956,9 +983,10 @@ h6 {
     padding-bottom: 0;
 }
 
+
 /* News & Updates */
 
-.dashboard .news .post-item + .post-item {
+.dashboard .news .post-item+.post-item {
     margin-top: 15px;
 }
 
@@ -990,6 +1018,7 @@ h6 {
     margin-left: 95px;
 }
 
+
 /* Recent Sales */
 
 .dashboard .recent-sales {
@@ -1011,6 +1040,7 @@ h6 {
 .dashboard .recent-sales .dataTable-bottom {
     padding: 10px 0 0 0;
 }
+
 
 /* Top Selling */
 
@@ -1034,6 +1064,7 @@ h6 {
     border-radius: 5px;
     max-width: 60px;
 }
+
 
 /*--------------------------------------------------------------
 # Icons list page
@@ -1071,6 +1102,7 @@ h6 {
     white-space: nowrap;
     color: #666;
 }
+
 
 /*--------------------------------------------------------------
 # Profie Page
@@ -1127,6 +1159,7 @@ h6 {
     max-width: 120px;
 }
 
+
 /*--------------------------------------------------------------
 # F.A.Q Page
 --------------------------------------------------------------*/
@@ -1140,6 +1173,7 @@ h6 {
 .faq .basic p {
     color: #6980aa;
 }
+
 
 /*--------------------------------------------------------------
 # Contact
@@ -1262,6 +1296,7 @@ h6 {
     }
 }
 
+
 /*--------------------------------------------------------------
 # Error 404
 --------------------------------------------------------------*/
@@ -1300,6 +1335,7 @@ h6 {
         max-width: 50%;
     }
 }
+
 
 /*--------------------------------------------------------------
 # Footer

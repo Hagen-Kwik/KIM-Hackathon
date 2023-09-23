@@ -39,7 +39,7 @@ class SchoolController extends Controller
         School::create([
             'schoolName' => $request->nama_sekolah,
             'location' => $request->lokasi_sekolah,
-            'bannerPicture' => $request->gambar->store('/public/images/sekolah')
+            'bannerPicture' => $request->gambar->store('/images/sekolah')
         ]);
         
         return view('admin-sekolah', [
@@ -79,7 +79,7 @@ class SchoolController extends Controller
             School::findOrFail($request->id)->update([
                 'schoolName' => $request->nama_sekolah,
                 'location' => $request->lokasi_sekolah,
-                'bannerPicture' => $request->gambar->store('/public/images/sekolah')
+                'bannerPicture' => $request->gambar->store('/images/sekolah')
             ]);
         } else {
             School::findOrFail($request->id)->update([
@@ -96,8 +96,12 @@ class SchoolController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(School $school)
+    public function destroy(Request $request)
     {
-        //
+        School::findOrFail($request->id)->delete();
+        
+        return view('admin-sekolah', [
+            'results' => School::all()
+        ]);
     }
 }

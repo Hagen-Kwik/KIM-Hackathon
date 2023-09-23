@@ -6,6 +6,7 @@ use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\StudentController;
 use App\Models\AboutUs;
 use App\Models\School;
 
@@ -60,12 +61,12 @@ Route::get('/admin-silabus', function () {
 Route::get('/admin-sekolah', [SchoolController::class, 'index']);
 Route::post('/admin-sekolah', [SchoolController::class, 'store']);
 Route::patch('/admin-sekolah', [SchoolController::class, 'update']);
+Route::delete('/admin-sekolah', [SchoolController::class, 'destroy']);
 
-Route::get('/admin-siswa', function () {
-    return view('admin-siswa', [
-        'schools' => School::all()
-    ]);
-});
+Route::get('/admin-siswa', [StudentController::class, 'index']);
+Route::post('/admin-siswa', [StudentController::class, 'store']);
+Route::patch('/admin-siswa', [StudentController::class, 'update']);
+Route::delete('/admin-siswa', [StudentController::class, 'destroy']);
 
 Route::get('/admin-podcast', [PodcastController::class, 'podcast']);
 Route::post('/admin-podcast_add', [PodcastController::class, 'podcast_add']);
