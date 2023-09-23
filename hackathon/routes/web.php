@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
@@ -19,9 +20,9 @@ use App\Models\School;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.mainheader');
-});
+Route::resource('beranda', BerandaController::class);
+Route::get('/', [BerandaController::class, 'index']);
+Route::get('berandasekolah/{id}',  [BerandaController::class, 'show']);
 
 Route::get('/admin-profile', function () {
     return view('admin-profile');
