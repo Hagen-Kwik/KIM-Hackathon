@@ -30,7 +30,7 @@
                 <h4>Latar Belakang</h4>
                 <textarea class="textarea" id="latarBelakang">isinya</textarea>
 
-                <h4 class="specialAdditionalMargin">Apa Itu KIM ANILEIR (ATAU MAU CJR ...)?</h4>
+                <h4 class="specialAdditionalMargin">Apa Itu KIM Anyelir (ATAU MAU CJR ...)?</h4>
                 <textarea class="textarea" id="deskripsi"> isinya 2</textarea>
 
                 <button class="saveButton">Save</button>
