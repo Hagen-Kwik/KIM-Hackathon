@@ -206,11 +206,11 @@ class Controller extends BaseController
 
     public function aboutus_edit()
     {
-        $aboutus = AboutUs::findOrFail(1);
+        $latarbelakang = AboutUs::findOrFail(1);
         $maksud = AboutUs::findOrFail(2);
         $tujuan = AboutUs::findOrFail(3);
-
-        $aboutus->update([
+        
+        $latarbelakang->update([
             'description' => $_POST['latarbelakang'],
         ]);
         $maksud->update([
@@ -220,6 +220,6 @@ class Controller extends BaseController
             'description' => $_POST['tujuan'],
         ]);
 
-        return redirect("admin-tentang_kami");
+        return redirect("/admin-tentang-kami");
     }
 }

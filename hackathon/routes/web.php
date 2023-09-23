@@ -66,6 +66,8 @@ Route::get('/admin-tentang-kami', function () {
     ]);
 })->middleware(['auth', 'admin']);
 
+Route::post('/admin-tentang-kami', [Controller::class, 'aboutus_edit'])->middleware(['auth', 'admin']);
+
 Route::get('/admin-silabus', function () {
     return view('admin-silabus', [
         'learning' => Learning::all()->first()
