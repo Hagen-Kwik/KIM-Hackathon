@@ -16,7 +16,7 @@
             </div>
 
             <div class="col text-end">
-                <button type="button" class="btn btn-light rounded-pill" data-bs-toggle="modal" data-bs-target="#addNewBerita">+ Add berita</button>
+                <button type="button" class="btn btn-light rounded-pill" data-bs-toggle="modal" data-bs-target="#addNewBerita">+ Tambah Berita</button>
             </div>
         </div>
     </div><!-- End Page Title -->
@@ -36,7 +36,7 @@
                 <form method="POST" action="/admin">
                     @csrf
                     <div class="modal-header">
-                        <h5 class="modal-title">Berita baru</h5>
+                        <h5 class="modal-title">Berita Baru</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -49,14 +49,14 @@
                         <div class="row mb-3">
                             <label for="isiBerita" class="col-sm-2 col-form-label">Isi</label>
                             <div class="col-sm-10">
-                                <textarea name="isiBerita" id="isiBerita" class="textarea" rows="10"></textarea>
+                                <textarea name="isiBerita" id="isiBerita" class="textarea form-control" rows="10"></textarea>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="gambar" class="col-sm-2 col-form-label">Gambar</label>
                             <div class="col-sm-10">
-                                <input type="file" id="imageUpload" name="image" accept="image/*">
+                                <input type="file" id="imageUpload" name="image" accept="image/*" class="form-control">
                             </div>
                         </div>
 
