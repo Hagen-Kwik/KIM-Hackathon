@@ -12,7 +12,7 @@
                 style="height: 30vh; background: rgba(18, 14, 65, 0.509) !important;">
                 <div class="col justify-content-center text-center">
                     <h1 class=" text-white font-weight-bold">
-                        {{$learning->title}}
+                        {{ $learning->title }}
                     </h1>
                 </div>
             </div>
@@ -73,8 +73,8 @@
                     @endif
                 </div>
                 <div>
-                    <p class="fw-medium">{{$learning->description}}</p>
-                    <p class="fw-medium">Jam Kelas: {{$learning->starts_at . ' - ' . $learning->ends_at}}</p>
+                    <p class="fw-medium">{{ $learning->description }}</p>
+                    <p class="fw-medium">Jam Kelas: {{ $learning->starts_at . ' - ' . $learning->ends_at }}</p>
                 </div>
             </div>
             {{-- Materi --}}
@@ -152,40 +152,39 @@
                             <iframe src="{{ 'public/file/silabus/' . $moduls->file }}" width="800" height="500"
                                 class="pt-3"></iframe>
                         @else
-                        <button type="button" class="btn btn-light mt-3"
-                        style="color: white; background-color: green;" data-bs-toggle="modal"
-                        data-bs-target="#addNewtugas">Upload Tugas</button>
-                        <div class="modal fade" id="addNewtugas" tabindex="-1">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <!-- CEHCK ACTION  -->
-                            
-                                    <form method="POST" action="/silabus" enctype="multipart/form-data">
-                                        @csrf
-                                        <input type="hidden" value="{{ $moduls->id }}" name="modul_id" id="typemodul">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Upload Tugas</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="row mb-3">
-                                                <div class="col-sm-12">
-                                                    <input type="file" id="fileUpload" name="filemodul" accept="pdf/*"
-                                                        class="form-control">
+                            <button type="button" class="btn btn-light mt-3"
+                                style="color: white; background-color: green;" data-bs-toggle="modal"
+                                data-bs-target="#addNewtugas">Upload Tugas</button>
+                            <div class="modal fade" id="addNewtugas" tabindex="-1">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- CEHCK ACTION  -->
+
+                                        <form method="POST" action="/silabus" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" value="{{ $moduls->id }}" name="modul_id"
+                                                id="typemodul">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Upload Tugas</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row mb-3">
+                                                    <div class="col-sm-12">
+                                                        <input type="file" id="fileUpload" name="filemodul"
+                                                            accept="pdf/*" class="form-control">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Cancel</button>
-                                                <button type="submit" class="btn btn-success">Add</button>
-                                            </div>
-                                    </form>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Cancel</button>
+                                                    <button type="submit" class="btn btn-success">Add</button>
+                                                </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-            
-                          
                         @endif
                     </div>
                 @endforeach
@@ -209,20 +208,20 @@
                 </div>
             @else
                 @foreach ($quizzes as $quiz)
-                <a href="/quiz/{{$quiz->id}}" class="text-dark text-decoration-none">
+                    <a href="/quiz/{{ $quiz->id }}" class="text-dark text-decoration-none">
                         <div class="pt-4 d-flex flex-row align-items-center">
-                        <h1 class="text-indigo m-0">
-                            <i class="fa fa-brain fs-xs"></i>
-                        </h1>
-                        <div class="ms-3 text-dark">
-                            {{ $quiz->title }}
+                            <h1 class="text-indigo m-0">
+                                <i class="fa fa-brain fs-xs"></i>
+                            </h1>
+                            <div class="ms-3 text-dark">
+                                {{ $quiz->title }}
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
                 @endforeach
             @endif
-     
 
+            <div class="pb-4"></div>
             <script>
                 $(document).ready(function() {
                     $('#addNewtugas').modal({

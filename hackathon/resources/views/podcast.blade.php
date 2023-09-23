@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="container mt-5">
-    <h1 class="fw-bold">Podcast</h1>
+    <h1 class="fw-bold pb-3">Podcast</h1>
 
     @if ($results != null)
     @foreach ($results as $result)
@@ -19,7 +19,7 @@
             <div class="video-container">
                 <iframe width="560" height="315" src="{{$result->link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 {{-- <iframe width="560" height="315" src="" frameborder="0" allowfullscreen></iframe> --}}
-                <h4>{{$result->judul}}</h4>
+                <h5 class="pt-4">{{$result->judul}}</h5>
             </div>
         </div>
 
