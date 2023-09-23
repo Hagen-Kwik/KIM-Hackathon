@@ -54,7 +54,7 @@
                         <a href="{{ $schools['id'] }}">
                         <div class="col-sm-12 col-lg-4 col-md-6 EachGridBox property-slider-image">
                             <!-- image asset -->
-                            <img src="{{ asset('images/assets' .'/'. $schools->bannerPicture)}}" height="10"
+                            <img src="{{ asset('images/assets' .'/'. $schools->bannerPicture)}}"
                                 class="HalfRoundedCorner img-fluid">
 
                             <div class="InsideGridBox">
@@ -83,7 +83,7 @@
                 <!-- for loop this code -->
                 <div class="col EachGridBox">
                     <!-- image asset -->
-                    <img src="{{ asset('images/assets/berita_trial_pic.jpg') }}" height="10"
+                    <img src="{{ asset('images/assets/berita_trial_pic.jpg') }}"
                         class="HalfRoundedCorner img-fluid">
 
                     <div class="InsideGridBox">

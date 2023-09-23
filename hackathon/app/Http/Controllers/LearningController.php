@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Learning;
+use App\Models\Modul;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class LearningController extends Controller
@@ -10,8 +12,15 @@ class LearningController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        return view('silabus',[     
+            'title'=>'Learning',
+            'teacher' => Teacher::all(),
+            'modul' => Modul::all(),
+            'user'=>$request->user()
+           ]
+        ); 
         //
     }
 
