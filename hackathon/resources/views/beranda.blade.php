@@ -38,6 +38,7 @@
                     </div>
                 </div>
             </form>
+
             <div class="mt-3">
                 <div class="p-4">
                     <div class="row">
@@ -50,27 +51,25 @@
                         </div>
                         @else
                         @foreach ($school->slice(0, 3) as $schools)
-                     
-                        <a href="/berandasekolah/{{ $schools['id'] }}">
-                        <div class="col-sm-12 col-lg-4 col-md-6 EachGridBox property-slider-image">
-                            <!-- image asset -->
-                            <img src="{{ asset('images/assets' .'/'. $schools->bannerPicture)}}"
-                                class="HalfRoundedCorner img-fluid">
-
-                            <div class="InsideGridBox">
-                                <!-- title -->
-                                <h4 class="bold" style="font-size: 18px;">{{ $schools->schoolName }}</h4>
-                            </div>
+                        <div class="col-lg-4 col-md-6 mb-4" style="display: inline-block;">
+                            <a href="/berandasekolah/tes">
+                                <div class="col-sm-12 EachGridBox property-slider-image">
+                                    <!-- image asset -->
+                                    <img src="a"
+                                        class="HalfRoundedCorner img-fluid">
+        
+                                    <div class="InsideGridBox">
+                                        <!-- title -->
+                                        <h4 class="bold" style="font-size: 18px;">a</h4>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                        </a>
                         @endforeach
                         @endif
                     </div>
                 </div>
             </div>
-
-
-
 
         </div>
 
@@ -79,36 +78,33 @@
     <div class="mt-3">
         <div class="p-5">
             <h3 class="text-center">Kegiatan Kami</h3>
-            <div class="row mt-5 mb-5">
-                <!-- for loop this code -->
-                <div class="col-sm-12 col-lg-4 col-md-6 EachGridBox property-slider-image">
-                    <!-- image asset -->
-                    <img src="{{ asset('images/assets/berita_trial_pic.jpg') }}"
-                        class="HalfRoundedCorner img-fluid">
 
-                    <div class="InsideGridBox">
-                        <!-- title -->
-                        <h4 class="bold">Title</h4>
-                        <!-- upload data -->
-                        <h6>22 September 2023</h6>
-                        <!-- description -->
-                        <p>Decription is so long lorem ipsum..........</p>
-                        <!-- button redirect -->
-                        <button class="btn-primary">Selengkapnya</button>
+            <div class="container">
+                <div class="row mt-5 mb-5" style="overflow-x: auto; white-space: nowrap;">
+                    <!-- START for loop this code -->
+                    @for ($i = 0; $i < 3; $i++)
+                    <div class="col-lg-4 col-md-6 mb-4" style="display: inline-block;">
+                        <div class="EachGridBox">
+                            <!-- image asset -->
+                            <img src="{{ asset('images/assets/berita_trial_pic.jpg') }}" height="10" class="HalfRoundedCorner img-fluid">
+                
+                            <div class="InsideGridBox">
+                                <!-- title -->
+                                <h4 class="fw-bold">Title</h4>
+                                <!-- upload date -->
+                                <h6>22 September 2023</h6>
+                                <!-- description -->
+                                <p>Decription is so long lorem ipsum..........</p>
+                                <!-- button redirect -->
+                                <a href="/berita-detail"><button class="btn btn-primary">Selengkapnya</button></a>
+                            </div>
+                        </div>
                     </div>
-
+                    @endfor
+                    <!-- END for loop this code -->
                 </div>
-                <!-- END for loop this code -->
-
-                <div class="col coll">
-                    Column
-                </div>
-
-                <div class="col coll">
-                    Column
-                </div>
-
             </div>
+            
 
             <!-- Pakai ini buat langung iterasi for loop -->
 

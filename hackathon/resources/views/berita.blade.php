@@ -8,35 +8,28 @@
 <div class="container mt-5">
     <h1 class="fw-bold">Berita Terkini</h1>
 
-
     <div class="row mt-5 mb-5">
-        <!-- for loop this code -->
-        <div class="col EachGridBox">
-            <!-- image asset -->
-            <img src="{{ asset('images/assets/berita_trial_pic.jpg') }}" height="10" class="HalfRoundedCorner img-fluid">
-
-            <div class="InsideGridBox">
-                <!-- title -->
-                <h4 class="fw-bold">Title</h4>
-                <!-- upload data -->
-                <h6>22 September 2023</h6>
-                <!-- description -->
-                <p>Decription is so long lorem ipsum..........</p>
-                <!-- button redirect -->
-                <a href="/berita-detail"><button class="btn btn-primary">Selengkapnya</button></a>
+        <!-- START for loop this code -->
+        @for ($i = 0; $i < 4; $i++)
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="EachGridBox">
+                <!-- image asset -->
+                <img src="{{ asset('images/assets/berita_trial_pic.jpg') }}" height="10" class="HalfRoundedCorner img-fluid">
+    
+                <div class="InsideGridBox">
+                    <!-- title -->
+                    <h4 class="fw-bold">Title</h4>
+                    <!-- upload date -->
+                    <h6>22 September 2023</h6>
+                    <!-- description -->
+                    <p>Decription is so long lorem ipsum..........</p>
+                    <!-- button redirect -->
+                    <a href="/berita-detail"><button class="btn btn-primary">Selengkapnya</button></a>
+                </div>
             </div>
-
         </div>
+        @endfor
         <!-- END for loop this code -->
-
-        <div class="col coll">
-            Column
-        </div>
-
-        <div class="col coll">
-            Column
-        </div>
-
     </div>
 
     <!-- Pakai ini buat langung iterasi for loop -->
