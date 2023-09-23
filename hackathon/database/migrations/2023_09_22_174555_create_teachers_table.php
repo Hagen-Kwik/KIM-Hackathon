@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('email');
             $table->text('instagram');
             $table->unsignedBigInteger('learning_id');
+            $table->text('picture');
             $table->timestamps();
         });
     }
