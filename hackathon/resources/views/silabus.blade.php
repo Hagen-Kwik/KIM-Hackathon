@@ -12,7 +12,7 @@
                 style="height: 30vh; background: rgba(18, 14, 65, 0.509) !important;">
                 <div class="col justify-content-center text-center">
                     <h1 class=" text-white font-weight-bold">
-                        Citizen Journalisme Remaja Silabus
+                        {{$learning->title}}
                     </h1>
                 </div>
             </div>
@@ -22,7 +22,7 @@
             <div class="bg-info w-100 py-4 position-relative">
                 <div class="w-100 h-100 position-absolute bg-light" style="left: 8px; top: 0px;">
                     <div class="w-100 h-100 d-flex align-items-center">
-                        <h2 class="ml-2 mt-2 font-weight-bold text-info">
+                        <h2 class="ms-2 mt-2 font-weight-bold text-info">
                             Perkenalan
                         </h2>
                     </div>
@@ -72,13 +72,17 @@
                         @endforeach
                     @endif
                 </div>
+                <div>
+                    <p class="fw-medium">{{$learning->description}}</p>
+                    <p class="fw-medium">Jam Kelas: {{$learning->starts_at . ' - ' . $learning->ends_at}}</p>
+                </div>
             </div>
             {{-- Materi --}}
             @if (count($modul) == 0)
                 <div class="bg-info w-100 py-4 position-relative">
                     <div class="w-100 h-100 position-absolute bg-light" style="left: 8px; top: 0px;">
                         <div class="w-100 h-100 d-flex align-items-center">
-                            <h2 class="ml-2 mt-2 font-weight-bold text-info">
+                            <h2 class="ms-2 mt-2 font-weight-bold text-info">
                                 Materi
                             </h2>
 
@@ -187,7 +191,36 @@
                 @endforeach
             @endif
 
+            <div class="bg-info w-100 py-4 position-relative">
+                <div class="w-100 h-100 position-absolute bg-light" style="left: 8px; top: 0px;">
+                    <div class="w-100 h-100 d-flex align-items-center">
+                        <h2 class="ms-2 mt-2 font-weight-bold text-info">
+                            Quiz
+                        </h2>
+                    </div>
+                </div>
+            </div>
 
+            @if (empty($quizzes))
+                <div class="text-center align-items-center py-4">
+                    <img style="width: 200px; opacity: 0.8;" src="{{ asset('/images/assets/emptycontents.png') }}"
+                        alt="">
+                    <p class="text-center fs-5 mt-3 font-montserrat fw-medium">Belum ada quiz.</p>
+                </div>
+            @else
+                @foreach ($quizzes as $quiz)
+                <a href="/quiz/{{$quiz->id}}" class="text-dark text-decoration-none">
+                        <div class="pt-4 d-flex flex-row align-items-center">
+                        <h1 class="text-indigo m-0">
+                            <i class="fa fa-brain fs-xs"></i>
+                        </h1>
+                        <div class="ms-3 text-dark">
+                            {{ $quiz->title }}
+                        </div>
+                    </div>
+                </a>
+                @endforeach
+            @endif
      
 
             <script>

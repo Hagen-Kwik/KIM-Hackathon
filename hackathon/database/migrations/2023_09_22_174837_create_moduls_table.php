@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->text('title');
             $table->text('description');
-            $table->text('file');
-            $table->text('youtube_link');
+            $table->text('file')->nullable();
+            $table->text('youtube_link')->nullable();
             $table->unsignedBigInteger('learning_type_id');
             $table->unsignedBigInteger('learning_id');
             $table->timestamps();

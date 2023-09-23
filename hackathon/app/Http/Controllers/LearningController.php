@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Learning;
 use App\Models\Modul;
+use App\Models\Quiz;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 
@@ -14,16 +15,15 @@ class LearningController extends Controller
      */
     public function index(Request $request)
     {
-        return view(
-            'silabus',
-            [
-                'title' => 'Learning',
-                'teacher' => Teacher::all(),
-                'modul' => Modul::all(),
-                'user' => $request->user()
-            ]
-        );
-        //
+        return view('silabus',[     
+            'title'=>'Learning',
+            'learning' => Learning::all()->first(),
+            'teacher' => Teacher::all(),
+            'modul' => Modul::all(),
+            'user'=> $request->user(),
+            'quizzes' => Quiz::all()
+           ]
+        ); 
     }
 
     /**

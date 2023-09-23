@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LearningController;
+use App\Http\Controllers\ModulController;
 use App\Http\Controllers\QuizController;
 use App\Models\AboutUs;
 use App\Models\karya_pilihan;
@@ -72,6 +73,8 @@ Route::get('/admin-silabus', function () {
 })->middleware(['auth', 'admin']);
 
 Route::post('/admin-silabus_edit', [LearningController::class, 'edit'])->middleware(['auth', 'admin']);
+Route::get('/admin-modul', [ModulController::class, 'index'])->middleware(['auth', 'admin']);
+Route::post('/admin-modul', [ModulController::class, 'store'])->middleware(['auth', 'admin']);
 
 Route::get('/admin-sekolah', [SchoolController::class, 'index'])->middleware(['auth', 'admin']);
 Route::post('/admin-sekolah', [SchoolController::class, 'store'])->middleware(['auth', 'admin']);

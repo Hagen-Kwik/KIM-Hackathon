@@ -6,118 +6,214 @@
         <div class="pagetitle">
             <div class="row justify-content-between">
                 <div class="col">
-                    <h1>Tentang Kami</h1>
+                    <h1>Modul</h1>
                     <nav>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">Admin</li>
-                            <li class="breadcrumb-item active">Tentang Kami</li>
+                            <li class="breadcrumb-item active">Modul</li>
                         </ol>
                     </nav>
                 </div>
+
+                <div class="col text-end">
+                    <button type="button" class="btn btn-light rounded-pill" data-bs-toggle="modal" data-bs-target="#addNewModul">+ Tambah Modul</button>
+                </div>
             </div>
-        </div>
+            <small class="text-danger pb-4">
+                @foreach ($errors->get('title') as $err)
+                    @if ($loop->iteration > 1)
+                        <br/>
+                    @endif
+                    {{ ucfirst($err) }}
+                @endforeach
+                @foreach ($errors->get('description') as $err)
+                    @if ($loop->iteration > 1)
+                        <br/>
+                    @endif
+                    {{ ucfirst($err) }}
+                @endforeach
+                @foreach ($errors->get('learning_type') as $err)
+                    @if ($loop->iteration > 1)
+                        <br/>
+                    @endif
+                    {{ ucfirst($err) }}
+                @endforeach
+                @foreach ($errors->get('file') as $err)
+                    @if ($loop->iteration > 1)
+                        <br/>
+                    @endif
+                    {{ ucfirst($err) }}
+                @endforeach
+                @foreach ($errors->get('youtube_link') as $err)
+                    @if ($loop->iteration > 1)
+                        <br/>
+                    @endif
+                    {{ ucfirst($err) }}
+                @endforeach
+            </small>
+        </div><!-- End Page Title -->
 
         <section class="section">
-            <div class="row">
-                <form action="/admin-tentang-kami" method="POST">
-                    @csrf
-                    @php
-                        $latarbelakang = $aboutus
-                            ->where('id', 1)
-                            ->pluck('description')
-                            ->first();
-                        $maksud = $aboutus
-                            ->where('id', 2)
-                            ->pluck('description')
-                            ->first();
-                        $tujuan = $aboutus
-                            ->where('id', 3)
-                            ->pluck('description')
-                            ->first();
-                    @endphp
-                    <h4>Latar Belakang</h4>
-                    <textarea class="textarea form-control" id="latarBelakang" name="latarbelakang" rows="1">{{ $latarbelakang }}</textarea>
+            @if ($results != null)
+                @foreach ($results as $result)
+                    <div class="row aBox py-4">
+                        <h6 style="display: none;">{{ $result->id }}</h6>
+                        <h4>{{ $result->title }}</h4>
+                        <h6>{{ $result->description }}</h6>
+                        <h6>{{ $result->learningType->learning_type }}</h6>
+                        <div style="display: inline-block;" class="d-flex flex-row pt-2">
+                            <div class="modal fade" id="editmodul{{ $result->id }}" tabindex="-1">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <form method="POST" action="/admin-modul">
+                                            @csrf
+                                            @method('patch')
+                                            <input type="hidden" name="id" value="{{ $result->id }}">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Ubah Modul</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row mb-3">
+                                                    <label for="inputText" class="col-sm-2 col-form-label">Judul</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" name="title" class="form-control"
+                                                            value="{{ $result->nama }}" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label for="inputText" class="col-sm-2 col-form-label">Deskripsi</label>
+                                                    <div class="col-sm-10">
+                                                        <textarea type="text" name="description" class="form-control"
+                                                            placeholder="Deskripsi" required>{{$result->description}}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label for="inputText" class="col-sm-2 col-form-label">Jenis Modul</label>
+                                                    <div class="col-sm-10">
+                                                        <select name="learning_type" class="form-select fw-medium" id="selectSchool">
+                                                            @foreach ($learning_types as $learning_type)
+                                                                <option value="{{ $learning_type->id }}" class="fw-medium">{{ $learning_type->learning_type }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label for="inputText" class="col-sm-2 col-form-label">Youtube Link</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" name="youtube_link" class="form-control"
+                                                            placeholder="Youtube Link" value="{{$result->youtube_link}}" required>
+                                                    </div>
+                                                </div>
 
-                    <h4 class="specialAdditionalMargin">Maksud</h4>
-                    <textarea class="textarea form-control" id="maksud" name="maksud" rows="1">{{ $maksud }}</textarea>
-
-                    <h4 class="specialAdditionalMargin">Tujuan</h4>
-                    <textarea class="textarea form-control" id="tujuan" name="tujuan" rows="1">{{ $tujuan }}</textarea>
-
-
-                    <div class="pt-4">
-                        <button class="saveButton" type="submit">Save</button>
+                                                <div class="row mb-3">
+                                                    <label for="file" class="col-sm-2 col-form-label">File</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="file" id="imageUpload" name="file" accept="application/pdf"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cancel</button>
+                                                <button type="submit" class="btn btn-success">Edit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                data-bs-target="#editfinance{{ $result->id }}">Ubah</button>
+                            <form action="/admin-finance_delete" method="POST">
+                                @csrf
+                                <input type="hidden" name="delete" value="yes">
+                                <input type="hidden" name="id" value={{ $result->id }}>
+                                <button type="delete" class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
                     </div>
-                </form>
-            </div>
+                @endforeach
+            @endif
         </section>
 
-
-        <div class="modal fade" id="addNewAdmin" tabindex="-1">
+        <div class="modal fade" id="addNewModul" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form method="POST" action="/admin-manage_accountAdd">
+                    <!-- CEHCK ACTION  -->
+                    <form method="POST" action="/admin-modul">
                         @csrf
                         <div class="modal-header">
-                            <h5 class="modal-title">New Admin</h5>
+                            <h5 class="modal-title">Modul Baru</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <div class="row mb-3">
-                                <label for="inputText" class="col-sm-2 col-form-label">Name</label>
+                                <label for="inputText" class="col-sm-2 col-form-label">Judul</label>
                                 <div class="col-sm-10">
-                                    <input type="name" name="name" class="form-control" required>
+                                    <input type="text" name="title" class="form-control"
+                                        required>
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                                <label for="inputText" class="col-sm-2 col-form-label">Deskripsi</label>
                                 <div class="col-sm-10">
-                                    <input type="email" name="email" class="form-control" required>
+                                    <textarea type="text" name="description" class="form-control"
+                                        placeholder="Deskripsi" required></textarea>
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                                <label for="inputText" class="col-sm-2 col-form-label">Jenis Modul</label>
                                 <div class="col-sm-10">
-                                    <input type="password" name="password" class="form-control" required>
+                                    <select name="learning_type" class="form-select fw-medium" id="selectSchool">
+                                        @foreach ($learning_types as $learning_type)
+                                        @if ($loop->first)
+                                            <option value="{{ $learning_type->id }}" class="fw-medium" selected>{{ $learning_type->learning_type }}</option>
+                                        @else
+                                            <option value="{{ $learning_type->id }}" class="fw-medium">{{ $learning_type->learning_type }}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-success">Add</button>
-                        </div>
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-2 col-form-label">Youtube Link</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="description" class="form-control"
+                                        placeholder="Youtube Link" required>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="file" class="col-sm-2 col-form-label">File</label>
+                                <div class="col-sm-10">
+                                    <input type="file" id="imageUpload" name="file" accept="application/pdf"
+                                        class="form-control">
+                                </div>
+                            </div>
+    
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-success">Add</button>
+                            </div>
                     </form>
                 </div>
             </div>
         </div>
-    </main><!-- End #main -->
-    <script>
-        const latarBelakangTextarea = document.getElementById('latarBelakang');
-        const maksudTextarea = document.getElementById('maksud');
-        const tujuanTextarea = document.getElementById('tujuan');
-
-        function adjustTextareaSize(textarea) {
-            textarea.style.height = 'auto';
-            textarea.style.height = (textarea.scrollHeight) + 'px';
-        }
-
-        latarBelakangTextarea.addEventListener('input', function() {
-            adjustTextareaSize(this);
-        });
-
-        maksudTextarea.addEventListener('input', function() {
-            adjustTextareaSize(this);
-        });
-
-        tujuanTextarea.addEventListener('input', function() {
-            adjustTextareaSize(this);
-        });
-
-        // Set the initial textarea sizes based on the content
-        window.addEventListener('load', function() {
-            adjustTextareaSize(latarBelakangTextarea);
-            adjustTextareaSize(maksudTextarea);
-            adjustTextareaSize(tujuanTextarea);
+    
+        <script>
+        $(document).ready(function () {
+            $('#addNewModul').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+    
+            $('#addNewModul .btn-close').click(function () {
+                // Optionally, you can add a custom close behavior here
+            });
         });
     </script>
+        
+    </main><!-- End #main -->
 @endsection

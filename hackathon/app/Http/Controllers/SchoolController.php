@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\School;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 
 class SchoolController extends Controller
@@ -76,10 +77,13 @@ class SchoolController extends Controller
         ]);
 
         if ($request->hasFile('gambar')) {
+            if (File::exists("public/images/sekolah/" . School::findOrFail($request->id)->gambar)) //Check if file exists
+                File::delete("public/images/sekolah/" . School::findOrFail($request->id)->gambar); //Delete file from storage
+
             School::findOrFail($request->id)->update([
                 'schoolName' => $request->nama_sekolah,
                 'location' => $request->lokasi_sekolah,
-                'bannerPicture' => $request->gambar->store('/public/images/sekolah')
+                'bannerPicture' => substr($request->gambar->store('/public/images/sekolah'), 7, strlen($request->gambar->store('/public/images/sekolah')) - 7),
             ]);
         } else {
             School::findOrFail($request->id)->update([

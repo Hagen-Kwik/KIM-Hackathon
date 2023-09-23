@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Learning;
+use App\Models\LearningType;
 use App\Models\Modul;
+use App\Models\Quiz;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +17,10 @@ class ModulController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin-modul', [
+            'results' => Modul::all(),
+            'learning_types' => LearningType::all()
+        ]);
     }
 
     /**
@@ -33,7 +40,7 @@ class ModulController extends Controller
         $this->validate($request, [
             'title' => 'required|string|max:75',
             'description' => 'required',
-            'file' => 'mimes:pdf|max:5120',
+            'file' => 'nullable|mimes:pdf|max:5120',
             'youtube_link' => [
                 'url',
                 function ($attribute, $requesturl, $failed) {
@@ -42,22 +49,29 @@ class ModulController extends Controller
                     }
                 },
             ],
-            'learning_type_id' => 'required|numeric',
-            'learning_id' => 'required|numeric',
+            'learning_type' => 'required|numeric',
         ]);
 
-        Modul::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'file' => $request->file('file')->store('/public/file/silabus'),
-            'youtube_link' => $request->youtube_link,
-            'learning_type_id' => $request->learning_type_id,
-            'learning_id' => $request->learning_id,
-        ]);
+        if ($request->hasFile('file')) {
+            Modul::create([
+                'title' => $request->title,
+                'description' => $request->description,
+                'file' => substr($request->file('file')->store('/public/file/silabus'), 7, strlen($request->file('file')->store('/public/file/silabus')) - 7),
+                'youtube_link' => $request->youtube_link,
+                'learning_type_id' => $request->learning_type,
+                'learning_id' => Learning::all()->first()->id,
+            ]);
+        } else {
+            Modul::create([
+                'title' => $request->title,
+                'description' => $request->description,
+                'youtube_link' => $request->youtube_link,
+                'learning_type_id' => $request->learning_type,
+                'learning_id' => Learning::all()->first()->id,
+            ]);
+        }
         
-        return view('silabus', [
-            'silabus' => Modul::all()
-        ]);
+        return redirect('/silabus');
     }
 
     /**
