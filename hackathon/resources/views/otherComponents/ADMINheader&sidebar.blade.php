@@ -24,13 +24,13 @@
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
                         data-bs-toggle="dropdown">
                         {{-- <img src="{{ asset('img/noimgeplaceholder.jpg') }}" alt="Profile" class="rounded-circle"> --}}
-                        <span class="d-none d-md-block dropdown-toggle ps-2">{{Auth::user()->name}}</span>
+                        <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->name }}</span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
                             <h6>USER NAME</h6>
-                            <span>{{Auth::user()->name}}</span>
+                            <span>{{ Auth::user()->name }}</span>
                         </li>
 
                         <li>
@@ -78,6 +78,13 @@
                 <a class="nav-link collapsed" href="/admin-siswa">
                     <i class="bi bi-people"></i>
                     <span>Siswa</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin-guru">
+                    <i class="bi bi-mortarboard"></i>
+                    <span>Guru</span>
                 </a>
             </li>
 

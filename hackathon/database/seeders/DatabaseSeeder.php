@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             LearningTypeSeeder::class,
             PodcastSeeder::class,
             VoteSeeder::class,
+            TeacherSeeder::class,
         ]);
     }
 }
