@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('teachers', function (Blueprint $table) {
             //
-            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('learning_id')->references('id')->on('learnings')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 
@@ -22,7 +23,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Schema::table('users', function (Blueprint $table) {
+        // Schema::table('teachers', function (Blueprint $table) {
         //     //
         // });
     }
