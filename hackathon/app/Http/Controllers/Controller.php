@@ -61,13 +61,17 @@ class Controller extends BaseController
 
     public function aboutus_edit(){
         $aboutus = AboutUs::findOrFail(1);
-        $anyelir = AboutUs::findOrFail(2);
+        $maksud = AboutUs::findOrFail(2);
+        $tujuan = AboutUs::findOrFail(3);
 
         $aboutus->update([
             'description' => $_POST['latarbelakang'],
         ]);
-        $anyelir->update([
-            'description' => $_POST['latarbelakang'],
+        $maksud->update([
+            'description' => $_POST['maksud'],
+        ]);
+        $tujuan->update([
+            'description' => $_POST['tujuan'],
         ]);
         
         return redirect("admin-tentang_kami");  
