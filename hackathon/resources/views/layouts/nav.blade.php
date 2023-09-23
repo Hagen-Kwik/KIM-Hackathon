@@ -14,11 +14,11 @@
                 </li>
 
                 @auth
-                <li class="nav-item">
-                    <a class="nav-link py-2 px-4" href="/silabus">Silabus</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link py-2 px-4" href="/silabus">Silabus</a>
+                    </li>
                 @endauth
-                
+
                 <li class="nav-item">
                     <a class="nav-link py-2 px-4" href="/berita">Berita</a>
                 </li>
@@ -40,6 +40,22 @@
                     </li>
                 @endguest
 
+                @auth
+                    <li class="nav-item">
+
+                        <a class="nav-link py-2 px-4" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
+
+                @endauth
+
                 <style>
                     .vertical-divider {
                         border: 1px solid black;
@@ -59,8 +75,6 @@
                         color: white !important;
                         font-weight: 600;
                     }
-                    
-                    
                 </style>
 
                 <div class="vertical-divider"></div>
