@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LearningController;
+use App\Http\Controllers\QuizController;
 use App\Models\AboutUs;
 use App\Models\karya_pilihan;
 use App\Models\Question;
@@ -32,9 +33,10 @@ Route::resource('beranda', BerandaController::class);
 Route::get('/', [BerandaController::class, 'index']);
 Route::get('berandasekolah/{id}',  [BerandaController::class, 'show']);
 
-
 Route::get('/podcast', [PodcastController::class, 'getAll']);
 
+Route::get('/quiz/{id}', [QuizController::class, 'show'])->middleware(['auth', 'quiz']);
+Route::post('/quiz', [QuizController::class, 'submit'])->middleware(['auth', 'quiz']);
 
 Route::get('/admin-profile', function () {
     return view('admin-profile');
@@ -108,22 +110,23 @@ Route::get('/admin-question', function () {
     return view('admin-question', [
         'questions' => Question::all()->where('quiz_id', $_GET['quizID'])->all()
     ]);
-});
+})->middleware(['auth', 'admin']);
 
-Route::post('/admin-question_add', [Controller::class, 'question_add']);
-Route::post('/admin-question_edit', [Controller::class, 'question_edit']);
-Route::post('/admin-question_delete', [Controller::class, 'question_delete']);
+Route::post('/admin-question_add', [Controller::class, 'question_add'])->middleware(['auth', 'admin']);
+Route::post('/admin-question_edit', [Controller::class, 'question_edit'])->middleware(['auth', 'admin']);
+Route::post('/admin-question_delete', [Controller::class, 'question_delete'])->middleware(['auth', 'admin']);
 
 Route::get('/admin-question_formAdd', function () {
     return view('admin-questionAdd', [
         'quizID' => $_GET['quizID']
     ]);
-});
+})->middleware(['auth', 'admin']);
+
 Route::get('/admin-question_formUpdate', function () {
     return view('admin-questionUpdate', [
         'questions' => Question::all()
     ]);
-});
+})->middleware(['auth', 'admin']);
 
 Route::get('/berita', function () {
     return view('berita');
@@ -131,10 +134,10 @@ Route::get('/berita', function () {
 Route::get('/berita-detail/{id}', [NewsController::class, 'show']);
 
 Route::get('/voting', [KaryaPilihanController::class, 'voting']);
-Route::get('/admin-voting', [KaryaPilihanController::class, 'voting_admin']);
-Route::post('/admin-voting_add', [KaryaPilihanController::class, 'voting_add']);
-Route::post('/admin-voting_edit', [KaryaPilihanController::class, 'voting_edit']);
-Route::post('/admin-voting_delete', [KaryaPilihanController::class, 'voting_delete']);
+Route::get('/admin-voting', [KaryaPilihanController::class, 'voting_admin'])->middleware(['auth', 'admin']);
+Route::post('/admin-voting_add', [KaryaPilihanController::class, 'voting_add'])->middleware(['auth', 'admin']);
+Route::post('/admin-voting_edit', [KaryaPilihanController::class, 'voting_edit'])->middleware(['auth', 'admin']);
+Route::post('/admin-voting_delete', [KaryaPilihanController::class, 'voting_delete'])->middleware(['auth', 'admin']);
 Route::post('/voted', [KaryaPilihanController::class, 'voted']);
 Route::post('/admin-vote_reset', [KaryaPilihanController::class, 'reset']);
 
@@ -156,8 +159,6 @@ Route::get('/daftar', function () {
     ]);
 });
 
-
-
 Route::get('/tentang-kami', function () {
     return view('tentang-kami', [
         'aboutus' => AboutUs::all()
@@ -165,8 +166,8 @@ Route::get('/tentang-kami', function () {
 });
 
 Route::post('/silabus', [UserModulSuccessController::class, 'store'])->middleware(['auth']);
-Route::get('/silabus', [LearningController::class, 'index']);
-Route::post('/admin-silabus_add', [LearningController::class, 'create']);
+Route::get('/silabus', [LearningController::class, 'index'])->middleware(['auth']);
+Route::post('/admin-silabus_add', [LearningController::class, 'create'])->middleware(['auth', 'admin']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

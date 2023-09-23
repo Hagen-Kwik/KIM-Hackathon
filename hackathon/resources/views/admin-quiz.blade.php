@@ -29,8 +29,7 @@
                         $jumlahSoal = $questions->where('quiz_id', $result->id)->count();
                     @endphp
                     <div class="row aBox">
-                        <h6 style="display: block;">Quiz ID: {{ $result->id }}</h6>
-                        <h4>{{ $result->title }}</h4>
+                        <h4 class="pt-2">{{ $result->title }}</h4>
                         @php
                             $quizType = $result->quiz_type_id == '1' ? 'Pre/Post Exam' : 'Exam';
                         @endphp
@@ -41,11 +40,11 @@
                         <div style="display: flex; justify-content: flex-end;">
                             <a href="/admin-quiz_formUpdate?id={{ $result->id }}"><button
                                     class="editButton">Edit</button></a>
-                            <form method="POST" action="/admin-quiz_delete">
+                            <form method="POST" action="/admin-quiz_delete" class="pb-2">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $result->id }}">
                                 <input type="hidden" name="delete" value="yes">
-                                <button class="deleteButton" type="submit">Delete</button>
+                                <button class="deleteButton ms-3" type="submit">Delete</button>
                             </form>
                         </div>
 

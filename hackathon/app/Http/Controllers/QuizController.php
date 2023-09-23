@@ -2,11 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Question;
 use App\Models\Quiz;
+use App\Models\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class QuizController extends Controller
 {
+    public function submit(Request $request)
+    {
+        $this->validate($request, [
+            'quiz_id' => 'required|numeric',
+        ]);
+        
+        $uid = Auth::user()->id;
+
+        foreach (Quiz::findOrFail($request->quiz_id)->questions as $question) {
+            if ($request->has($question->id)) {
+                Response::create([
+                    'choice' => $request->get($question->id),
+                    'question_id' => $question->id,
+                    'user_id' => $uid
+                ]);
+            } else {
+                Response::create([
+                    'choice' => null,
+                    'question_id' => $question->id,
+                    'user_id' => $uid
+                ]);
+            }
+        }
+
+        return redirect('/silabus');
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -34,9 +64,11 @@ class QuizController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Quiz $quiz)
+    public function show($id)
     {
-        //
+        return view('quiz', [
+            'quiz' => Quiz::findOrFail($id),
+        ]);
     }
 
     /**

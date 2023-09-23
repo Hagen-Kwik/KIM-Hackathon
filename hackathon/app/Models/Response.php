@@ -13,10 +13,16 @@ class Response extends Model
     protected $fillable = [
         'choice',
         'question_id',
+        'user_id'
     ];
 
     public function question() : BelongsTo
     {
         return $this->belongsTo(Question::class);
+    }
+
+    public function user() : BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

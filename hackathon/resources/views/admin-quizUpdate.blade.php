@@ -38,7 +38,7 @@
                     <div class="row mt-3">
                         <label for="isiBerita" class="col-sm-2 col-form-label">Jenis</label>
                         <div class="col-sm-10">
-                            <select name="type">
+                            <select name="type" class="form-control">
                                 <option value="1" {{ $quiz->quiz_type_id == 1 ? 'selected' : '' }}>Pre/Post Exam
                                 </option>
                                 <option value="2" {{ $quiz->quiz_type_id == 2 ? 'selected' : '' }}>Exam</option>
@@ -46,8 +46,8 @@
                         </div>
                     </div>
 
-                    <div class='col mt-3'>
-                        <button type="button" class="btn btn-secondary" onclick="window.history.back();">Cancel</button>
+                    <div class='col mt-3 d-flex justify-content-center w-100 pt-2'>
+                        <button type="button" class="btn btn-secondary me-3" onclick="window.history.back();">Cancel</button>
                         <button type="submit" class="btn btn-success">Edit</button>
                     </div>
 

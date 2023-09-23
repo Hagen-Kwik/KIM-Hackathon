@@ -33,15 +33,15 @@
                     <div class="row mt-3">
                         <label for="isiBerita" class="col-sm-2 col-form-label">Jenis</label>
                         <div class="col-sm-10">
-                            <select name="quiz_type">
+                            <select name="quiz_type" class="form-control">
                                 <option value="1">Pre/Post Exam</option>
                                 <option value="2">Exam</option>
                             </select>
                         </div>
                     </div>
 
-                    <div class='col mt-3'>
-                        <button type="button" class="btn btn-secondary" onclick="window.history.back();">Cancel</button>
+                    <div class='col mt-3 d-flex justify-content-center w-100 pt-2'>
+                        <button type="button" class="btn btn-secondary me-3" onclick="window.history.back();">Cancel</button>
                         <button type="submit" class="btn btn-success">Add</button>
                     </div>
 

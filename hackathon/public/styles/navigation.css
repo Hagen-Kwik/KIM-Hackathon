@@ -69,6 +69,48 @@ footer {
     box-shadow: 0 0.25px 2px 0.5px #b7b7b7 !important;
 }
 
+.btn-secondary {
+    color: #ffffff !important;
+    background-color: #D06422 !important;
+    border-color: #D06422 !important;
+    box-shadow: 0 0px 4px 0.25px #b7b7b7 !important;
+}
+
+.btn-secondary:hover {
+    color: #ffffff !important;
+    background-color: #ba5618 !important;
+    border-color: #ba5618 !important;
+    box-shadow: 0 0px 4px 0.25px #b7b7b7 !important;
+}
+
+.btn-secondary:focus,
+.btn-secondary.focus {
+    box-shadow: 0 0px 4px 0.25px #b7b7b7 !important;
+}
+
+.btn-secondary.disabled,
+.btn-secondary:disabled {
+    color: rgb(184, 184, 184) !important;
+    background-color: #D06422 !important;
+    border-color: #D06422 !important;
+    box-shadow: 0 0px 4px 0.25px #b7b7b7 !important;
+}
+
+.btn-secondary:not(:disabled):not(.disabled):active,
+.btn-secondary:not(:disabled):not(.disabled).active,
+.show>.btn-secondary.dropdown-toggle {
+    color: #ffffff !important;
+    background-color: #9b450f !important;
+    border-color: #9b450f !important;
+    box-shadow: 0 0px 4px 0.25px #b7b7b7 !important;
+}
+
+.btn-secondary:not(:disabled):not(.disabled):active:focus,
+.btn-secondary:not(:disabled):not(.disabled).active:focus,
+.show>.btn-secondary.dropdown-toggle:focus {
+    box-shadow: 0 0.25px 2px 0.5px #b7b7b7 !important;
+}
+
 @media screen and (max-width: 992px) {
     .nav-between-on-mobile {
         width: 100% !important;
