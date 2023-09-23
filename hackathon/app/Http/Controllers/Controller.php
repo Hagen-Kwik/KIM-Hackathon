@@ -69,9 +69,13 @@ class Controller extends BaseController
         $results = DB::table('quizzes')
             ->select()
             ->get();
+        $questions = DB::table('questions')
+            ->select()
+            ->get();
 
         return view('admin-quiz', [
             'results' => $results,
+            'questions' => $questions,
             'name' => "quiz"
         ]);
     }
@@ -86,19 +90,17 @@ class Controller extends BaseController
         return redirect("admin-quiz");
     }
 
-    // public function finance_edit(){
-    //     $finance = Finance::findOrFail($_POST['id']);
+    public function quiz_edit()
+    {
+        $quiz = Quiz::findOrFail($_POST['id']);
 
-    //     $finance->update([
-    //         'nama' => $_POST['nama'],
-    //         'nominal' => $_POST['nominal'],
-    //         'kategori' => $_POST['kategori'],
-    //         'satuan' => $_POST['satuan'],
-    //         'jumlah' => $_POST['jumlah'],
-    //     ]);
+        $quiz->update([
+            'title' => $_POST['title'],
+            'quiz_type_id' => $_POST['type'],
+        ]);
 
-    //     return redirect("admin-finance");  
-    // }
+        return redirect("admin-quiz");
+    }
 
     public function quiz_delete()
     {
