@@ -174,6 +174,13 @@ class NewsController extends Controller
         ]);
     }
 
+    public function index2()
+    {
+        return view('berita', [
+            'results' => News::all(),
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

@@ -1,59 +1,40 @@
 @extends('layouts.mainheader')
 @section('css')
-<link rel="stylesheet" href="{{ asset('styles/berita.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/berita.css') }}">
 @endsection
 @section('title', 'Berita')
 
 @section('content')
-<div class="container mt-5">
-    <h1 class="fw-bold">Berita Terkini</h1>
-
-    <div class="row mt-5 mb-5">
-        <!-- START for loop this code -->
-        @for ($i = 0; $i < 4; $i++)
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="EachGridBox">
-                <!-- image asset -->
-                <img src="{{ asset('images/assets/berita_trial_pic.jpg') }}" height="10" class="HalfRoundedCorner img-fluid">
-    
-                <div class="InsideGridBox">
-                    <!-- title -->
-                    <h4 class="fw-bold">Title</h4>
-                    <!-- upload date -->
-                    <h6>22 September 2023</h6>
-                    <!-- description -->
-                    <p>Decription is so long lorem ipsum..........</p>
-                    <!-- button redirect -->
-                    <a href="/berita-detail"><button class="btn btn-primary">Selengkapnya</button></a>
+    <div class="container mt-5">
+        <h1 class="fw-bold">Berita Terkini</h1>
+        <div class="row mt-3 mb-5">
+                @if (count($results)==0)
+                <div class="text-center py-4">
+                    <img style="width: 200px; opacity: 0.8;"
+                        src="{{ asset('/images/assets/emptycontents.png') }}" alt="">
+                        <p class="text-center fs-5 mt-3 font-montserrat fw-medium">Belum ada berita. </p>
                 </div>
+                @else
+                @foreach ($results as $result)
+                    <div class="col-lg-4 col-md-6 mb-4" style="display: inline-block;">
+                        <a href="/berita-detail/{{ $result->id }}" style="text-decoration: none">
+                            <div class="col-sm-12 EachGridBox">
+                                <!-- image asset -->
+                                <img src="{{asset('storage/images/news/' . $result->id . '/' . $result->news_pictures[0]->pictureName)}}"
+                                    class="HalfRoundedCorner img-fluid">
+                                <div class="InsideGridBox">
+                                    <!-- title -->
+                                    <h3 class="" style="font-size: 22px;"><strong>{{ $result->judul }}</strong> </h3>
+                                    <h6>{{ $result->created_at }}</h6>
+                                    <p>{{ $result->description }}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+                @endif
             </div>
+
         </div>
-        @endfor
-        <!-- END for loop this code -->
     </div>
-
-    <!-- Pakai ini buat langung iterasi for loop -->
-
-    <!-- <div class="row mt-5">
- kasih for loop sini
-    <div class="col EachGridBox">
-            <img src="{{ asset('images/assets/berita_trial_pic.jpg') }}" height="10" class="HalfRoundedCorner img-fluid">
-
-            <div class="InsideGridBox">
-                <h4 class="bold"></h4>
-                <h6></h6>
-                <p></p>
-                <button class="btn-primary">Selengkapnya</button>
-            </div>
-        </div>
-
-        if ($loop->iteration % 3 == 0)
-    </div>
-    <div class="row mt-5 mb-5">
-        endif
-        endforeach
-    </div> -->
- 
-
-</div>
 @endsection

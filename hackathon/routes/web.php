@@ -148,9 +148,7 @@ Route::get('/admin-question_formUpdate', function () {
     ]);
 })->middleware(['auth', 'admin']);
 
-Route::get('/berita', function () {
-    return view('berita');
-});
+Route::get('/berita',[NewsController::class, 'index2']);
 Route::get('/berita-detail/{id}', [NewsController::class, 'show']);
 
 Route::get('/voting', [KaryaPilihanController::class, 'voting']);
