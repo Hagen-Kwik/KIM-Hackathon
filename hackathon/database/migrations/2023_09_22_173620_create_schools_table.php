@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('schools', function (Blueprint $table) {
             $table->id();
+            $table->text('schoolName');
+            $table->longText('location');
+            $table->text('bannerPicture');
             $table->timestamps();
         });
     }

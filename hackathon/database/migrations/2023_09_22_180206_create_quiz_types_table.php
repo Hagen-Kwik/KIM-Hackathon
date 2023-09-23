@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('quiz_types', function (Blueprint $table) {
             $table->id();
+            $table->enum('quiz_type', [0,1])->default(0);
             $table->timestamps();
         });
     }

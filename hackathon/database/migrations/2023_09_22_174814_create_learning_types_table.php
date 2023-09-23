@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('learning_types', function (Blueprint $table) {
             $table->id();
+            $table->enum('learning_type', [0,1,2])->default(0);
             $table->timestamps();
         });
     }

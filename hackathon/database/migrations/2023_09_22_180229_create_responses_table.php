@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('responses', function (Blueprint $table) {
             $table->id();
+            $table->text('choice');
+            $table->unsignedBigInteger('question_id');
             $table->timestamps();
         });
     }
