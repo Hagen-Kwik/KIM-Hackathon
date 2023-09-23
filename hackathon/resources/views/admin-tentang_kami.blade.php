@@ -19,7 +19,8 @@
 
         <section class="section">
             <div class="row">
-                <form action="" method="">
+                <form action="/admin-tentang_kami_edit" method="POST">
+                    @csrf
                     @php
                         $latarbelakang = $aboutus
                             ->where('id', 1)
@@ -44,7 +45,7 @@
                     <textarea class="textarea" id="tujuan" name="tujuan" rows="1">{{ $tujuan }}</textarea>
 
 
-                    <button class="saveButton">Save</button>
+                    <button class="saveButton" type="submit">Save</button>
                 </form>
             </div>
         </section>
