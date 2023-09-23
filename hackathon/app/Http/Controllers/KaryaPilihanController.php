@@ -132,6 +132,15 @@ class KaryaPilihanController extends Controller
         return redirect("admin-voting");
     }
 
+    public function reset()
+    {
+
+        User::query()->update(['voted' => '0']);
+        karya_pilihan::query()->update(['vote' => 0]);
+
+        return redirect("voting");
+    }
+
     public function voted()
     {
         $karya_pilihan = karya_pilihan::findOrFail($_POST['id']);

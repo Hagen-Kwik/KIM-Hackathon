@@ -136,6 +136,7 @@ Route::post('/admin-voting_add', [KaryaPilihanController::class, 'voting_add']);
 Route::post('/admin-voting_edit', [KaryaPilihanController::class, 'voting_edit']);
 Route::post('/admin-voting_delete', [KaryaPilihanController::class, 'voting_delete']);
 Route::post('/voted', [KaryaPilihanController::class, 'voted']);
+Route::post('/admin-vote_reset', [KaryaPilihanController::class, 'reset']);
 
 // Route::get('/voting', function () {
 //     return view('voting');
