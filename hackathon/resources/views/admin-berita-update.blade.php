@@ -41,7 +41,7 @@
                 <form method="POST" action="/admin-berita">
                     @csrf
                     <input type="hidden" name="gambar" value="" id="news_img">
-                    <h5 class="modal-title">Tambah Berita</h5>
+                    <h5 class="modal-title">Ubah Berita</h5>
                     <div class="row mt-3">
                         <label for="inputText" class="col-sm-2 col-form-label">Judul</label>
                         <div class="col-sm-10">
