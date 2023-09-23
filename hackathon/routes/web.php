@@ -84,7 +84,7 @@ Route::post('/admin-tentang_kami_edit', [Controller::class, 'aboutus_edit']);
 Route::get('/admin-quiz', [Controller::class, 'quiz']);
 Route::post('/admin-quiz_add', [Controller::class, 'quiz_add']);
 // Route::post('/admin-finance_edit', [Controller::class, 'finance_edit']);
-// Route::post('/admin-finance_delete', [Controller::class, 'finance_delete']);
+Route::post('/admin-quiz_delete', [Controller::class, 'quiz_delete']);
 
 Route::get('/admin-quiz_form', function () {
     return view('admin-quizUpdateAdd');

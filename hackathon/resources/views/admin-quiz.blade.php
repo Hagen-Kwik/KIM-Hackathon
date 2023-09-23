@@ -33,8 +33,8 @@
                         @endphp
                         <h6>Type: {{ $quizType }}</h6>
                         <div style="display: inline-block;">
-                            <a href="/admin-berita_edit"><button class="editButton">Edit</button></a>
-                            <form method="POST" action="/admin-berita_delete">
+                            <a href="/admin-quiz_edit"><button class="editButton">Edit</button></a>
+                            <form method="POST" action="/admin-quiz_delete">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $result->id }}">
                                 <input type="hidden" name="delete" value="yes">

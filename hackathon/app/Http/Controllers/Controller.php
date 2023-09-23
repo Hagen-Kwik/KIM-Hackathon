@@ -100,13 +100,14 @@ class Controller extends BaseController
     //     return redirect("admin-finance");  
     // }
 
-    // public function finance_delete(){
-    //     if (isset($_POST['delete'])){
-    //         Finance::where('id', $_POST['id'])->delete();
-    //     }
+    public function quiz_delete()
+    {
+        if (isset($_POST['delete'])) {
+            Quiz::where('id', $_POST['id'])->delete();
+        }
 
-    //     return redirect("admin-finance");  
-    // }
+        return redirect("admin-quiz");
+    }
 
     public function aboutus_edit()
     {
