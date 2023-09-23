@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\UserModulSuccess;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserModulSuccessController extends Controller
 {
@@ -21,6 +22,7 @@ class UserModulSuccessController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -29,6 +31,20 @@ class UserModulSuccessController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'modul_id' => 'required',
+            'file' => 'mimes:pdf|max:5120',
+        ]);
+
+        UserModulSuccess::create([
+            'user_id' => Auth::user()->id,
+            'modul_id' => $request->modul_id,
+            'file' => $request->file('filemodul')->store('/public/file/silabus'),
+        ]);
+        
+        return view('silabus', [
+            'silabus' => UserModulSuccess::all()
+        ]);
     }
 
     /**

@@ -13,6 +13,7 @@ class UserModulSuccess extends Model
     protected $fillable = [
         'user_id',
         'modul_id',
+        'file'
     ];
 
     public function user() : BelongsTo

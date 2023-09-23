@@ -75,25 +75,28 @@
             </div>
             {{-- Materi --}}
             @if (count($modul) == 0)
+                <div class="bg-info w-100 py-4 position-relative">
+                    <div class="w-100 h-100 position-absolute bg-light" style="left: 8px; top: 0px;">
+                        <div class="w-100 h-100 d-flex align-items-center">
+                            <h2 class="ml-2 mt-2 font-weight-bold text-info">
+                                Materi
+                            </h2>
+
+                        </div>
+                    </div>
+                </div>
                 <div class="text-center align-items-center py-4">
                     <img style="width: 200px; opacity: 0.8;" src="{{ asset('/images/assets/emptycontents.png') }}"
                         alt="">
                     <p class="text-center fs-5 mt-3 font-montserrat fw-medium">Belum ada materi. </p>
                 </div>
             @else
-                @foreach ($modul->slice(0, 3) as $moduls)
+                @foreach ($modul as $moduls)
                     <div class="mt-4 bg-info w-100 py-4 position-relative">
                         <div class="w-100 h-100 position-absolute bg-light" style="left: 8px; top: 0px;">
                             <div class="w-100 h-100 d-flex align-items-center">
                                 <h2 class="ml-2 mt-2 font-weight-bold text-info">
-                                    @if ($moduls->type == 0)
-                                        <Main>Video Pembelajaran</Main>
-                                    @elseif($moduls->type == 1)
-                                        <Main>Modul Pembelajaran</Main>
-                                    @else
-                                        <Main>Tugas</Main>
-                                    @endif
-
+                                    {{ $moduls->learningType->learning_type }}
                                 </h2>
                             </div>
                         </div>
@@ -103,126 +106,104 @@
                         <p>
                             {{ $moduls->description }}
                         </p>
-                        {{-- consent --}}
-                        <div class="">
-                            <div class="d-flex align-items-end">
+
+                        <div class="d-flex align-items-end">
+                            @if ($moduls->learningType->learning_type == 'Video pembelajaran')
                                 <h1 class="text-indigo m-0">
                                     <i class="fa fa-file-video"></i>
                                 </h1>
                                 <div class="ml-2 text-dark">
                                     {{ $moduls->title }}
                                 </div>
-                            </div>
-                            @if ($moduls->type == 0)
-                                <div class="d-flex mt-3">
-                                    <div class="ml-2"></div>
-                                    <div class="ml-4">
-                                        <iframe width="560" height="315"
-                                            src="{{ $moduls->youtube_link }}" title="YouTube video player"
-                                            frameborder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                            @elseif($moduls->type == 1)
-                            <h1 class="text-danger m-0">
-                                <i class="fa fa-file-pdf"></i>
-                            </h1>
-                            <div class="ml-2">
-                                <iframe src="{{$moduls->file}}" width="600" height="400"></iframe>
-                            </div>
-                            @else
-                            <div class="d-flex mt-3">
-                                <div class="ml-2"></div>
-                                <div class="ml-4">
-                                    <object data="{{ $moduls->file }}" width="600" height="400"></object>
-                                </div>
-                            </div>
-                            @endif
-                        </div>
-                    </div>
-                @endforeach
-            @endif
-            {{-- @foreach ($pelatihans as $pelatihan)
-            @if ($pelatihan->type != 'tes' && $pelatihan->judul != 'Pertemuan 3: Memperkuat Intensi Berinovasi')
-                <div class="mt-4 bg-info w-100 py-4 position-relative">
-                    <div class="w-100 h-100 position-absolute bg-light" style="left: 8px; top: 0px;">
-                        <div class="w-100 h-100 d-flex align-items-center">
-                            <h2 class="ml-2 mt-2 font-weight-bold text-info">
-                                {{ $pelatihan->judul }}
-                            </h2>
-                        </div>
-                    </div>
-                </div> --}}
-
-            {{-- <div class=" mt-lg-3 mb-lg-5">
-                    @if ($pelatihan->judul != 'Latihan Individu (Homework)')
-                        <p>
-                            {{ $pelatihan->deskripsi }}
-                        </p>
-
-                        {{-- materi --}}
-
-            {{-- <div class="d-flex align-items-end">
-                            <h1 class="text-danger m-0">
-                                <i class="fa fa-file-pdf"></i>
-                            </h1>
-                            <div class="ml-2">
-                                <a href="https://guru-inovatif.com/modul/{{ $pelatihan->link_ppt }}"
-                                    class="m-0 text-decoration-none text-purple">
-                                    Download Modul
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="mt-3">
-                            <div class="d-flex align-items-end">
+                            @elseif($moduls->learningType->learning_type == 'Modul pembelajaran')
                                 <h1 class="text-indigo m-0">
-                                    <i class="fa fa-file-video"></i>
+                                    <i class="fa fa-file-pdf"></i>
                                 </h1>
                                 <div class="ml-2 text-dark">
-                                    Video {{ $pelatihan->judul }}
+                                    {{ $moduls->title }}
                                 </div>
-                            </div>
+                            @else
+                                <h1 class="text-indigo m-0">
+                                    <h1 class="text-info m-0">
+                                        <i class="fa fa-file-upload"></i>
+                                    </h1>
+                                </h1>
+                                <div class="ml-2 text-dark">
+                                    {{ $moduls->title }}
+                                </div>
+                            @endif
+                        </div>
+
+                        @if ($moduls->learningType->learning_type == 'Video pembelajaran')
                             <div class="d-flex mt-3">
                                 <div class="ml-2"></div>
                                 <div class="ml-4">
-                                    <iframe width="560" height="315"
-                                        src="https://www.youtube.com/embed/{{ substr($pelatihan->link, -11) }}"
+                                    <iframe width="560" height="315" src="{{ $moduls->youtube_link }}"
                                         title="YouTube video player" frameborder="0"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowfullscreen></iframe>
                                 </div>
                             </div>
-
-                        </div>
-                    @endif  --}}
-
-
-            {{-- <div class="d-flex justify-content-between align-items-center">
-                        <a href="{{ route('user.training.show', $pelatihan->id) }}"
-                            class="mt-3 text-decoration-none d-flex align-items-end">
-                            <h1 class="text-info m-0">
-                                <i class="fa fa-file-upload"></i>
-                            </h1>
-                            <div class="ml-2 text-dark">
-                                Upload Submission
+                        @elseif($moduls->learningType->learning_type == 'Modul pembelajaran')
+                            <iframe src="{{ 'public/file/silabus/' . $moduls->file }}" width="800" height="500"
+                                class="pt-3"></iframe>
+                        @else
+                        <button type="button" class="btn btn-light mt-3"
+                        style="color: white; background-color: green;" data-bs-toggle="modal"
+                        data-bs-target="#addNewtugas">Upload Tugas</button>
+                        <div class="modal fade" id="addNewtugas" tabindex="-1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- CEHCK ACTION  -->
+                            
+                                    <form method="POST" action="/silabus" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="hidden" value="{{ $moduls->id }}" name="modul_id" id="typemodul">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Upload Tugas</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row mb-3">
+                                                <div class="col-sm-12">
+                                                    <input type="file" id="fileUpload" name="filemodul" accept="pdf/*"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cancel</button>
+                                                <button type="submit" class="btn btn-success">Add</button>
+                                            </div>
+                                    </form>
+                                </div>
                             </div>
-                        </a>
-
-                        @foreach ($progresss as $progress)
-                            @if ($progress->pelatihan->id == $pelatihan->id)
-                                @if ($progress->status == 1)
-                                    <div class="bg-green px-2 py-1 text-white rounded">
-                                        <i class="fa fa-check"></i>
-                                        Done
-                                    </div>
-                                @break
-                            @endif
+                        </div>
+            
+                          
                         @endif
-                    @endforeach --}}
+                    </div>
+                @endforeach
+            @endif
+
+
+     
+
+            <script>
+                $(document).ready(function() {
+                    $('#addNewtugas').modal({
+                        backdrop: 'static',
+                        keyboard: false
+                    });
+
+                    $('#addNewtugas .btn-close').click(function() {
+                        // Optionally, you can add a custom close behavior here
+                    });
+                });
+            </script>
+
+
         </div>
-    </div>
-    {{-- @endif --}}
     </div>
 @endsection

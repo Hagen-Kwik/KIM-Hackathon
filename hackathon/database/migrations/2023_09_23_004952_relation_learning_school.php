@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::table('learnings', function (Blueprint $table) {
             //
             $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade')->onUpdate('cascade');
-
         });
     }
 

@@ -52,7 +52,7 @@
 
                     .specialNavItem {
                         background-color: #E87E24;
-                        border-radius: 15px;
+                        border-radius: 10px;
                     }
 
                     .specialNavLink {

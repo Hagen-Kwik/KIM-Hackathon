@@ -50,9 +50,9 @@
                                 <p class="text-center fs-5 mt-3 font-montserrat fw-medium">Belum ada sekolah. </p>
                         </div>
                         @else
-                        @foreach ($school->slice(0, 3) as $schools)
+                        @foreach ($school as $schools)
                         <div class="col-lg-4 col-md-6 mb-4" style="display: inline-block;">
-                            <a href="/berandasekolah/tes">
+                            <a href="/berandasekolah/{{ $schools->id }}">
                                 <div class="col-sm-12 EachGridBox property-slider-image">
                                     <!-- image asset -->
                                     <img src="a"

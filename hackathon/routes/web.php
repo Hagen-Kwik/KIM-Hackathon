@@ -164,6 +164,7 @@ Route::get('/tentang-kami', function () {
     ]);
 });
 
+Route::post('/silabus', [UserModulSuccessController::class, 'store'])->middleware(['auth']);
 Route::get('/silabus', [LearningController::class, 'index']);
 Route::post('/admin-silabus_add', [LearningController::class, 'create']);
 

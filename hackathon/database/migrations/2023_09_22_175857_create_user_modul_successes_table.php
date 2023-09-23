@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('modul_id');
+            $table->longText('file');
             $table->timestamps();
         });
     }
