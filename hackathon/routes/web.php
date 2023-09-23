@@ -81,6 +81,11 @@ Route::post('/admin-finance_delete', [Controller::class, 'finance_delete']);
 
 Route::post('/admin-tentang_kami_edit', [Controller::class, 'aboutus_edit']);
 
+Route::get('/admin-quiz', [Controller::class, 'quiz']);
+// Route::post('/admin-finance_add', [Controller::class, 'finance_add']);
+// Route::post('/admin-finance_edit', [Controller::class, 'finance_edit']);
+// Route::post('/admin-finance_delete', [Controller::class, 'finance_delete']);
+
 Route::get('/berita', function () {
     return view('berita');
 });
