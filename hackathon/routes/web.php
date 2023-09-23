@@ -18,7 +18,7 @@ use App\Models\Learning;
 use App\Models\Question;
 use App\Models\Quiz;
 use App\Models\School;
-
+use App\Models\Teacher;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,6 +110,18 @@ Route::get('/admin-quiz_formAdd', function () {
 Route::get('/admin-quiz_formUpdate', function () {
     return view('admin-quizUpdate', [
         'quizzes' => Quiz::all()
+    ]);
+})->middleware(['auth', 'admin']);
+
+Route::get('/admin-guru', [Controller::class, 'guru'])->middleware(['auth', 'admin']);
+
+Route::post('/admin-guru_edit', [Controller::class, 'guru_edit'])->middleware(['auth', 'admin']);
+
+Route::post('/admin-guru_delete', [Controller::class, 'guru_delete'])->middleware(['auth', 'admin']);
+
+Route::get('/admin-guru_formUpdate', function () {
+    return view('admin-guruUpdate', [
+        'gurus' => Teacher::all()
     ]);
 })->middleware(['auth', 'admin']);
 

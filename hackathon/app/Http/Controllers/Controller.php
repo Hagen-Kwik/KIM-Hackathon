@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Finance;
 use App\Models\Question;
 use App\Models\Quiz;
+use App\Models\Teacher;
 
 class Controller extends BaseController
 {
@@ -110,6 +111,44 @@ class Controller extends BaseController
         }
 
         return redirect("admin-quiz");
+    }
+
+    public function guru()
+    {
+        $results = DB::table('teachers')
+            ->select()
+            ->get();
+
+        return view('admin-guru', [
+            'results' => $results,
+            'name' => "guru"
+        ]);
+    }
+
+    public function guru_edit()
+    {
+        $guru = Teacher::findOrFail($_POST['id']);
+
+        $guru->update([
+            'teacherName' => $_POST['teacherName'],
+            'description' => $_POST['description'],
+            'job_title' => $_POST['job_title'],
+            'whatsapp' => $_POST['whatsapp'],
+            'email' => $_POST['email'],
+            'instagram' => $_POST['instagram'],
+            // 'picture' => $_POST['picture'],
+        ]);
+
+        return redirect("admin-guru");
+    }
+
+    public function guru_delete()
+    {
+        if (isset($_POST['delete'])) {
+            Teacher::where('id', $_POST['id'])->delete();
+        }
+
+        return redirect("admin-guru");
     }
 
     public function question_add()
