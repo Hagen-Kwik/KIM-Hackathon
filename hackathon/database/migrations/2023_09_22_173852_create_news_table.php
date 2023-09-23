@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->longText('description');
             $table->longText('video_link');
+            $table->unsignedBigInteger('school_id');
             $table->timestamps();
         });
     }
