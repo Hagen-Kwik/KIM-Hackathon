@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\LearningController;
 use App\Models\AboutUs;
 use App\Models\School;
 
@@ -104,9 +105,7 @@ Route::get('/tentang-kami', function () {
     ]);
 });
 
-Route::get('/silabus', function () {
-    return view('silabus');
-});
+Route::get('/silabus',[LearningController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
