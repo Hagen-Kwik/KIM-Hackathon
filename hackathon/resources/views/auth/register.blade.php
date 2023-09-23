@@ -40,7 +40,7 @@
                             @if ($loop->iteration > 1)
                                 <br/>
                             @endif
-                            {{ $err }}
+                            {{ ucfirst($err) }}
                         @endforeach
                         </small>
                     </div>
@@ -48,7 +48,7 @@
                         <input type="email" class="form-control font-montserrat" id="inputEmail" name="email" placeholder="Email" required autofocus>
                         <small class="text-danger font-montserrat">
                         @foreach ($errors->get('email') as $err)
-                            {{ $err }}
+                            {{ ucfirst($err) }}
                         @endforeach
                         </small>
                     </div>
@@ -56,7 +56,7 @@
                         <input type="password" class="form-control font-montserrat" id="inputPassword" name="kata_sandi" placeholder="Kata Sandi" required autocomplete="current-password">
                         <small class="text-danger font-montserrat">
                         @foreach ($errors->get('kata_sandi') as $err)
-                            {{ $err }}
+                            {{ ucfirst($err) }}
                         @endforeach
                         </small>
                     </div>
