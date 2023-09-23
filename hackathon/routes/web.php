@@ -26,16 +26,16 @@ Route::get('/', function () {
 Route::get('/admin-profile', function () {
     return view('admin-profile');
 });
-Route::get('/admin-berita', function () {
-    return view('admin-berita');
-});
-Route::get('/admin-beritaEdit', function () {
-    return view('admin-beritaUpdateAdd');
-});Route::get('/admin-finance', [Controller::class, 'finance']);
 
+Route::get('/admin-berita', [NewsController::class, 'getAll']);
+
+Route::get('/admin-berita_form', function () {
+    return view('admin-beritaUpdateAdd');
+});
 
 Route::post('/admin-berita_edit', [NewsController::class, 'news_edit']);
 Route::post('/admin-berita_add', [NewsController::class, 'news_add']);
+Route::post('/admin-berita_delete', [NewsController::class, 'news_del']);
 
 
 Route::get('/admin-beranda', function () {
@@ -77,11 +77,11 @@ Route::get('/masuk', function () {
 Route::get('/daftar', function () {
     return view('auth.register', [
         'schools' => School::all()
-    ]); 
+    ]);
 });
 
 Route::get('/tentang-kami', function () {
-    return view('tentang-kami',[
+    return view('tentang-kami', [
         'aboutus' => AboutUs::all()
     ]);
 });
@@ -100,4 +100,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -38,13 +38,6 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        $results = DB::table('News')
-            ->select('id','description','video_link','judul', 'created_at', 'updated_at')
-            ->get();
-
-        return view('admin-berita', [
-            'results' => $results,
-        ]);
     }
 
     /**
@@ -77,8 +70,30 @@ class NewsController extends Controller
             'judul' => $_POST["judul"],
             'description' => $_POST["isiBerita"],
             'video_link' => $_POST["VideoLink"],
+            'school_id' => 1,
+            // ganti school id nanti
         ]);
 
         return redirect("admin-berita");
+    }
+
+    public function getAll()
+    {
+        $results = DB::table('news')
+            ->select('id', 'description', 'video_link', 'judul', 'school_id', 'created_at', 'updated_at')
+            ->get();
+
+        return view('admin-berita', [
+            'results' => $results,
+        ]);
+    }
+
+    public function news_del()
+    {
+        if (isset($_POST['delete'])){
+            News::where('id', $_POST['id'])->delete();
+        }
+        
+        return redirect("admin-berita");  
     }
 }

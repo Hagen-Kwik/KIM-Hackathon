@@ -16,20 +16,29 @@
             </div>
 
             <div class="col text-end">
-                <button type="button" class="btn btn-light rounded-pill" data-bs-toggle="modal" data-bs-target="#addNewBerita">+ Tambah Berita</button>
+                <a href="/admin-berita_form"><button type="button" class="btn btn-light rounded-pill">+ Tambah Berita</button></a>
             </div>
         </div>
     </div><!-- End Page Title -->
 
     <section class="section">
-        <div class="row">
-            
-        </div>
+        @if ($results != null)
+        @foreach ($results as $result)
+        <div class="row aBox">
+            <h6 style="display: none;">{{$result->id}}</h6>
+            <h3>{{$result->judul}}</h3>
+            <h3>{{$result->description}}</h3>
+            <h3>{{$result->video_link}}</h3>
+            <a href="/admin-berita_delete"><button>Delete</button></a>
+            <button>Delete</button>
+
+            @endforeach
+            @endif
         </div>
     </section>
 
 
-    
+
 
 
 
