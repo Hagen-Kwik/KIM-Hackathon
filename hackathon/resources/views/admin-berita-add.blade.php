@@ -28,7 +28,7 @@
             </div>
         </form>
         <small class="text-danger font-montserrat">
-            @foreach ($errors->get('gambar_rumah') as $err)
+            @foreach ($errors->get('gambar') as $err)
                 @if ($loop->iteration > 1)
                     <br />
                 @endif
@@ -41,31 +41,63 @@
                 <!-- CEHCK ACTION  -->
                 <form method="POST" action="/admin-berita">
                     @csrf
-                    <input type="hidden" name="gambar_rumah" value="" id="news_img">
+                    <input type="hidden" name="gambar" value="" id="news_img">
                     <h5 class="modal-title">Tambah Berita</h5>
                     <div class="row mt-3">
                         <label for="inputText" class="col-sm-2 col-form-label">Judul</label>
                         <div class="col-sm-10">
                             <input type="text" name="judul" class="form-control" required>
                         </div>
+                        <small class="text-danger font-montserrat">
+                            @foreach ($errors->get('judul') as $err)
+                                {{ ucfirst($err) }}
+                            @endforeach
+                        </small>
                     </div>
 
                     <div class="row mt-3">
                         <label for="isiBerita" class="col-sm-2 col-form-label">Isi</label>
                         <div class="col-sm-10">
-                            <textarea name="isiBerita" id="isiBerita" class="textarea form-control" rows="10"></textarea>
+                            <textarea name="isi" id="isiBerita" class="textarea form-control" rows="10"></textarea>
                         </div>
+                        <small class="text-danger font-montserrat">
+                            @foreach ($errors->get('isi') as $err)
+                                {{ ucfirst($err) }}
+                            @endforeach
+                        </small>
+                    </div>
+
+                    <div class="row mt-3">
+                        <label for="inputText" class="col-sm-2 col-form-label">Sekolah</label>
+                        <div class="col-sm-10">
+                            <select name="sekolah" class="form-select fw-medium" id="selectSchool">
+                                @foreach ($schools as $school)
+                                    <option value="{{ $school->id }}" class="fw-medium">{{ $school->schoolName }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <small class="text-danger font-montserrat">
+                            @foreach ($errors->get('sekolah') as $err)
+                                {{ ucfirst($err) }}
+                            @endforeach
+                        </small>
                     </div>
 
                     <div class="row mt-3 mb-3">
                         <label for="inputVideoLink" class="col-sm-2 col-form-label">Video Link</label>
                         <div class="col-sm-10">
-                            <input type="text" name="VideoLink" class="form-control" required>
+                            <input type="text" name="video_link" class="form-control" required>
                         </div>
+                        <small class="text-danger font-montserrat">
+                            @foreach ($errors->get('video_link') as $err)
+                                {{ ucfirst($err) }}
+                            @endforeach
+                        </small>
                     </div>
 
                     <div class='col mt-3 d-flex justify-content-center py-3'>
-                        <button type="button" class="btn btn-secondary me-3" onclick="window.history.back();">Batal</button>
+                        <button type="button" class="btn btn-secondary me-3"
+                            onclick="window.history.back();">Batal</button>
                         <button type="submit" class="btn btn-success">Tambah</button>
                     </div>
 
@@ -82,7 +114,7 @@
                     // Create the remove button
                     var removeButton = Dropzone.createElement(
                         "<button class='btn btn-danger mt-5 w-100 fw-medium font-montserrat'>Hapus</button>"
-                        );
+                    );
 
                     // Capture the Dropzone instance as closure.
                     var _this = this;

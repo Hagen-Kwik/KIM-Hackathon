@@ -182,11 +182,19 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'id' => 'required|numeric',
-            'nama_sekolah' => 'required|string|max:75',
-            'lokasi_sekolah' => 'required',
-            'gambar' => 'image|max:5120',
-            'school_id' => 'required|numeric',
+            'judul' => 'required|string|max:75',
+            'isi' => 'required',
+            'video_link' => [
+                'required',
+                'url',
+                function ($attribute, $requesturl, $failed) {
+                    if (!preg_match('/(youtube.com|youtu.be)\/(embed)?(\?v=)?(\S+)?/', $requesturl)) {
+                        $failed(trans("general.not_youtube_url", ["name" => trans("general.url")]));
+                    }
+                },
+            ],
+            'gambar' => 'required',
+            'sekolah' => 'required|numeric',
         ]);
 
         $id = 1;
@@ -198,9 +206,9 @@ class NewsController extends Controller
         News::create([
             'id' => $id,
             'judul' => $request->judul,
-            'description' => $request->description,
+            'description' => $request->isi,
             'video_link' => $request->video_link,
-            'school_id' => $request->school_id,
+            'school_id' => $request->sekolah,
         ]);
         
         return view('admin-berita', [

@@ -32,17 +32,6 @@
                     </li>
                 @endguest
 
-                @auth
-                @if (Auth::check() && Auth::user()->status == 'admin')
-                <li class="nav-item">
-                    <a class="nav-link py-2 px-4" href="/admin">Admin</a>
-                </li>
-                @endif
-                <li class="nav-item">
-                    <a class="nav-link py-2 px-4" href="/profil">Profil</a>
-                </li>
-                @endauth
-
                 <style>
                     .vertical-divider {
                         border: 1px solid black;
