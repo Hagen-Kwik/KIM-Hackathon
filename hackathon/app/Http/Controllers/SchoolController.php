@@ -39,7 +39,7 @@ class SchoolController extends Controller
         School::create([
             'schoolName' => $request->nama_sekolah,
             'location' => $request->lokasi_sekolah,
-            'bannerPicture' => $request->gambar->store('/images/sekolah')
+            'bannerPicture' => $request->file('gambar')->store('/public/images/sekolah')
         ]);
         
         return view('admin-sekolah', [
@@ -79,7 +79,7 @@ class SchoolController extends Controller
             School::findOrFail($request->id)->update([
                 'schoolName' => $request->nama_sekolah,
                 'location' => $request->lokasi_sekolah,
-                'bannerPicture' => $request->gambar->store('/images/sekolah')
+                'bannerPicture' => $request->gambar->store('/public/images/sekolah')
             ]);
         } else {
             School::findOrFail($request->id)->update([

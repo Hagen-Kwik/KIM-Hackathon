@@ -108,6 +108,7 @@
     <script>
         Dropzone.options.myDropzone = {
             acceptedFiles: 'image/*',
+            maxFilesize: 5,
             dictRemoveFile: 'Remove',
             init: function() {
                 this.on("success", function(file, response) {

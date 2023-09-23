@@ -24,6 +24,10 @@ class News extends Model
         return $this->belongsTo(School::class);
     }
 
+    public function news_pictures(){
+        return $this->hasMany(NewsPictures::class);
+    }
+
     public function getCreatedAtAttribute($timestamp) {
         return Carbon::parse($timestamp)->locale('id-ID')->translatedFormat('d F Y');
     }

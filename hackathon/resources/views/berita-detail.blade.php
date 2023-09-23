@@ -9,11 +9,11 @@
 
 @section('content')
 <div class="container mt-5">
-    <h1 class="fw-bold">{{ $news->title }}</h1>
+    <h1 class="fw-bold">{{ $news->judul }}</h1>
     <h5 class="pb-3">by {{ $news->school->schoolName }}, {{$news->createdAt}}</h5>
 
     <div class="d-flex justify-content-center mt-4">
-        <img src="{{ asset('storage/news/' . $news->id . '/' . $images[0]->pictureName) }}" class="img-fluid">
+        <img src="{{ asset('storage/images/news/' . $news->id . '/' . $images[0]->pictureName) }}" class="img-fluid" id="news-big-imageid">
     </div>
     <div class="swiper mySwiper mb-5">
         @if (count($images) < 2)
@@ -29,12 +29,12 @@
         @foreach ($images as $image)
             @if ($loop->first)
                 <div class="swiper-slide swiper-slide1 mx-4 my-4">
-                    <img src="{{ asset('storage/news/' . $news->id . '/' . $image->pictureName) }}"
+                    <img src="{{ asset('storage/images/news/' . $news->id . '/' . $image->pictureName) }}"
                         alt="{{ $image->house_image }}" class="property-slider-image property-image-selected">
                 </div>
             @else
                 <div class="swiper-slide swiper-slide1 mx-4 my-4">
-                    <img src="{{ asset('storage/news/' . $news->id . '/' . $image->pictureName) }}"
+                    <img src="{{ asset('storage/images/news/' . $news->id . '/' . $image->pictureName) }}"
                         alt="{{ $image->house_image }}" class="property-slider-image">
                 </div>
             @endif
@@ -43,11 +43,19 @@
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
     </div>
-    <p class="pb-4">Deskripsi berita</p>
+    <p class="pb-4">{{ $news->description }}</p>
 
  
 
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+    < script src = "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity = "sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin = "anonymous" >
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+    integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous">
+</script>
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 <script>
     if (window.matchMedia("(min-width: 1024px)").matches) {
@@ -81,7 +89,7 @@
 
     $('.swiper-slide1').click(function() {
         var src = $(this).find('img').attr("src");
-        $('#property-big-imageid').attr('src', src);
+        $('#news-big-imageid').attr('src', src);
         $('.swiper-slide1').find('img').removeClass('property-image-selected');
         $(this).find('img').addClass('property-image-selected');
     });

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\podcastController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NewsController;
@@ -35,16 +36,16 @@ Route::get('/admin-profile', function () {
     return view('admin-profile');
 });
 
-Route::get('/admin-berita', [NewsController::class, 'getAll']);
+Route::get('/admin-berita', [NewsController::class, 'index']);
 Route::get('/admin-tambah-berita', [NewsController::class, 'dropzoneNews']);
-Route::get('/admin-ubah-berita', [NewsController::class, 'dropzoneNews']);
+Route::get('/admin-ubah-berita/{id}', [NewsController::class, 'edit']);
 Route::post('dropzone/store-news', [NewsController::class, 'dropzoneStoreNews'])->name('dropzone.storenews');
 Route::get('dropzone/delete-news', [NewsController::class, 'dropzoneDeleteNews'])->name('dropzone.deletenews');
+Route::post('/store-image', [NewsController::class, 'storeImage'])->name('news-storeImage');
 
 Route::patch('/admin-berita', [NewsController::class, 'update']);
 Route::post('/admin-berita', [NewsController::class, 'store']);
 Route::delete('/admin-berita', [NewsController::class, 'destroy']);
-// Route::delete('/admin-berita/{id}', [NewsController::class, 'news_delete']);
 
 
 Route::get('/admin-beranda', function () {
@@ -93,13 +94,10 @@ Route::get('/admin-quiz_form', function () {
 Route::get('/berita', function () {
     return view('berita');
 });
+Route::get('/berita-detail/{id}', [NewsController::class, 'show']);
 
 Route::get('/donasi', function () {
     return view('donasi');
-});
-
-Route::get('/berita-detail', function () {
-    return view('berita-detail');
 });
 
 Route::get('/masuk', function () {

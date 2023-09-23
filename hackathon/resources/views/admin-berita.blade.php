@@ -30,7 +30,7 @@
             <h6>{{$result->description}}</h6>
             <h6> Video Link = {{$result->video_link}}</h6>
             <div style="display: inline-block;" class="d-flex flex-row pt-2">
-                <a href="/admin-ubah-berita" class="me-3"><button class="editButton">Edit</button></a>
+                <a href="/admin-ubah-berita/{{$result->id}}" class="me-3"><button class="editButton">Edit</button></a>
                 <form method="DELETE" action="/admin-berita">
                     @csrf
                     <input type="hidden" name="id" value="{{$result->id}}">

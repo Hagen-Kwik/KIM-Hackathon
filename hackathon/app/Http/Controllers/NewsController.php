@@ -76,8 +76,9 @@ class NewsController extends Controller
         $image = $request->file('file');
 
         if (DB::table('news')->latest('created_at')->first() != null) {
-            if (DB::table('news_pictures')->where('news_id', '=', $request->news_id)->latest('created_at')->first()) {
+            if (DB::table('news_pictures')->where('news_id', '=', $request->news_id)->latest('created_at')->first() != null) {
                 $imgBase1 = ((int) collect(explode('.', (DB::table('news_pictures')->where('news_id', '=', $request->news_id)->orderBy('id', 'desc')->first())->pictureName))->first() + 1);
+                Log::info('a');
             } else {
                 $imgBase1 = 1;
             }
@@ -86,6 +87,7 @@ class NewsController extends Controller
         } else {
             if (DB::table('news_pictures')->where('news_id', '=', $request->news_id)->latest('created_at')->first()) {
                 $imgBase1 = ((int) collect(explode('.', (DB::table('news_pictures')->where('news_id', '=', $request->news_id)->orderBy('id', 'desc')->first())->pictureName))->first() + 1);
+            Log::info('a');
             } else {
                 $imgBase1 = 1;
             }
@@ -93,8 +95,10 @@ class NewsController extends Controller
             $imageName = $imgBase1 . "." . $image->getClientOriginalExtension();
         }
 
+        $idLen = strlen($request->news_id);
+
         NewsPictures::create([
-            'pictureName' => $request->file('file')->storeAs('/public/images/news/' . $request->news_id, $imageName),
+            'pictureName' => substr($request->file('file')->storeAs('/public/images/news/' . $request->news_id, $imageName), $idLen + 20, strlen($request->file('file')->storeAs('/public/images/news/' . $request->news_id, $imageName)) - (20 + $idLen)),
             'news_id' => $request->news_id
         ]);
 
@@ -165,7 +169,9 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin-berita', [
+            'results' => News::all(),
+        ]);
     }
 
     /**
@@ -219,16 +225,31 @@ class NewsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(News $news)
+    public function show($id)
     {
+        return view('berita-detail', [
+            'news' => News::findOrFail($id),
+            'images' => News::findOrFail($id)->news_pictures
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(News $news)
+    public function edit($id)
     {
-        //
+        $imagecount = "";
+
+        foreach (NewsPictures::where('news_id', '=', $id)->get() as $a) {
+            $imagecount = $imagecount . "1";
+        }
+
+        return view('admin-berita-update', [
+            'news' => News::findOrFail($id),
+            'schools' => School::all(),
+            'images' => News::findOrFail($id)->news_pictures,
+            'imagecount' => $imagecount
+        ]);
     }
 
     /**
@@ -236,7 +257,33 @@ class NewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        //
+        $this->validate($request, [
+            'id' => 'required',
+            'judul' => 'required|string|max:75',
+            'isi' => 'required',
+            'video_link' => [
+                'required',
+                'url',
+                function ($attribute, $requesturl, $failed) {
+                    if (!preg_match('/(youtube.com|youtu.be)\/(embed)?(\?v=)?(\S+)?/', $requesturl)) {
+                        $failed(trans("general.not_youtube_url", ["name" => trans("general.url")]));
+                    }
+                },
+            ],
+            'gambar' => 'required',
+            'sekolah' => 'required|numeric',
+        ]);
+        
+        News::findOrFail($request->id)->update([
+            'judul' => $request->judul,
+            'description' => $request->isi,
+            'video_link' => $request->video_link,
+            'school_id' => $request->sekolah,
+        ]);
+        
+        return view('admin-berita', [
+            'results' => News::all(),
+        ]);
     }
 
     /**
@@ -246,30 +293,6 @@ class NewsController extends Controller
     {
         News::findOrFail($request->id)->delete();
         
-        return view('admin-berita', [
-            'results' => News::all(),
-        ]);
-    }
-
-    public function news_add()
-    {
-        News::create([
-            'judul' => $_POST["judul"],
-            'description' => $_POST["isiBerita"],
-            'video_link' => $_POST["VideoLink"],
-            'school_id' => 1,
-            // ganti school id nanti
-        ]);
-
-        return redirect("admin-berita");
-    }
-
-    public function getAll()
-    {
-        $results = DB::table('news')
-            ->select('id', 'description', 'video_link', 'judul', 'school_id', 'created_at', 'updated_at')
-            ->get();
-
         return view('admin-berita', [
             'results' => News::all(),
         ]);
