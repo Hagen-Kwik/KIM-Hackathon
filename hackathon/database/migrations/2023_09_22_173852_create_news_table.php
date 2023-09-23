@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->longText('description');
-            $table->longText('video_link');
+            $table->longText('video_link')->nullable();
             $table->longText('judul');
             $table->unsignedBigInteger('school_id');
             $table->timestamps();

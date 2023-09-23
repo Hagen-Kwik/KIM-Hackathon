@@ -37,6 +37,7 @@ Route::get('/admin-profile', function () {
 
 Route::get('/admin-berita', [NewsController::class, 'getAll']);
 Route::get('/admin-tambah-berita', [NewsController::class, 'dropzoneNews']);
+Route::get('/admin-ubah-berita', [NewsController::class, 'dropzoneNews']);
 Route::post('dropzone/store-news', [NewsController::class, 'dropzoneStoreNews'])->name('dropzone.storenews');
 Route::get('dropzone/delete-news', [NewsController::class, 'dropzoneDeleteNews'])->name('dropzone.deletenews');
 

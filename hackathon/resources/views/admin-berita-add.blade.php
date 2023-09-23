@@ -86,7 +86,7 @@
                     <div class="row mt-3 mb-3">
                         <label for="inputVideoLink" class="col-sm-2 col-form-label">Video Link</label>
                         <div class="col-sm-10">
-                            <input type="text" name="video_link" class="form-control" required>
+                            <input type="text" name="video_link" class="form-control">
                         </div>
                         <small class="text-danger font-montserrat">
                             @foreach ($errors->get('video_link') as $err)
