@@ -3,6 +3,7 @@
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\podcastController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\KaryaPilihanController;
 use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
@@ -10,6 +11,7 @@ use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LearningController;
 use App\Models\AboutUs;
+use App\Models\karya_pilihan;
 use App\Models\Question;
 use App\Models\Quiz;
 use App\Models\School;
@@ -127,6 +129,17 @@ Route::get('/berita', function () {
     return view('berita');
 });
 Route::get('/berita-detail/{id}', [NewsController::class, 'show']);
+
+Route::get('/voting', [KaryaPilihanController::class, 'voting']);
+Route::get('/admin-voting', [KaryaPilihanController::class, 'voting_admin']);
+Route::post('/admin-voting_add', [KaryaPilihanController::class, 'voting_add']);
+Route::post('/admin-voting_edit', [KaryaPilihanController::class, 'voting_edit']);
+Route::post('/admin-voting_delete', [KaryaPilihanController::class, 'voting_delete']);
+Route::post('/voted', [KaryaPilihanController::class, 'voted']);
+
+// Route::get('/voting', function () {
+//     return view('voting');
+// });
 
 Route::get('/donasi', function () {
     return view('donasi');

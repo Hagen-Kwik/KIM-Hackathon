@@ -131,6 +131,13 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin-voting">
+                    <i class="bi bi-arrow-up-circle"></i>
+                    <span>Voting</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="/admin-beranda">
                     <i class="bi bi-house"></i>
                     <span>Beranda</span>

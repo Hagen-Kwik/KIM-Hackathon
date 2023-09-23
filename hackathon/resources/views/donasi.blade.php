@@ -2,7 +2,7 @@
 @section('css')
     <!-- <link rel="stylesheet" href="{{ asset('styles/berita.css') }}"> -->
 @endsection
-@section('title', 'Kuiz')
+@section('title', 'Donasi')
 
 @section('content')
     <div class="container mt-5 text-center">

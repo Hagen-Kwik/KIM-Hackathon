@@ -30,6 +30,10 @@
                     <a class="nav-link py-2 px-4" href="/podcast">Podcast</a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link py-2 px-4" href="/voting">Voting</a>
+                </li>
+
                 @guest
                     <li class="nav-item">
                         <a class="nav-link py-2 px-4" href="/masuk">Masuk</a>
@@ -43,23 +47,27 @@
                         /* Adjust the height of the divider */
                         margin: 0 20px;
                         /* Adjust the left and right margin to control spacing */
+
                     }
 
                     .specialNavItem {
                         background-color: #E87E24;
+                        border-radius: 15px;
                     }
 
-                    .specialNavItem>a:hover {
-                        color: white;
+                    .specialNavLink {
+                        color: white !important;
                         font-weight: 600;
                     }
+                    
+                    
                 </style>
 
                 <div class="vertical-divider"></div>
 
 
                 <li class="nav-item specialNavItem">
-                    <a class="nav-link py-2 px-4" href="/donasi">Donasi</a>
+                    <a class="nav-link py-2 px-4 specialNavLink" href="/donasi">Donasi</a>
                 </li>
             </ul>
         </div>
