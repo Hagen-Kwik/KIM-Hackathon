@@ -43,7 +43,9 @@ Route::get('/admin-beranda', function () {
     return view('admin-beranda');
 });
 Route::get('/admin-tentang_kami', function () {
-    return view('admin-tentang_kami');
+    return view('admin-tentang_kami', [
+        'aboutus' => AboutUs::all()
+    ]);
 });
 Route::get('/admin-silabus', function () {
     return view('admin-silabus');
