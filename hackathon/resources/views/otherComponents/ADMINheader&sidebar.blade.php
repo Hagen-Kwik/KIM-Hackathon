@@ -76,35 +76,42 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/admin-berita">
-                    <i class="bi bi-people"></i>
+                    <i class="bi bi-newspaper"></i>
                     <span>Berita</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/admin-tentang_kami">
-                    <i class="bi bi-people"></i>
+                    <i class="bi bi-pen"></i>
                     <span>Tentang Kami</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/admin-silabus">
-                    <i class="bi bi-people"></i>
+                    <i class="bi bi-journal-text"></i>
                     <span>Silabus</span>
                 </a>
             </li>
 
             <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin-sekolah">
+                    <i class="bi bi-building"></i>
+                    <span>Sekolah</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="/admin-finance">
-                    <i class="bi bi-people"></i>
+                    <i class="bi bi-cash"></i>
                     <span>Keuangan</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/admin-beranda">
-                    <i class="bi bi-people"></i>
+                    <i class="bi bi-house"></i>
                     <span>Beranda</span>
                 </a>
             </li>

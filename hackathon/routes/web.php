@@ -39,6 +39,10 @@ Route::get('/admin-tentang_kami', function () {
 Route::get('/admin-silabus', function () {
     return view('admin-silabus');
 });
+Route::get('/admin-sekolah', function () {
+    return view('admin-sekolah');
+});
+
 
 Route::get('/admin-finance', [Controller::class, 'finance']);
 Route::post('/admin-finance_add', [Controller::class, 'finance_add']);
