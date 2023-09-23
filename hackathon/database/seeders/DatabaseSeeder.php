@@ -18,6 +18,10 @@ class DatabaseSeeder extends Seeder
             QuizTypeSeeder::class,
             DummyQuizSeeder::class,
             DummyQuestionSeeder::class,
+            SchoolSeeder::class,
+            UserSeeder::class,
+            LearningSeeder::class,
+            LearningTypeSeeder::class,
         ]);
     }
 }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('learning_types', function (Blueprint $table) {
             $table->id();
-            $table->enum('learning_type', [0,1,2])->default(0);
+            $table->enum('learning_type', ["Video pembelajaran","Modul pembelajaran", "Tugas"])->default("Video pembelajaran");
             $table->timestamps();
         });
     }

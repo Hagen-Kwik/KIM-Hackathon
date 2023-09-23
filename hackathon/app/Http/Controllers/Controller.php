@@ -8,6 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
 use App\Models\Finance;
+use App\Models\Question;
 use App\Models\Quiz;
 
 class Controller extends BaseController
@@ -109,6 +110,48 @@ class Controller extends BaseController
         }
 
         return redirect("admin-quiz");
+    }
+
+    public function question_add()
+    {
+        $id = $_POST['quizID'];
+        Question::create([
+            'question' => $_POST["soal"],
+            'optionA' => $_POST["optionA"],
+            'optionB' => $_POST["optionB"],
+            'optionC' => $_POST["optionC"],
+            'optionD' => $_POST["optionD"],
+            'correctOption' => $_POST[$_POST["correctOption"]],
+            'quiz_id' => $_POST["quizID"],
+        ]);
+
+        return redirect("admin-question?quizID=$id");
+    }
+
+    public function question_edit()
+    {
+        $question = Question::findOrFail($_POST['id']);
+        $id = $question->quiz_id;
+        $question->update([
+            'question' => $_POST["soal"],
+            'optionA' => $_POST["optionA"],
+            'optionB' => $_POST["optionB"],
+            'optionC' => $_POST["optionC"],
+            'optionD' => $_POST["optionD"],
+            'correctOption' => $_POST[$_POST["correctOption"]],
+        ]);
+
+        return redirect("admin-question?quizID=$id");
+    }
+
+    public function question_delete()
+    {
+        if (isset($_POST['delete'])) {
+            Question::where('id', $_POST['id'])->delete();
+        }
+        $id = $_POST['quizID'];
+
+        return redirect("admin-question?quizID=$id");
     }
 
     public function aboutus_edit()

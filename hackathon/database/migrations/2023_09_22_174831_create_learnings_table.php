@@ -16,8 +16,8 @@ return new class extends Migration
             $table->text('title');
             $table->text('description');
             $table->text('picture');
-            $table->dateTime('starts_at');
-            $table->dateTime('ends_at');
+            $table->time('starts_at');
+            $table->time('ends_at');
             $table->unsignedBigInteger('school_id');
             $table->timestamps();
         });

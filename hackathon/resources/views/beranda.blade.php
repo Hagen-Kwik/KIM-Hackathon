@@ -51,7 +51,7 @@
                         @else
                         @foreach ($school->slice(0, 3) as $schools)
                      
-                        <a href="{{ $schools['id'] }}">
+                        <a href="/berandasekolah/{{ $schools['id'] }}">
                         <div class="col-sm-12 col-lg-4 col-md-6 EachGridBox property-slider-image">
                             <!-- image asset -->
                             <img src="{{ asset('images/assets' .'/'. $schools->bannerPicture)}}"
@@ -81,7 +81,7 @@
             <h3 class="text-center">Kegiatan Kami</h3>
             <div class="row mt-5 mb-5">
                 <!-- for loop this code -->
-                <div class="col EachGridBox">
+                <div class="col-sm-12 col-lg-4 col-md-6 EachGridBox property-slider-image">
                     <!-- image asset -->
                     <img src="{{ asset('images/assets/berita_trial_pic.jpg') }}"
                         class="HalfRoundedCorner img-fluid">

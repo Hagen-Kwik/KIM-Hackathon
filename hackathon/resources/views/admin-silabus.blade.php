@@ -24,8 +24,6 @@
 
         <section class="section">
             <div class="row">
-
-                </div>
             </div>
         </section>
 
@@ -33,7 +31,7 @@
         <div class="modal fade" id="addNewAdmin" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form method="POST" action="/admin-manage_accountAdd">
+                    <form method="POST" action="/admin-silabus_add">
                         @csrf
                         <div class="modal-header">
                             <h5 class="modal-title">New Admin</h5>
@@ -41,23 +39,32 @@
                         </div>
                         <div class="modal-body">
                             <div class="row mb-3">
-                                <label for="inputText" class="col-sm-2 col-form-label">Name</label>
+                                <label for="inputText" class="col-sm-2 col-form-label">Judul</label>
                                 <div class="col-sm-10">
-                                    <input type="name" name="name" class="form-control" required>
+                                    <input type="text" name="title" class="form-control" required>
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                                <label for="inputText" class="col-sm-2 col-form-label">Deskripsi</label>
                                 <div class="col-sm-10">
-                                    <input type="email" name="email" class="form-control" required>
+                                    <input type="text" name="desc" class="form-control" required>
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                                <label for="inputText" class="col-sm-2 col-form-label">gambar banner</label>
                                 <div class="col-sm-10">
-                                    <input type="password" name="password" class="form-control" required>
+                                    <input type="file" name="picture" class="form-control" required>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="datetime">starts_at</label>
+                                <input type="time" id="datetime" name="starts_at" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="datetime">ends_at</label>
+                                <input type="time" id="datetime" name="ends_at" class="form-control" required>
+                            </div>
+                            <input type="hidden" name="school_id" value="{{Auth::user()->school_id}}">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

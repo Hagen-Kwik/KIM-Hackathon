@@ -10,6 +10,7 @@ use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LearningController;
 use App\Models\AboutUs;
+use App\Models\Question;
 use App\Models\Quiz;
 use App\Models\School;
 
@@ -100,6 +101,28 @@ Route::get('/admin-quiz_formUpdate', function () {
     ]);
 })->middleware(['auth', 'admin']);
 
+
+Route::get('/admin-question', function () {
+    return view('admin-question', [
+        'questions' => Question::all()->where('quiz_id', $_GET['quizID'])->all()
+    ]);
+});
+
+Route::post('/admin-question_add', [Controller::class, 'question_add']);
+Route::post('/admin-question_edit', [Controller::class, 'question_edit']);
+Route::post('/admin-question_delete', [Controller::class, 'question_delete']);
+
+Route::get('/admin-question_formAdd', function () {
+    return view('admin-questionAdd', [
+        'quizID' => $_GET['quizID']
+    ]);
+});
+Route::get('/admin-question_formUpdate', function () {
+    return view('admin-questionUpdate', [
+        'questions' => Question::all()
+    ]);
+});
+
 Route::get('/berita', function () {
     return view('berita');
 });
@@ -119,13 +142,16 @@ Route::get('/daftar', function () {
     ]);
 });
 
+
+
 Route::get('/tentang-kami', function () {
     return view('tentang-kami', [
         'aboutus' => AboutUs::all()
     ]);
 });
 
-Route::get('/silabus', [LearningController::class, 'index'])->middleware(['auth']);
+Route::get('/silabus', [LearningController::class, 'index']);
+Route::post('/admin-silabus_add', [LearningController::class, 'create']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

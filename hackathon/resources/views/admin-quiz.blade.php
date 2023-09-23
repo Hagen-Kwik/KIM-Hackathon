@@ -34,9 +34,11 @@
                         @php
                             $quizType = $result->quiz_type_id == '1' ? 'Pre/Post Exam' : 'Exam';
                         @endphp
-                        <h6>Jumlah Soal: {{ $jumlahSoal }}</h6>
                         <h6>Type: {{ $quizType }}</h6>
-                        <div style="display: inline-block;">
+                        <h6>Jumlah Soal: {{ $jumlahSoal }}</h6>
+                        <a href="/admin-question?quizID={{ $result->id }}"><button class="editButton">Lihat
+                                Soal</button></a>
+                        <div style="display: flex; justify-content: flex-end;">
                             <a href="/admin-quiz_formUpdate?id={{ $result->id }}"><button
                                     class="editButton">Edit</button></a>
                             <form method="POST" action="/admin-quiz_delete">
@@ -46,6 +48,7 @@
                                 <button class="deleteButton" type="submit">Delete</button>
                             </form>
                         </div>
+
                     </div>
                 @endforeach
             @endif
