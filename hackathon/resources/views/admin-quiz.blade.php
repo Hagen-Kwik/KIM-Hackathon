@@ -26,7 +26,7 @@
             @if ($results != null)
                 @foreach ($results as $result)
                     <div class="row aBox">
-                        <h6 style="display: none;">{{ $result->id }}</h6>
+                        <h6 style="display: block;">Quiz ID: {{ $result->id }}</h6>
                         <h4>{{ $result->title }}</h4>
                         @php
                             $quizType = $result->quiz_type_id == '1' ? 'Pre/Post Exam' : 'Exam';
