@@ -16,11 +16,33 @@
     padding-right: 10px;
 }
 
+.editButton {
+    margin-top: 1%;
+    color: white;
+    background-color: green;
+    border-radius: 15px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+.deleteButton {
+    margin-top: 1%;
+    color: white;
+    background-color: red;
+    border-radius: 15px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .aBox {
     margin: auto;
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     border-radius: 15px;
+    margin-bottom: 15px;
 }
 
 .textarea {

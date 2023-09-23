@@ -36,6 +36,7 @@ Route::get('/admin-berita_form', function () {
 Route::post('/admin-berita_edit', [NewsController::class, 'news_edit']);
 Route::post('/admin-berita_add', [NewsController::class, 'news_add']);
 Route::post('/admin-berita_delete', [NewsController::class, 'news_del']);
+// Route::delete('/admin-berita/{id}', [NewsController::class, 'news_delete']);
 
 
 Route::get('/admin-beranda', function () {

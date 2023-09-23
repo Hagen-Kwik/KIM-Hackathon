@@ -88,12 +88,19 @@ class NewsController extends Controller
         ]);
     }
 
+    // public function news_del()
+    // {
+    //     if (isset($_POST['delete'])){
+    //         News::where('id', $_POST['id'])->delete();
+    //     }
+        
+    //     return redirect("admin-berita");  
+    // }
+
     public function news_del()
     {
-        if (isset($_POST['delete'])){
-            News::where('id', $_POST['id'])->delete();
-        }
-        
-        return redirect("admin-berita");  
+        News::where('id', $_POST['id'])->delete();
+
+        return redirect('/admin-berita');
     }
 }

@@ -26,15 +26,22 @@
         @foreach ($results as $result)
         <div class="row aBox">
             <h6 style="display: none;">{{$result->id}}</h6>
-            <h3>{{$result->judul}}</h3>
-            <h3>{{$result->description}}</h3>
-            <h3>{{$result->video_link}}</h3>
-            <a href="/admin-berita_delete"><button>Delete</button></a>
-            <button>Delete</button>
-
-            @endforeach
-            @endif
+            <h4>{{$result->judul}}</h4>
+            <h6>{{$result->description}}</h6>
+            <h6> Video Link = {{$result->video_link}}</h6>
+            <div style="display: inline-block;">
+                <a href="/admin-berita_edit"><button class="editButton">Edit</button></a>
+                <form method="POST" action="/admin-berita_delete">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$result->id}}">
+                    <input type="hidden" name="delete" value="yes">
+                    <button class="deleteButton" type="submit">Delete</button>
+                </form>
+            </div>
         </div>
+
+        @endforeach
+        @endif
     </section>
 
 
