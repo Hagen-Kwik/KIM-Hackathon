@@ -75,6 +75,13 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin-siswa">
+                    <i class="bi bi-people"></i>
+                    <span>Siswa</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="/admin-berita">
                     <i class="bi bi-newspaper"></i>
                     <span>Berita</span>
@@ -106,6 +113,13 @@
                 <a class="nav-link collapsed" href="/admin-finance">
                     <i class="bi bi-cash"></i>
                     <span>Keuangan</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin-podcast">
+                    <i class="bi bi-broadcast-pin"></i>
+                    <span>Podcast</span>
                 </a>
             </li>
 

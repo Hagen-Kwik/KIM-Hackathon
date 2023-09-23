@@ -50,6 +50,11 @@ Route::get('/admin-silabus', function () {
 Route::get('/admin-sekolah', function () {
     return view('admin-sekolah');
 });
+Route::get('/admin-siswa', function () {
+    return view('admin-siswa', [
+        'schools' => School::all()
+    ]);
+});
 
 
 Route::get('/admin-finance', [Controller::class, 'finance']);
