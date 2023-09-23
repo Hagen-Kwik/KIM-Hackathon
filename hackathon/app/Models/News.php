@@ -12,6 +12,7 @@ class News extends Model
     use HasFactory;
     
     protected $fillable = [
+        'id',
         'description',
         'video_link',
         'judul',

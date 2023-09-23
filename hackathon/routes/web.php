@@ -35,14 +35,13 @@ Route::get('/admin-profile', function () {
 });
 
 Route::get('/admin-berita', [NewsController::class, 'getAll']);
+Route::get('/admin-tambah-berita', [NewsController::class, 'dropzoneNews']);
+Route::post('dropzone/store-news', [NewsController::class, 'dropzoneStoreNews'])->name('dropzone.storenews');
+Route::get('dropzone/delete-news', [NewsController::class, 'dropzoneDeleteNews'])->name('dropzone.deletenews');
 
-Route::get('/admin-berita_form', function () {
-    return view('admin-beritaUpdateAdd');
-});
-
-Route::post('/admin-berita_edit', [NewsController::class, 'news_edit']);
-Route::post('/admin-berita_add', [NewsController::class, 'news_add']);
-Route::post('/admin-berita_delete', [NewsController::class, 'news_del']);
+Route::patch('/admin-berita', [NewsController::class, 'update']);
+Route::post('/admin-berita', [NewsController::class, 'store']);
+Route::delete('/admin-berita', [NewsController::class, 'destroy']);
 // Route::delete('/admin-berita/{id}', [NewsController::class, 'news_delete']);
 
 

@@ -16,7 +16,7 @@
             </div>
 
             <div class="col text-end">
-                <a href="/admin-berita_form"><button type="button" class="btn btn-light rounded-pill">+ Tambah Berita</button></a>
+                <a href="/admin-tambah-berita"><button type="button" class="btn btn-light rounded-pill">+ Tambah Berita</button></a>
             </div>
         </div>
     </div><!-- End Page Title -->
