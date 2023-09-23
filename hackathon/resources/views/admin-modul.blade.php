@@ -20,6 +20,12 @@
                 </div>
             </div>
             <small class="text-danger pb-4">
+                @foreach ($errors->get('modul_id') as $err)
+                    @if ($loop->iteration > 1)
+                        <br/>
+                    @endif
+                    {{ ucfirst($err) }}
+                @endforeach
                 @foreach ($errors->get('title') as $err)
                     @if ($loop->iteration > 1)
                         <br/>
@@ -68,7 +74,7 @@
                                         <form method="POST" action="/admin-modul">
                                             @csrf
                                             @method('patch')
-                                            <input type="hidden" name="id" value="{{ $result->id }}">
+                                            <input type="hidden" name="modul_id" value="{{ $result->id }}">
                                             <div class="modal-header">
                                                 <h5 class="modal-title">Ubah Modul</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -79,7 +85,7 @@
                                                     <label for="inputText" class="col-sm-2 col-form-label">Judul</label>
                                                     <div class="col-sm-10">
                                                         <input type="text" name="title" class="form-control"
-                                                            value="{{ $result->nama }}" required>
+                                                            value="{{ $result->title }}" required>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
@@ -103,7 +109,7 @@
                                                     <label for="inputText" class="col-sm-2 col-form-label">Youtube Link</label>
                                                     <div class="col-sm-10">
                                                         <input type="text" name="youtube_link" class="form-control"
-                                                            placeholder="Youtube Link" value="{{$result->youtube_link}}" required>
+                                                            placeholder="Youtube Link" value="{{$result->youtube_link}}">
                                                     </div>
                                                 </div>
 
@@ -125,12 +131,12 @@
                                 </div>
                             </div>
                             <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                data-bs-target="#editfinance{{ $result->id }}">Ubah</button>
+                                data-bs-target="#editmodul{{ $result->id }}">Ubah</button>
                             <form action="/admin-finance_delete" method="POST">
                                 @csrf
                                 <input type="hidden" name="delete" value="yes">
                                 <input type="hidden" name="id" value={{ $result->id }}>
-                                <button type="delete" class="btn btn-danger">Delete</button>
+                                <button type="delete" class="btn btn-danger ms-3">Delete</button>
                             </form>
                         </div>
                     </div>
@@ -181,7 +187,7 @@
                                 <label for="inputText" class="col-sm-2 col-form-label">Youtube Link</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="description" class="form-control"
-                                        placeholder="Youtube Link" required>
+                                        placeholder="Youtube Link">
                                 </div>
                             </div>
 

@@ -75,6 +75,7 @@ Route::get('/admin-silabus', function () {
 Route::post('/admin-silabus_edit', [LearningController::class, 'edit'])->middleware(['auth', 'admin']);
 Route::get('/admin-modul', [ModulController::class, 'index'])->middleware(['auth', 'admin']);
 Route::post('/admin-modul', [ModulController::class, 'store'])->middleware(['auth', 'admin']);
+Route::patch('/admin-modul', [ModulController::class, 'update'])->middleware(['auth', 'admin']);
 
 Route::get('/admin-sekolah', [SchoolController::class, 'index'])->middleware(['auth', 'admin']);
 Route::post('/admin-sekolah', [SchoolController::class, 'store'])->middleware(['auth', 'admin']);

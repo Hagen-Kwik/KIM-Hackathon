@@ -36,7 +36,6 @@ class ModulController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $this->validate($request, [
             'title' => 'required|string|max:75',
             'description' => 'required',
@@ -71,7 +70,7 @@ class ModulController extends Controller
             ]);
         }
         
-        return redirect('/silabus');
+        return redirect('/admin-modul');
     }
 
     /**
@@ -95,7 +94,46 @@ class ModulController extends Controller
      */
     public function update(Request $request, Modul $modul)
     {
-        //
+        $this->validate($request, [
+            'modul_id' => 'required|numeric',
+            'title' => 'required|string|max:75',
+            'description' => 'required',
+            'file' => 'nullable|mimes:pdf|max:5120',
+            'youtube_link' => [
+                'url',
+                function ($attribute, $requesturl, $failed) {
+                    if (!preg_match('/(youtube.com|youtu.be)\/(embed)?(\?v=)?(\S+)?/', $requesturl)) {
+                        $failed(trans("general.not_youtube_url", ["name" => trans("general.url")]));
+                    }
+                },
+                'nullable'
+            ],
+            'learning_type' => 'required|numeric',
+        ]);
+
+        if ($request->hasFile('file')) {
+            if (Storage::exists("public/file/silabus/" . Modul::findOrFail($request->modul_id)->file)) //Check if file exists
+                Storage::delete("public/file/silabus/" . Modul::findOrFail($request->modul_id)->file); //Delete file from storage
+
+            Modul::findOrFail($request->modul_id)->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'file' => substr($request->file('file')->store('/public/file/silabus'), 7, strlen($request->file('file')->store('/public/file/silabus')) - 7),
+                'youtube_link' => $request->youtube_link,
+                'learning_type_id' => $request->learning_type,
+                'learning_id' => Learning::all()->first()->id,
+            ]);
+        } else {
+            Modul::findOrFail($request->modul_id)->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'youtube_link' => $request->youtube_link,
+                'learning_type_id' => $request->learning_type,
+                'learning_id' => Learning::all()->first()->id,
+            ]);
+        }
+        
+        return redirect('/admin-modul');
     }
 
     /**
