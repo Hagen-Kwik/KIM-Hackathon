@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             LearningSeeder::class,
             LearningTypeSeeder::class,
+            PodcastSeeder::class,
         ]);
     }
 }

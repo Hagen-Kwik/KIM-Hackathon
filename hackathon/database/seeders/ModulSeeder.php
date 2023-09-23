@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Learning;
 use App\Models\Modul;
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
