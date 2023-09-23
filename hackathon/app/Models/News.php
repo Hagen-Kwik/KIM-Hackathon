@@ -20,4 +20,8 @@ class News extends Model
     {
         return $this->belongsTo(School::class);
     }
+
+    public function getCreatedAtAttribute($timestamp) {
+        return Carbon::parse($timestamp)->locale('id-ID')->translatedFormat('d F Y');
+    }
 }

@@ -1,17 +1,89 @@
 @extends('layouts.mainheader')
 @section('css')
 <link rel="stylesheet" href="{{ asset('styles/berita.css') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 @endsection
 @section('title', 'Berita Detail')
 
 @section('content')
 <div class="container mt-5">
-    <h1 class="bold">JUDUL Disini</h1>
-    <h5>by CJR MANA, Tanggal disini</h5>
-    <img src="{{ asset('images/assets/tentangkami1.jpg') }}" class="img-fluid">
-    <p>Deskripsi berita</p>
+    <h1 class="fw-bold">{{ $news->title }}</h1>
+    <h5 class="pb-3">by {{ $news->school->schoolName }}, {{$news->createdAt}}</h5>
+
+    <div class="d-flex justify-content-center mt-4">
+        <img src="{{ asset('storage/news/' . $news->id . '/' . $images[0]->pictureName) }}" class="img-fluid">
+    </div>
+    <div class="swiper mySwiper mb-5">
+        @if (count($images) < 2)
+            <div class="swiper-wrapper ps-3 w-100 justify-content-center">
+        @elseif (count($images) < 3)
+            <div class="swiper-wrapper ps-3 w-100 justify-content-md-center">
+        @elseif (count($images) < 5)
+            <div class="swiper-wrapper ps-3 w-100 justify-content-lg-center">
+        @else
+            <div class="swiper-wrapper ps-3 w-100">
+        @endif
+
+        @foreach ($images as $image)
+            @if ($loop->first)
+                <div class="swiper-slide swiper-slide1 mx-4 my-4">
+                    <img src="{{ asset('storage/news/' . $news->id . '/' . $image->pictureName) }}"
+                        alt="{{ $image->house_image }}" class="property-slider-image property-image-selected">
+                </div>
+            @else
+                <div class="swiper-slide swiper-slide1 mx-4 my-4">
+                    <img src="{{ asset('storage/news/' . $news->id . '/' . $image->pictureName) }}"
+                        alt="{{ $image->house_image }}" class="property-slider-image">
+                </div>
+            @endif
+        @endforeach
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+    <p class="pb-4">Deskripsi berita</p>
 
  
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+    if (window.matchMedia("(min-width: 1024px)").matches) {
+        var slides = 4
+        var slides2 = 2.076
+    } else if (window.matchMedia("(min-width: 768px)").matches) {
+        var slides = 2.1
+        var slides2 = 1.065
+    } else {
+        var slides = 1.14
+        var slides2 = 1.0455
+    }
+
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: slides,
+        spaceBetween: 30,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+
+    var swiper2 = new Swiper(".mySwiper2", {
+        slidesPerView: slides2,
+        spaceBetween: 30,
+        navigation: {
+            nextEl: ".swiper-button-next.swiper2",
+            prevEl: ".swiper-button-prev.swiper2",
+        },
+    });
+
+    $('.swiper-slide1').click(function() {
+        var src = $(this).find('img').attr("src");
+        $('#property-big-imageid').attr('src', src);
+        $('.swiper-slide1').find('img').removeClass('property-image-selected');
+        $(this).find('img').addClass('property-image-selected');
+    });
+</script>
 @endsection

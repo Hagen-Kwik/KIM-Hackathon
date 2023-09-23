@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\Models\School;
 
 
 /*
@@ -44,10 +45,6 @@ Route::post('/admin-finance_add', [Controller::class, 'finance_add']);
 Route::post('/admin-finance_edit', [Controller::class, 'finance_edit']);
 Route::post('/admin-finance_delete', [Controller::class, 'finance_delete']);
 
-
-
-
-
 Route::get('/berita', function () {
     return view('berita');
 });
@@ -61,7 +58,9 @@ Route::get('/masuk', function () {
 });
 
 Route::get('/daftar', function () {
-    return view('auth.register');
+    return view('auth.register', [
+        'schools' => School::all()
+    ]); 
 });
 
 Route::get('/tentang-kami', function () {

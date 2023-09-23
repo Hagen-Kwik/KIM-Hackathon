@@ -18,14 +18,14 @@
                 <form action="{{ route('register') }}" method="post" class="w-75">
                     @csrf
                     <div class="mb-3 mt-4">
-                        <select name="school_id" class="form-select fw-medium" id="selectSchool">
-                            <option value="0" class="fw-medium">Pilih Sekolah Asal</option>
+                        <select name="sekolah" class="form-select fw-medium" id="selectSchool">
+                            <option value="" class="fw-medium">Pilih Sekolah Asal</option>
                             @foreach ($schools as $school)
                                 <option value="{{ $school->id }}" class="fw-medium">{{ $school->school_name }}</option>
                             @endforeach
                         </select>
                         <small class="text-danger font-montserrat">
-                            @foreach ($errors->get('school_id') as $err)
+                            @foreach ($errors->get('sekolah') as $err)
                                 @if ($loop->iteration > 1)
                                     <br/>
                                 @endif
@@ -34,9 +34,9 @@
                         </small>
                     </div>
                     <div class="mb-3 mt-4">
-                        <input type="text" class="form-control" id="inputName" name="name" placeholder="Nama" required autofocus>
+                        <input type="text" class="form-control" id="inputName" name="nama" placeholder="Nama" required autofocus>
                         <small class="text-danger">
-                        @foreach ($errors->get('name') as $err)
+                        @foreach ($errors->get('nama') as $err)
                             @if ($loop->iteration > 1)
                                 <br/>
                             @endif
@@ -53,9 +53,9 @@
                         </small>
                     </div>
                     <div class="mb-3 mt-4">
-                        <input type="password" class="form-control font-montserrat" id="inputPassword" name="password" placeholder="Kata Sandi" required autocomplete="current-password">
+                        <input type="password" class="form-control font-montserrat" id="inputPassword" name="kata_sandi" placeholder="Kata Sandi" required autocomplete="current-password">
                         <small class="text-danger font-montserrat">
-                        @foreach ($errors->get('password') as $err)
+                        @foreach ($errors->get('kata_sandi') as $err)
                             {{ $err }}
                         @endforeach
                         </small>
@@ -66,7 +66,7 @@
                         <button type="submit" class="btn btn-primary font-montserrat fw-semibold py-2 px-4">Daftar</button>
                     </div>
                 </form>
-                <h6 class="font-montserrat fw-semibold mt-3 mx-4 text-center">Sudah mempunyai akun? <span class="color-orange fw-bold"><a href="{{ route('login') }}" class="text-decoration-none color-orange">Masuk Di Sini!</a></span></h6>
+                <h6 class="font-montserrat fw-semibold mt-3 mx-4 text-center">Sudah mempunyai akun? <span class="color-orange fw-bold"><a href="/masuk" class="text-decoration-none color-orange">Masuk Di Sini!</a></span></h6>
             </div>
         </div>
         <div class="d-flex d-none d-lg-flex col-6 justify-content-center align-items-center" style="height: 100vh; background-color: #F9F9F4;">

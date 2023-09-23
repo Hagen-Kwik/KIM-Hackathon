@@ -48,7 +48,7 @@
                         <button type="submit" class="btn btn-primary font-montserrat fw-semibold py-2 px-4">Masuk</button>
                     </div>
                 </form>
-                <h6 class="font-montserrat fw-semibold mt-3 mx-4 text-center">Belum mempunyai akun? <span class="color-orange fw-bold"><a href="{{ route('register') }}" class="text-decoration-none color-orange">Daftar Di Sini!</a></span></h6>
+                <h6 class="font-montserrat fw-semibold mt-3 mx-4 text-center">Belum mempunyai akun? <span class="color-orange fw-bold"><a href="/daftar" class="text-decoration-none color-orange">Daftar Di Sini!</a></span></h6>
             </div>
         </div>
     </div>
