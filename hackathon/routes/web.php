@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\podcastController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NewsController;
