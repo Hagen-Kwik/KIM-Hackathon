@@ -22,7 +22,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link py-2 px-4" href="/">Podcast</a>
+                    <a class="nav-link py-2 px-4" href="/podcast">Podcast</a>
                 </li>
 
                 @guest

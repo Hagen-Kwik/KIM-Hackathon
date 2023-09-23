@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Podcast;
 use App\Http\Requests\StorePodcastRequest;
 use App\Http\Requests\UpdatePodcastRequest;
+use Illuminate\Support\Facades\DB;
+
 
 class PodcastController extends Controller
 {
@@ -63,4 +65,54 @@ class PodcastController extends Controller
     {
         //
     }
+
+    public function getAll()
+    {
+        $results = DB::table('podcasts')
+            ->select('id', 'link', 'judul', 'created_at', 'updated_at')
+            ->get();
+
+        return view('podcast', [
+            'results' => $results,
+        ]);
+    }
+
+    public function podcast(){
+        $results = DB::table('podcasts')
+            ->select('id', 'link', 'judul', 'created_at', 'updated_at')
+            ->get();
+        
+            return view('admin-podcast', [
+                'results' => $results,
+            ]);    
+    }
+
+    public function podcast_add(){
+        Podcast::create([
+            'judul' => $_POST['judul'],
+            'link' => $_POST['link'],
+        ]);  
+
+        return redirect("admin-podcast");     
+    }
+
+    public function podcast_edit(){
+        $podcast = Podcast::findOrFail($_POST['id']);
+
+        $podcast->update([
+            'judul' => $_POST['judul'],
+            'link' => $_POST['link'],
+        ]);
+        
+        return redirect("admin-podcast");  
+    }
+
+    public function podcast_delete(){
+        if (isset($_POST['delete'])){
+            Podcast::where('id', $_POST['id'])->delete();
+        }
+        
+        return redirect("admin-podcast");  
+    }
+
 }

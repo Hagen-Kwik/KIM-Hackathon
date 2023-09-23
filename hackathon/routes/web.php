@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\podcastController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +23,10 @@ use App\Models\School;
 Route::resource('beranda', BerandaController::class);
 Route::get('/', [BerandaController::class, 'index']);
 Route::get('berandasekolah/{id}',  [BerandaController::class, 'show']);
+
+
+Route::get('/podcast', [PodcastController::class, 'getAll']);
+
 
 Route::get('/admin-profile', function () {
     return view('admin-profile');
@@ -60,6 +64,10 @@ Route::get('/admin-siswa', function () {
     ]);
 });
 
+Route::get('/admin-podcast', [PodcastController::class, 'podcast']);
+Route::post('/admin-podcast_add', [PodcastController::class, 'podcast_add']);
+Route::post('/admin-podcast_edit', [PodcastController::class, 'podcast_edit']);
+Route::post('/admin-podcast_delete', [PodcastController::class, 'podcast_delete']);
 
 Route::get('/admin-finance', [Controller::class, 'finance']);
 Route::post('/admin-finance_add', [Controller::class, 'finance_add']);
