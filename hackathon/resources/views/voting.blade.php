@@ -29,16 +29,6 @@
             @endauth
             <h3 class="mt-5"> Pilihlah Karya terbaik menurutmu! ({{ $text }})</h3>
 
-            @auth
-                @if (Auth::user()->status == 'admin')
-                    <form method="POST" action="/admin-vote_reset">
-                        @csrf
-                        <input type="hidden" name="reset" value="yes">
-                        <button class="deleteButton" type="submit">Reset</button>
-                    </form>
-                @endif
-            @endauth
-
             <div class="row mt-4">
                 @php $pictureCount = 0; @endphp
                 @foreach ($results as $picture)
