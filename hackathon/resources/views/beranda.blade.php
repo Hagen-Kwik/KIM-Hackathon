@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <div class="px-2 px-lg-3">
+        <div class="px-2 px-lg-3 pt-4">
             <form action="/" method="GET">
                 <h3 class="text-center pt-3">Mitra Sekolah Kami</h3>
                 <div class="row d-flex justify-content-evenly my-4 properties-page-filter-card px-lg-5 px-4 py-4 mx-3">
@@ -76,15 +76,12 @@
 
         </div>
 
-    </div>
-
-    <div class="p-5 mt-5">
-        <h3 class="text-center">Kegiatan Kami</h3>
-        <div class="row">
-            <!-- for loop this code -->
+        <div class="p-5">
+            <h3 class="text-center">Kegiatan Kami</h3>
             <div class="row">
                 <!-- for loop this code -->
-                @foreach ($news->slice(0, 3) as $new)
+                <div class="row">
+                    <!-- for loop this code -->
                     @if (count($news) == 0)
                         <div class="text-center py-4">
                             <img style="width: 200px; opacity: 0.8;" src="{{ asset('/images/assets/emptycontents.png') }}"
@@ -92,27 +89,28 @@
                             <p class="text-center fs-5 mt-3 font-montserrat fw-medium">Belum ada berita. </p>
                         </div>
                     @else
-                        <div class="col-lg-4 col-md-6 mb-4" style="display: inline-block;">
-                            <a href="/berita-detail/{{ $new->id }}" style="text-decoration: none">
-                                <div class="col-sm-12 EachGridBox">
-                                    <!-- image asset -->
-                                    <img src="{{asset('storage/images/news/' . $new->id . '/' . $new->news_pictures[0]->pictureName)}}"
-                                        class="HalfRoundedCorner img-fluid2">
-                                    <div class="InsideGridBox">
-                                        <!-- title -->
-                                        <h3 class="" style="font-size: 22px;"><strong>{{ $new->judul }}</strong>
-                                        </h3>
-                                        <h6>{{ $new->created_at }}</h6>
-                                        <p>{{ $new->description }}</p>
+                        @foreach ($news->slice(0, 3) as $new)
+                            <div class="col-lg-4 col-md-6 mb-4" style="display: inline-block;">
+                                <a href="/berita-detail/{{ $new->id }}" style="text-decoration: none">
+                                    <div class="col-sm-12 EachGridBox">
+                                        <!-- image asset -->
+                                        <img src="{{ asset('storage/images/news/' . $new->id . '/' . $new->news_pictures[0]->pictureName) }}"
+                                            class="HalfRoundedCorner img-fluid2">
+                                        <div class="InsideGridBox">
+                                            <!-- title -->
+                                            <h3 class="" style="font-size: 22px;">
+                                                <strong>{{ $new->judul }}</strong>
+                                            </h3>
+                                            <h6>{{ $new->created_at }}</h6>
+                                            <p>{{ $new->description }}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                        @endforeach
                     @endif
-                @endforeach
+                </div>
             </div>
         </div>
     </div>
-    </div>
-
 @endsection
