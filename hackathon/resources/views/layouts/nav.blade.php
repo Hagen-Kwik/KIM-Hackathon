@@ -12,9 +12,13 @@
                 <li class="nav-item active">
                     <a class="nav-link py-2 px-4" href="/">Beranda</a>
                 </li>
+
+                @auth
                 <li class="nav-item">
                     <a class="nav-link py-2 px-4" href="/silabus">Silabus</a>
                 </li>
+                @endauth
+                
                 <li class="nav-item">
                     <a class="nav-link py-2 px-4" href="/berita">Berita</a>
                 </li>

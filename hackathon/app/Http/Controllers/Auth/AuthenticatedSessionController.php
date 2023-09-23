@@ -29,7 +29,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        if (Auth::user()->status == 'admin') {
+        if (Auth::user()->isAdmin()) {
             return redirect()->intended('/admin-beranda');
         } else {
             return redirect()->intended('/');

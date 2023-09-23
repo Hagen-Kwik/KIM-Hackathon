@@ -35,67 +35,70 @@ Route::get('/podcast', [PodcastController::class, 'getAll']);
 
 Route::get('/admin-profile', function () {
     return view('admin-profile');
-});
+})->middleware(['auth', 'admin']);
 
-Route::get('/admin-berita', [NewsController::class, 'index']);
-Route::get('/admin-tambah-berita', [NewsController::class, 'dropzoneNews']);
-Route::get('/admin-ubah-berita/{id}', [NewsController::class, 'edit']);
-Route::post('dropzone/store-news', [NewsController::class, 'dropzoneStoreNews'])->name('dropzone.storenews');
-Route::get('dropzone/delete-news', [NewsController::class, 'dropzoneDeleteNews'])->name('dropzone.deletenews');
-Route::post('/store-image', [NewsController::class, 'storeImage'])->name('news-storeImage');
+Route::get('/admin-berita', [NewsController::class, 'index'])->middleware(['auth', 'admin']);
+Route::get('/admin-tambah-berita', [NewsController::class, 'dropzoneNews'])->middleware(['auth', 'admin']);
+Route::get('/admin-ubah-berita/{id}', [NewsController::class, 'edit'])->middleware(['auth', 'admin']);
+Route::post('dropzone/store-news', [NewsController::class, 'dropzoneStoreNews'])->middleware(['auth', 'admin'])->name('dropzone.storenews');
+Route::get('dropzone/delete-news', [NewsController::class, 'dropzoneDeleteNews'])->middleware(['auth', 'admin'])->name('dropzone.deletenews');
+Route::post('/store-image', [NewsController::class, 'storeImage'])->middleware(['auth', 'admin'])->name('news-storeImage');
 
-Route::patch('/admin-berita', [NewsController::class, 'update']);
-Route::post('/admin-berita', [NewsController::class, 'store']);
-Route::delete('/admin-berita', [NewsController::class, 'destroy']);
+Route::patch('/admin-berita', [NewsController::class, 'update'])->middleware(['auth', 'admin']);
+Route::post('/admin-berita', [NewsController::class, 'store'])->middleware(['auth', 'admin']);
+Route::delete('/admin-berita', [NewsController::class, 'destroy'])->middleware(['auth', 'admin']);
 
 
 Route::get('/admin-beranda', function () {
     return view('admin-beranda');
-});
-Route::get('/admin-tentang_kami', function () {
-    return view('admin-tentang_kami', [
-        'aboutus' => AboutUs::all()
+})->middleware(['auth', 'admin']);
+
+Route::get('/admin-tentang-kami', function () {
+    return view('admin-tentang-kami', [
+        'aboutus' => AboutUs::all()->first()
     ]);
-});
+})->middleware(['auth', 'admin']);
+
 Route::get('/admin-silabus', function () {
     return view('admin-silabus');
-});
+})->middleware(['auth', 'admin']);
 
-Route::get('/admin-sekolah', [SchoolController::class, 'index']);
-Route::post('/admin-sekolah', [SchoolController::class, 'store']);
-Route::patch('/admin-sekolah', [SchoolController::class, 'update']);
-Route::delete('/admin-sekolah', [SchoolController::class, 'destroy']);
+Route::get('/admin-sekolah', [SchoolController::class, 'index'])->middleware(['auth', 'admin']);
+Route::post('/admin-sekolah', [SchoolController::class, 'store'])->middleware(['auth', 'admin']);
+Route::patch('/admin-sekolah', [SchoolController::class, 'update'])->middleware(['auth', 'admin']);
+Route::delete('/admin-sekolah', [SchoolController::class, 'destroy'])->middleware(['auth', 'admin']);
 
-Route::get('/admin-siswa', [StudentController::class, 'index']);
-Route::post('/admin-siswa', [StudentController::class, 'store']);
-Route::patch('/admin-siswa', [StudentController::class, 'update']);
-Route::delete('/admin-siswa', [StudentController::class, 'destroy']);
+Route::get('/admin-siswa', [StudentController::class, 'index'])->middleware(['auth', 'admin']);
+Route::post('/admin-siswa', [StudentController::class, 'store'])->middleware(['auth', 'admin']);
+Route::patch('/admin-siswa', [StudentController::class, 'update'])->middleware(['auth', 'admin']);
+Route::delete('/admin-siswa', [StudentController::class, 'destroy'])->middleware(['auth', 'admin']);
 
-Route::get('/admin-podcast', [PodcastController::class, 'podcast']);
-Route::post('/admin-podcast_add', [PodcastController::class, 'podcast_add']);
-Route::post('/admin-podcast_edit', [PodcastController::class, 'podcast_edit']);
-Route::post('/admin-podcast_delete', [PodcastController::class, 'podcast_delete']);
+Route::get('/admin-podcast', [PodcastController::class, 'podcast'])->middleware(['auth', 'admin']);
+Route::post('/admin-podcast_add', [PodcastController::class, 'podcast_add'])->middleware(['auth', 'admin']);
+Route::post('/admin-podcast_edit', [PodcastController::class, 'podcast_edit'])->middleware(['auth', 'admin']);
+Route::post('/admin-podcast_delete', [PodcastController::class, 'podcast_delete'])->middleware(['auth', 'admin']);
 
-Route::get('/admin-finance', [Controller::class, 'finance']);
-Route::post('/admin-finance_add', [Controller::class, 'finance_add']);
-Route::post('/admin-finance_edit', [Controller::class, 'finance_edit']);
-Route::post('/admin-finance_delete', [Controller::class, 'finance_delete']);
+Route::get('/admin-finance', [Controller::class, 'finance'])->middleware(['auth', 'admin']);
+Route::post('/admin-finance_add', [Controller::class, 'finance_add'])->middleware(['auth', 'admin']);
+Route::post('/admin-finance_edit', [Controller::class, 'finance_edit'])->middleware(['auth', 'admin']);
+Route::post('/admin-finance_delete', [Controller::class, 'finance_delete'])->middleware(['auth', 'admin']);
 
-Route::post('/admin-tentang_kami_edit', [Controller::class, 'aboutus_edit']);
+Route::post('/admin-tentang_kami_edit', [Controller::class, 'aboutus_edit'])->middleware(['auth', 'admin']);
 
-Route::get('/admin-quiz', [Controller::class, 'quiz']);
-Route::post('/admin-quiz_add', [Controller::class, 'quiz_add']);
-Route::post('/admin-quiz_edit', [Controller::class, 'quiz_edit']);
-Route::post('/admin-quiz_delete', [Controller::class, 'quiz_delete']);
+Route::get('/admin-quiz', [Controller::class, 'quiz'])->middleware(['auth', 'admin']);
+Route::post('/admin-quiz_add', [Controller::class, 'quiz_add'])->middleware(['auth', 'admin']);
+Route::post('/admin-quiz_edit', [Controller::class, 'quiz_edit'])->middleware(['auth', 'admin']);
+Route::post('/admin-quiz_delete', [Controller::class, 'quiz_delete'])->middleware(['auth', 'admin']);
 
 Route::get('/admin-quiz_formAdd', function () {
     return view('admin-quizAdd');
-});
+})->middleware(['auth', 'admin']);
+
 Route::get('/admin-quiz_formUpdate', function () {
     return view('admin-quizUpdate', [
         'quizzes' => Quiz::all()
     ]);
-});
+})->middleware(['auth', 'admin']);
 
 Route::get('/berita', function () {
     return view('berita');
@@ -122,7 +125,7 @@ Route::get('/tentang-kami', function () {
     ]);
 });
 
-Route::get('/silabus', [LearningController::class, 'index']);
+Route::get('/silabus', [LearningController::class, 'index'])->middleware(['auth']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

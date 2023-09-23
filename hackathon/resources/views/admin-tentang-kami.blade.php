@@ -19,7 +19,7 @@
 
         <section class="section">
             <div class="row">
-                <form action="/admin-tentang_kami_edit" method="POST">
+                <form action="/admin-tentang-kami" method="POST">
                     @csrf
                     @php
                         $latarbelakang = $aboutus
@@ -36,16 +36,18 @@
                             ->first();
                     @endphp
                     <h4>Latar Belakang</h4>
-                    <textarea class="textarea" id="latarBelakang" name="latarbelakang" rows="1">{{ $latarbelakang }}</textarea>
+                    <textarea class="textarea form-control" id="latarBelakang" name="latarbelakang" rows="1">{{ $latarbelakang }}</textarea>
 
                     <h4 class="specialAdditionalMargin">Maksud</h4>
-                    <textarea class="textarea" id="maksud" name="maksud" rows="1">{{ $maksud }}</textarea>
+                    <textarea class="textarea form-control" id="maksud" name="maksud" rows="1">{{ $maksud }}</textarea>
 
                     <h4 class="specialAdditionalMargin">Tujuan</h4>
-                    <textarea class="textarea" id="tujuan" name="tujuan" rows="1">{{ $tujuan }}</textarea>
+                    <textarea class="textarea form-control" id="tujuan" name="tujuan" rows="1">{{ $tujuan }}</textarea>
 
 
-                    <button class="saveButton" type="submit">Save</button>
+                    <div class="pt-4">
+                        <button class="saveButton" type="submit">Save</button>
+                    </div>
                 </form>
             </div>
         </section>

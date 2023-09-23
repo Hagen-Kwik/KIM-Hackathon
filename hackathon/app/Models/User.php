@@ -50,4 +50,13 @@ class User extends Authenticatable
     {
         return $this->belongsTo(School::class);
     }
+
+    public function isAdmin()
+    {
+        if ($this->status == 'admin') {
+            return true;
+        }
+
+        return false;
+    }
 }

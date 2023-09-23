@@ -89,7 +89,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/admin-tentang_kami">
+                <a class="nav-link collapsed" href="/admin-tentang-kami">
                     <i class="bi bi-pen"></i>
                     <span>Tentang Kami</span>
                 </a>
