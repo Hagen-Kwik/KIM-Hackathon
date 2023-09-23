@@ -60,8 +60,8 @@ class Controller extends BaseController
     }
 
     public function aboutus_edit(){
-        $aboutus = AboutUs::findOrFail(0);
-        $anyelir = AboutUs::findOrFail(1);
+        $aboutus = AboutUs::findOrFail(1);
+        $anyelir = AboutUs::findOrFail(2);
 
         $aboutus->update([
             'description' => $_POST['latarbelakang'],
