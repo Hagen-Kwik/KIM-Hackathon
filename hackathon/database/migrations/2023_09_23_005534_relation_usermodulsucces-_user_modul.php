@@ -23,8 +23,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('user_modul_successes', function (Blueprint $table) {
-            //
-        });
+        // Schema::table('user_modul_successes', function (Blueprint $table) {
+        //     //
+        // });
     }
 };
