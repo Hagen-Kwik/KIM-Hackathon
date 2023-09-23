@@ -56,9 +56,9 @@ Route::post('/admin-berita', [NewsController::class, 'store'])->middleware(['aut
 Route::delete('/admin-berita', [NewsController::class, 'destroy'])->middleware(['auth', 'admin']);
 
 
-Route::get('/admin-beranda', function () {
-    return view('admin-beranda');
-})->middleware(['auth', 'admin']);
+// Route::get('/admin-beranda', function () {
+//     return view('admin-beranda');
+// })->middleware(['auth', 'admin']);
 
 Route::get('/admin-tentang-kami', function () {
     return view('admin-tentang-kami', [

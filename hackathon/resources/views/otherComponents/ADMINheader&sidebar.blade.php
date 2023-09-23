@@ -145,12 +145,12 @@
                 </a>
             </li>
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link collapsed" href="/admin-beranda">
                     <i class="bi bi-house"></i>
                     <span>Beranda</span>
                 </a>
-            </li>
+            </li> --}}
         </ul>
 
     </aside><!-- End Sidebar-->
