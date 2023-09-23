@@ -85,6 +85,10 @@ Route::get('/berita', function () {
     return view('berita');
 });
 
+Route::get('/donasi', function () {
+    return view('donasi');
+});
+
 Route::get('/berita-detail', function () {
     return view('berita-detail');
 });
