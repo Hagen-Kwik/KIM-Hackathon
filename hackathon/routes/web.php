@@ -119,6 +119,8 @@ Route::get('/daftar', function () {
     ]);
 });
 
+
+
 Route::get('/tentang-kami', function () {
     return view('tentang-kami', [
         'aboutus' => AboutUs::all()
@@ -126,6 +128,8 @@ Route::get('/tentang-kami', function () {
 });
 
 Route::get('/silabus', [LearningController::class, 'index']);
+Route::post('/admin-silabus_add', [LearningController::class, 'create']);
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -29,7 +29,16 @@ class LearningController extends Controller
      */
     public function create()
     {
-        //
+        Learning::create([
+            'title' => $_POST["title"],
+            'description' => $_POST["desc"],
+            'picture' => "tes",
+            'starts_at' => $_POST["starts_at"],
+            'ends_at' => $_POST["ends_at"],
+            'school_id' => $_POST["school_id"],
+        ]);
+
+        return redirect("admin-silabus");
     }
 
     /**
