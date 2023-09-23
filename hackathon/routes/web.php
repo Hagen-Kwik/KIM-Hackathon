@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\SchoolController;
 use App\Models\AboutUs;
 use App\Models\School;
 
@@ -55,9 +56,11 @@ Route::get('/admin-tentang_kami', function () {
 Route::get('/admin-silabus', function () {
     return view('admin-silabus');
 });
-Route::get('/admin-sekolah', function () {
-    return view('admin-sekolah');
-});
+
+Route::get('/admin-sekolah', [SchoolController::class, 'index']);
+Route::post('/admin-sekolah', [SchoolController::class, 'store']);
+Route::patch('/admin-sekolah', [SchoolController::class, 'update']);
+
 Route::get('/admin-siswa', function () {
     return view('admin-siswa', [
         'schools' => School::all()
@@ -73,6 +76,8 @@ Route::get('/admin-finance', [Controller::class, 'finance']);
 Route::post('/admin-finance_add', [Controller::class, 'finance_add']);
 Route::post('/admin-finance_edit', [Controller::class, 'finance_edit']);
 Route::post('/admin-finance_delete', [Controller::class, 'finance_delete']);
+
+Route::post('/admin-tentang_kami_edit', [Controller::class, 'aboutus_edit']);
 
 Route::get('/berita', function () {
     return view('berita');

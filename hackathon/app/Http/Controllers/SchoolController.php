@@ -12,7 +12,9 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin-sekolah', [
+            'results' => School::all()
+        ]);
     }
 
     /**
@@ -28,7 +30,21 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nama_sekolah' => 'required|string|max:75',
+            'lokasi_sekolah' => 'required',
+            'gambar' => 'required|image|max:5120',
+        ]);
+
+        School::create([
+            'schoolName' => $request->nama_sekolah,
+            'location' => $request->lokasi_sekolah,
+            'bannerPicture' => $request->gambar->store('/public/images/sekolah')
+        ]);
+        
+        return view('admin-sekolah', [
+            'results' => School::all()
+        ]);
     }
 
     /**
@@ -52,7 +68,29 @@ class SchoolController extends Controller
      */
     public function update(Request $request, School $school)
     {
-        //
+        $this->validate($request, [
+            'id' => 'required|numeric',
+            'nama_sekolah' => 'required|string|max:75',
+            'lokasi_sekolah' => 'required',
+            'gambar' => 'image|max:5120',
+        ]);
+
+        if ($request->hasFile('gambar')) {
+            School::findOrFail($request->id)->update([
+                'schoolName' => $request->nama_sekolah,
+                'location' => $request->lokasi_sekolah,
+                'bannerPicture' => $request->gambar->store('/public/images/sekolah')
+            ]);
+        } else {
+            School::findOrFail($request->id)->update([
+                'schoolName' => $request->nama_sekolah,
+                'location' => $request->lokasi_sekolah
+            ]);
+        }
+        
+        return view('admin-sekolah', [
+            'results' => School::all()
+        ]);
     }
 
     /**

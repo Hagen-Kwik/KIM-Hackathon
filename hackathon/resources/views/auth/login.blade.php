@@ -24,7 +24,7 @@
                         <input type="email" class="form-control font-montserrat" id="inputEmail" name="email" placeholder="Email" required autofocus>
                         <small class="text-danger font-montserrat">
                         @foreach ($errors->get('email') as $err)
-                            {{ $err }}
+                            {{ ucfirst($err) }}
                         @endforeach
                         </small>
                     </div>
@@ -32,7 +32,7 @@
                         <input type="password" class="form-control font-montserrat" id="inputPassword" name="password" placeholder="Kata Sandi" required autocomplete="current-password">
                         <small class="text-danger font-montserrat">
                         @foreach ($errors->get('password') as $err)
-                            {{ $err }}
+                            {{ ucfirst($err) }}
                         @endforeach
                         </small>
                     </div>

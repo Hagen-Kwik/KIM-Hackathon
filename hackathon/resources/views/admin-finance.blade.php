@@ -22,7 +22,7 @@
         </div><!-- End Page Title -->
         
         <section class="section">
-            <div class="row">
+            <div class="row ps-2">
                 <table id="financeTable" class="display">
                     <thead>
                         <tr>

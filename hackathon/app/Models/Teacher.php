@@ -18,6 +18,7 @@ class Teacher extends Model
         'email',
         'instagram',
         'learning_id',
+        'picture'
     ];
 
     public function learning() : BelongsTo
