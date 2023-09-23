@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             LearningSeeder::class,
             LearningTypeSeeder::class,
             PodcastSeeder::class,
+            VoteSeeder::class,
         ]);
     }
 }

@@ -15,11 +15,11 @@ class PodcastSeeder extends Seeder
     {
         Podcast::create([
             'judul' => "Dhammiko",
-            'link' => "https://www.youtube.com/watch?v=T9AbyazB60I"
+            'link' => "https://www.youtube.com/embed/T9AbyazB60I?si=O_ucisonQlEVEIhq"
         ]);
         Podcast::create([
             'judul' => "Hagen",
-            'link' => "https://www.youtube.com/watch?v=2fDcRu7J-6k&pp=ygUKaGFnZW4ga3dpaw%3D%3D"
+            'link' => "https://www.youtube.com/embed/2fDcRu7J-6k?si=_q71sFftv7zxtE8m"
         ]);
     }
 }
