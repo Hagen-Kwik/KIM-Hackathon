@@ -10,6 +10,7 @@ use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LearningController;
 use App\Models\AboutUs;
+use App\Models\Quiz;
 use App\Models\School;
 
 
@@ -84,11 +85,16 @@ Route::post('/admin-tentang_kami_edit', [Controller::class, 'aboutus_edit']);
 
 Route::get('/admin-quiz', [Controller::class, 'quiz']);
 Route::post('/admin-quiz_add', [Controller::class, 'quiz_add']);
-// Route::post('/admin-finance_edit', [Controller::class, 'finance_edit']);
-// Route::post('/admin-finance_delete', [Controller::class, 'finance_delete']);
+Route::post('/admin-quiz_edit', [Controller::class, 'quiz_edit']);
+Route::post('/admin-quiz_delete', [Controller::class, 'quiz_delete']);
 
-Route::get('/admin-quiz_form', function () {
-    return view('admin-quizUpdateAdd');
+Route::get('/admin-quiz_formAdd', function () {
+    return view('admin-quizAdd');
+});
+Route::get('/admin-quiz_formUpdate', function () {
+    return view('admin-quizUpdate', [
+        'quizzes' => Quiz::all()
+    ]);
 });
 
 Route::get('/berita', function () {

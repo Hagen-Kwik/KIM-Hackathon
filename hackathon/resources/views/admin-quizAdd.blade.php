@@ -22,7 +22,7 @@
                 <!-- CEHCK ACTION  -->
                 <form method="POST" action="/admin-quiz_add">
                     @csrf
-                    <h5 class="modal-title">Tambah Quiz/Edit Quiz</h5>
+                    <h5 class="modal-title">Tambah Quiz</h5>
                     <div class="row mt-3">
                         <label for="inputText" class="col-sm-2 col-form-label">Judul</label>
                         <div class="col-sm-10">

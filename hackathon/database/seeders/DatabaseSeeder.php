@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
             FinanceSeeder::class,
             AboutUsSeeder::class,
             QuizTypeSeeder::class,
+            DummyQuizSeeder::class,
+            DummyQuestionSeeder::class,
         ]);
     }
 }

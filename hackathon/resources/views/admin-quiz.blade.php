@@ -16,7 +16,7 @@
                 </div>
 
                 <div class="col text-end">
-                    <a href="/admin-quiz_form"><button type="button" class="btn btn-light rounded-pill">+ Tambah
+                    <a href="/admin-quiz_formAdd"><button type="button" class="btn btn-light rounded-pill">+ Tambah
                             Quiz</button></a>
                 </div>
             </div>
@@ -25,16 +25,21 @@
         <section class="section">
             @if ($results != null)
                 @foreach ($results as $result)
+                    @php
+                        $jumlahSoal = $questions->where('quiz_id', $result->id)->count();
+                    @endphp
                     <div class="row aBox">
-                        <h6 style="display: none;">{{ $result->id }}</h6>
+                        <h6 style="display: block;">Quiz ID: {{ $result->id }}</h6>
                         <h4>{{ $result->title }}</h4>
                         @php
                             $quizType = $result->quiz_type_id == '1' ? 'Pre/Post Exam' : 'Exam';
                         @endphp
+                        <h6>Jumlah Soal: {{ $jumlahSoal }}</h6>
                         <h6>Type: {{ $quizType }}</h6>
                         <div style="display: inline-block;">
-                            <a href="/admin-berita_edit"><button class="editButton">Edit</button></a>
-                            <form method="POST" action="/admin-berita_delete">
+                            <a href="/admin-quiz_formUpdate?id={{ $result->id }}"><button
+                                    class="editButton">Edit</button></a>
+                            <form method="POST" action="/admin-quiz_delete">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $result->id }}">
                                 <input type="hidden" name="delete" value="yes">
