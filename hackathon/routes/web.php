@@ -10,6 +10,7 @@ use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LearningController;
 use App\Models\AboutUs;
+use App\Models\Question;
 use App\Models\Quiz;
 use App\Models\School;
 
@@ -94,6 +95,28 @@ Route::get('/admin-quiz_formAdd', function () {
 Route::get('/admin-quiz_formUpdate', function () {
     return view('admin-quizUpdate', [
         'quizzes' => Quiz::all()
+    ]);
+});
+
+
+Route::get('/admin-question', function () {
+    return view('admin-question', [
+        'questions' => Question::all()->where('quiz_id', $_GET['quizID'])->all()
+    ]);
+});
+
+Route::post('/admin-question_add', [Controller::class, 'question_add']);
+Route::post('/admin-question_edit', [Controller::class, 'question_edit']);
+Route::post('/admin-question_delete', [Controller::class, 'question_delete']);
+
+Route::get('/admin-question_formAdd', function () {
+    return view('admin-questionAdd', [
+        'quizID' => $_GET['quizID']
+    ]);
+});
+Route::get('/admin-question_formUpdate', function () {
+    return view('admin-questionUpdate', [
+        'questions' => Question::all()
     ]);
 });
 
