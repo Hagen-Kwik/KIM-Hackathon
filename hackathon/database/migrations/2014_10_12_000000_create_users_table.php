@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('status', ['admin', 'normal'])->default('normal');
+            $table->enum('voted', [0, 1])->default(0);
             $table->unsignedBigInteger('school_id');
             $table->rememberToken();
             $table->timestamps();

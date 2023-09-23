@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\karya_pilihan;
 use App\Http\Requests\Storekarya_pilihanRequest;
 use App\Http\Requests\Updatekarya_pilihanRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class KaryaPilihanController extends Controller
 {
@@ -77,8 +79,8 @@ class KaryaPilihanController extends Controller
 
         $winner = DB::table('karya_pilihans')
             ->select('id', 'created_at', 'updated_at', 'judul', 'link', 'vote')
-            ->orderByDesc('vote') 
-            ->orderBy('updated_at') 
+            ->orderByDesc('vote')
+            ->orderBy('updated_at')
             ->first();
 
         return view('voting', [
@@ -137,6 +139,13 @@ class KaryaPilihanController extends Controller
 
         $karya_pilihan->update([
             'vote' => $karya_pilihan->vote + 1,
+        ]);
+
+        $userID = Auth::user()->id;
+        $user = User::find($userID);
+
+        $user->update([
+            'voted' => '1'
         ]);
 
         return redirect("voting");
